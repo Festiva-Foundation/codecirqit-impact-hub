@@ -55,7 +55,7 @@ const FoundersSection = () => {
                 <img
                   src={founder.image}
                   alt={founder.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20"
+                  className="w-32 h-24 rounded-lg mx-auto mb-4 object-cover border-4 border-primary/20"
                 />
                 <Quote className="text-primary/20 absolute -top-2 -right-2" size={24} />
               </div>

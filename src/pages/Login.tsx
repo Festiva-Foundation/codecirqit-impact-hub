@@ -21,9 +21,9 @@ const Login = () => {
       title: "Login Successful!",
       description: "Welcome back to CodeCirqit. Redirecting to dashboard...",
     });
-    // Redirect to dashboard
+    // Redirect to volunteer dashboard
     setTimeout(() => {
-      navigate('/dashboard');
+      navigate('/volunteer-dashboard');
     }, 1500);
   };
 
@@ -120,7 +120,7 @@ const Login = () => {
           <div className="mt-6 text-center space-y-4">
             <p className="text-sm text-muted-foreground">
               Don't have an account?{' '}
-              <Link to="/#volunteer" className="text-primary hover:underline font-medium">
+              <Link to="/register" className="text-primary hover:underline font-medium">
                 Register as Volunteer
               </Link>
             </p>

@@ -7,7 +7,7 @@ import BlogSection from '@/components/BlogSection';
 import CollaborationsSection from '@/components/CollaborationsSection';
 import FoundersSection from '@/components/FoundersSection';
 import ContactSection from '@/components/ContactSection';
-import VolunteerForm from '@/components/VolunteerForm';
+
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -23,7 +23,7 @@ const Index = () => {
         <CollaborationsSection />
         <FoundersSection />
         <ContactSection />
-        <VolunteerForm />
+        
       </main>
       <Footer />
     </div>

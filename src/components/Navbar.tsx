@@ -16,7 +16,7 @@ const Navbar = () => {
     { label: 'Vision', href: '#vision' },
     { label: 'Gallery', href: '#gallery' },
     { label: 'Blogs', href: '/blogs' },
-    { label: 'Volunteer With Us', href: '#volunteer' },
+    { label: 'Volunteer With Us', href: '/register' },
     { label: 'Get In Touch', href: '#contact' },
   ];
 
