@@ -4,9 +4,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const VolunteerDashboard = () => {
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedActivity, setSelectedActivity] = useState<any>(null);
   
   // Simulated user data
   const volunteerName = "John Doe";
@@ -16,7 +20,7 @@ const VolunteerDashboard = () => {
       id: 1,
       name: "Efficient Garbage Disposal System",
       activityNo: "01", 
-      startDate: "2025-08-05",
+      startDate: "2025-07-26",
       endDate: "2025-08-15",
       points: 20,
       hours: 80,
@@ -98,6 +102,9 @@ const VolunteerDashboard = () => {
   const handleActivityClick = (activity: any) => {
     if (isActivityClickable(activity.startDate)) {
       navigate(`/activity/${activity.id}`);
+    } else {
+      setSelectedActivity(activity);
+      setShowPopup(true);
     }
   };
 
@@ -251,6 +258,35 @@ const VolunteerDashboard = () => {
             Back to Home
           </Button>
         </motion.div>
+
+        {/* Activity Not Started Popup */}
+        <Dialog open={showPopup} onOpenChange={setShowPopup}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-center text-xl font-bold">
+                ⚠️ Activity Not Yet Active
+              </DialogTitle>
+              <DialogDescription className="text-center space-y-2">
+                <p className="text-lg">📅 This activity will begin on:</p>
+                <p className="text-xl font-semibold text-primary">
+                  {selectedActivity?.startDate && new Date(selectedActivity.startDate).toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                  })}
+                </p>
+                <p className="text-base text-muted-foreground">
+                  Please check back then to participate.
+                </p>
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-center mt-4">
+              <Button onClick={() => setShowPopup(false)}>
+                Got it!
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

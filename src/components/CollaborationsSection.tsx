@@ -10,16 +10,16 @@ const CollaborationsSection = () => {
       description: "Registered charitable organization with 80G, 12A, and CSR compliance"
     },
     {
-      name: "Festiva",
+      name: "Festiva Foundation",
       type: "Parent Organization",
       logo: "/api/placeholder/150/80",
       description: "Institutional support and organizational guidance"
     },
     {
-      name: "BMS College",
-      type: "Educational Partner",
+      name: "CyberTrinetra",
+      type: "Technology Partner",
       logo: "/api/placeholder/150/80",
-      description: "Student engagement and volunteer recruitment"
+      description: "Your Guardian Against Digital Threats"
     },
     {
       name: "RV College",
@@ -64,7 +64,7 @@ const CollaborationsSection = () => {
             Our <span className="text-gradient">MoUs & Partnerships</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            CodeCirqit operates through strategic partnerships with registered NGOs, educational institutions, 
+            Festiva Foundation operates through strategic partnerships with registered NGOs, educational institutions, 
             and corporate organizations to ensure legal compliance and maximum impact.
           </p>
         </motion.div>

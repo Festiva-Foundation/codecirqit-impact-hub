@@ -14,12 +14,12 @@ const AboutSection = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              About <span className="text-gradient">CodeCirqit</span>
+              About <span className="text-gradient">Festiva Foundation</span>
             </h2>
             
             <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground mb-6">
-                CodeCirqit is a social initiative by Festiva, in collaboration with MIT NGO, 
+                Festiva Foundation is a social initiative in collaboration with MIT NGO, 
                 a registered charitable organization with 80G, 12A, and CSR compliance. We aim 
                 to bridge the gap between youth potential and real-world community needs.
               </p>
@@ -31,7 +31,7 @@ const AboutSection = () => {
               </p>
               
               <p className="text-muted-foreground mb-8">
-                Built on the belief that engineers can do more than just code, CodeCirqit 
+                Built on the belief that individuals can do more than just their careers, Festiva Foundation 
                 provides a platform to serve, lead, and create impact—where passion meets 
                 purpose, and technology meets humanity.
               </p>

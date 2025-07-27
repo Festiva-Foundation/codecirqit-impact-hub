@@ -6,7 +6,7 @@ const GallerySection = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const categories = ['All', 'Food Drive', 'Plantation', 'Education', 'Health Camps'];
+  const categories = ['All', 'Food Drive', 'Swachh Bharat', 'Education', 'Social Awareness'];
 
   const galleryImages = [
     {
@@ -19,9 +19,9 @@ const GallerySection = () => {
     {
       id: 2,
       src: '/api/placeholder/600/400',
-      title: 'Tree Plantation Initiative',
-      category: 'Plantation',
-      description: 'Engineering students planting trees for a greener tomorrow'
+      title: 'Swachh Bharat Initiative',
+      category: 'Swachh Bharat',
+      description: 'Community clean-up drives for a cleaner tomorrow'
     },
     {
       id: 3,
@@ -33,9 +33,9 @@ const GallerySection = () => {
     {
       id: 4,
       src: '/api/placeholder/600/400',
-      title: 'Health Awareness Campaign',
-      category: 'Health Camps',
-      description: 'Free health checkups and awareness sessions'
+      title: 'Social Awareness Campaign',
+      category: 'Social Awareness',
+      description: 'Community awareness sessions and social initiatives'
     },
     {
       id: 5,
@@ -48,7 +48,7 @@ const GallerySection = () => {
       id: 6,
       src: '/api/placeholder/600/400',
       title: 'Environmental Conservation Drive',
-      category: 'Plantation',
+      category: 'Swachh Bharat',
       description: 'Beach cleanup and environmental awareness'
     },
     {
@@ -61,9 +61,9 @@ const GallerySection = () => {
     {
       id: 8,
       src: '/api/placeholder/600/400',
-      title: 'Medical Camp in Villages',
-      category: 'Health Camps',
-      description: 'Providing healthcare services to remote areas'
+      title: 'Community Awareness Program',
+      category: 'Social Awareness',
+      description: 'Educating communities on social issues and rights'
     }
   ];
 

@@ -70,7 +70,7 @@ const VolunteerForm = () => {
       // Final submission
       toast({
         title: "Registration Successful!",
-        description: "Welcome to CodeCirqit! Redirecting to dashboard...",
+        description: "Welcome to Festiva Foundation! Redirecting to dashboard...",
       });
       // Here you would normally redirect to dashboard
     }

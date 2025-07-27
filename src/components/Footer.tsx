@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Instagram, Mail, Heart } from 'lucide-react';
-import codecirqitLogo from '@/assets/codecirqit-logo.png';
+import festivaLogo from '@/assets/festiva-logo.png';
 
 const Footer = () => {
   const scrollToVolunteer = () => {
@@ -16,19 +16,19 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center space-x-3 mb-4 group">
               <img 
-                src={codecirqitLogo} 
-                alt="CodeCirqit Logo" 
+                src={festivaLogo} 
+                alt="Festiva Foundation Logo" 
                 className="w-10 h-10 transition-transform group-hover:scale-110"
               />
-              <span className="text-2xl font-bold">CodeCirqit</span>
+              <span className="text-2xl font-bold">Festiva Foundation</span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md">
-              A student-led social initiative under Festiva in collaboration with MIT NGO, 
-              empowering engineers to build humanity through structured volunteering programs.
+              A social initiative in collaboration with MIT NGO, 
+              empowering individuals to build humanity through structured volunteering programs.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://linkedin.com/company/codecirqit"
+                href="https://linkedin.com/company/festiva-foundation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-lg hover:bg-primary transition-colors"
@@ -36,7 +36,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://instagram.com/codecirqit"
+                href="https://instagram.com/festiva.foundation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-lg hover:bg-primary transition-colors"
@@ -44,7 +44,7 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="mailto:codecirqit@gmail.com"
+                href="mailto:contact@festivafoundation.org"
                 className="p-2 bg-white/10 rounded-lg hover:bg-primary transition-colors"
               >
                 <Mail size={20} />
@@ -93,10 +93,10 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:codecirqit@gmail.com"
+                  href="mailto:contact@festivafoundation.org"
                   className="text-gray-300 hover:text-primary transition-colors"
                 >
-                  codecirqit@gmail.com
+                  contact@festivafoundation.org
                 </a>
               </li>
               <li>
@@ -111,7 +111,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 CodeCirqit. All rights reserved.
+            © 2025 Festiva Foundation. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm flex items-center">
             Made with <Heart className="mx-1 text-red-500" size={16} /> for humanity

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import codecirqitLogo from '@/assets/codecirqit-logo.png';
+import festivaLogo from '@/assets/festiva-logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,12 +62,12 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <img 
-              src={codecirqitLogo} 
-              alt="CodeCirqit Logo" 
+              src={festivaLogo} 
+              alt="Festiva Foundation Logo" 
               className="w-10 h-10 transition-transform group-hover:scale-110"
             />
             <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-              CodeCirqit
+              Festiva Foundation
             </span>
           </Link>
 
