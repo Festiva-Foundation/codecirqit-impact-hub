@@ -76,11 +76,11 @@ const ForgotPassword = () => {
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center space-x-3 mb-6 group">
               <img 
-                src={codecirqitLogo} 
-                alt="CodeCirqit Logo" 
+                src={festivaLogo} 
+                alt="Festiva Foundation Logo" 
                 className="w-12 h-12 transition-transform group-hover:scale-110"
               />
-              <span className="text-2xl font-bold">CodeCirqit</span>
+              <span className="text-2xl font-bold">Festiva Foundation</span>
             </Link>
             <h1 className="text-3xl font-bold mb-2">Reset Password</h1>
             <p className="text-muted-foreground">
