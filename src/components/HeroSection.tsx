@@ -12,7 +12,7 @@ const HeroSection = () => {
   const slides = [
     {
       image: heroMain,
-      title: "CodeCirqit – Where Engineers Build Humanity",
+      title: "Festiva Foundation – Where Engineers Build Humanity",
       subtitle: "Join the movement of socially responsible engineers making real impact"
     },
     {

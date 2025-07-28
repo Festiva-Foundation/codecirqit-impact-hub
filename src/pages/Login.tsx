@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import codecirqitLogo from '@/assets/codecirqit-logo.png';
+import festivaLogo from '@/assets/festiva-logo.png';
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,13 +41,13 @@ const Login = () => {
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center space-x-3 mb-6 group">
               <img 
-                src={codecirqitLogo} 
-                alt="CodeCirqit Logo" 
+                src={festivaLogo}
+                alt="Festiva Foundation Logo"
                 className="w-12 h-12 transition-transform group-hover:scale-110"
               />
-              <span className="text-2xl font-bold">CodeCirqit</span>
+              <span className="text-4xl font-bold">Festiva Foundation</span>
             </Link>
-            <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
+            <h1 className="text-3xl font-bold mb-2">Welcome Back Champ!!</h1>
             <p className="text-muted-foreground">Login to access your volunteer dashboard</p>
           </div>
 

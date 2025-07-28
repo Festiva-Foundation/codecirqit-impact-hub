@@ -1,32 +1,30 @@
 import { motion } from 'framer-motion';
 import { FileText, Award, Handshake, Building } from 'lucide-react';
+import mitLogo from '../assets/mit-logo.jpeg';
+import festivaLogo from '@/assets/festiva-logo.png';
+import cybertrinetra from '@/assets/cybertrinetra-logo.png';
 
 const CollaborationsSection = () => {
   const collaborators = [
     {
       name: "MIT NGO",
       type: "Primary Partner",
-      logo: "/api/placeholder/150/80",
+      logo: mitLogo,
       description: "Registered charitable organization with 80G, 12A, and CSR compliance"
     },
     {
-      name: "Festiva Foundation",
+      name: "Festiva Moments",
       type: "Parent Organization",
-      logo: "/api/placeholder/150/80",
+      logo: festivaLogo,
       description: "Institutional support and organizational guidance"
     },
     {
       name: "CyberTrinetra",
       type: "Technology Partner",
-      logo: "/api/placeholder/150/80",
+      logo: cybertrinetra,
       description: "Your Guardian Against Digital Threats"
-    },
-    {
-      name: "RV College",
-      type: "Educational Partner", 
-      logo: "/api/placeholder/150/80",
-      description: "Engineering student participation and support"
     }
+
   ];
 
   const certifications = [
@@ -125,7 +123,7 @@ const CollaborationsSection = () => {
           viewport={{ once: true }}
         >
           <h3 className="text-2xl font-bold text-center mb-8">Our Trusted Partners</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {collaborators.map((partner, index) => (
               <motion.div
                 key={partner.name}
@@ -138,10 +136,10 @@ const CollaborationsSection = () => {
                 <img
                   src={partner.logo}
                   alt={`${partner.name} logo`}
-                  className="h-16 mx-auto mb-4 object-contain"
+                  className="h-24 mx-auto mb-2 object-contain"
                 />
                 <h4 className="font-bold mb-1">{partner.name}</h4>
-                <p className="text-primary text-sm font-medium mb-2">{partner.type}</p>
+                <p className="text-primary text-sm font-medium mb-1">{partner.type}</p>
                 <p className="text-muted-foreground text-xs">{partner.description}</p>
               </motion.div>
             ))}

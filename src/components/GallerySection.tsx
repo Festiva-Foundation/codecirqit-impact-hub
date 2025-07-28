@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import food from '@/assets/food-2.jpeg';
+import food1 from '@/assets/food-3.jpeg';
+
 
 const GallerySection = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -11,10 +14,10 @@ const GallerySection = () => {
   const galleryImages = [
     {
       id: 1,
-      src: '/api/placeholder/600/400',
+      src: food,
       title: 'Community Food Distribution Drive',
       category: 'Food Drive',
-      description: 'Volunteers distributing meals to underprivileged families'
+      description: 'Volunteers distributing meals to charity students'
     },
     {
       id: 2,
@@ -53,10 +56,10 @@ const GallerySection = () => {
     },
     {
       id: 7,
-      src: '/api/placeholder/600/400',
+      src: food1,
       title: 'Donation Collection Drive',
       category: 'Food Drive',
-      description: 'Collecting donations for disaster relief'
+      description: 'Volunteers distributing snacks to charity students'
     },
     {
       id: 8,

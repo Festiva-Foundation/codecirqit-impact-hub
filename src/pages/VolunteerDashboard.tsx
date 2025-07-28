@@ -18,7 +18,7 @@ const VolunteerDashboard = () => {
   const activities = [
     {
       id: 1,
-      name: "Efficient Garbage Disposal System",
+      name: "Waste Segregation & Plastic-Free Awareness Campaign",
       activityNo: "01", 
       startDate: "2025-07-26",
       endDate: "2025-08-15",

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Check, X, Eye, EyeOff, UserPlus, ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import codecirqitLogo from '@/assets/codecirqit-logo.png';
+import festivaLogo from '@/assets/festiva-logo.png';
 
 const Register = () => {
   const [step, setStep] = useState(1);
@@ -21,15 +21,14 @@ const Register = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, control, formState: { errors } } = useForm();
 
   const colleges = [
-    "BMS College of Engineering",
-    "RV College of Engineering", 
-    "PES University",
-    "MIT Bangalore",
-    "MSRIT",
-    "BMSCE",
+    "Cambridge Institute Of Technology",
+    "Sai Vidya Institute Of Technology",
+    "Bengalore Technological Institute",
+    "Nitte Meenakshi Institute of Technology",
+    "BMS Institute of Technology",
     "JSS Academy of Technical Education",
     "Other"
   ];
@@ -64,13 +63,14 @@ const Register = () => {
     });
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data) => {
     if (step === 1 && otpVerified) {
       setStep(2);
     } else if (step === 2) {
+      console.log('Registration data:', data);
       toast({
         title: "Registration Successful!",
-        description: "Welcome to CodeCirqit! Redirecting to dashboard...",
+        description: "Welcome to Festiva Foundation! Redirecting to dashboard...",
       });
       setTimeout(() => {
         navigate('/volunteer-dashboard');
@@ -88,18 +88,18 @@ const Register = () => {
           className="text-center mb-8"
         >
           <Link to="/" className="inline-flex items-center space-x-3 mb-6 group">
-            <img 
-              src={codecirqitLogo} 
-              alt="CodeCirqit Logo" 
+            <img
+              src={festivaLogo}
+              alt="Festiva Foundation Logo"
               className="w-12 h-12 transition-transform group-hover:scale-110"
             />
-            <span className="text-2xl font-bold">CodeCirqit</span>
+            <span className="text-3xl font-bold">Festiva Foundation</span>
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Volunteer</span> Registration
+            <span className="text-gradient">Volunteer</span> Registration!
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join our community of changemakers and start making a difference today
+            Join our community of changemakers and start making a difference
           </p>
         </motion.div>
 
@@ -135,13 +135,14 @@ const Register = () => {
                   className="space-y-6"
                 >
                   <h3 className="text-2xl font-semibold text-center mb-6">Basic Details</h3>
-                  
+
                   <div>
                     <Label htmlFor="name">Full Name *</Label>
                     <Input
                       id="name"
                       {...register('name', { required: 'Name is required' })}
                       className="mt-1"
+                      placeholder="Enter Full Name (Ex: John E)"
                     />
                     {errors.name && (
                       <p className="text-red-500 text-sm mt-1">{String(errors.name.message)}</p>
@@ -155,6 +156,7 @@ const Register = () => {
                       type="tel"
                       {...register('phone', { required: 'Phone number is required' })}
                       className="mt-1"
+                      placeholder="Enter Mobile Number (Ex: 9876543210)"
                     />
                     {errors.phone && (
                       <p className="text-red-500 text-sm mt-1">{String(errors.phone.message)}</p>
@@ -169,6 +171,7 @@ const Register = () => {
                         type="email"
                         {...register('email', { required: 'Email is required' })}
                         className="flex-1"
+                        placeholder="Enter Mail ID (Ex: john2@gmail.com)"
                         disabled={otpVerified}
                       />
                       <Button
@@ -219,7 +222,7 @@ const Register = () => {
                   className="space-y-6"
                 >
                   <h3 className="text-2xl font-semibold text-center mb-6">Extended Details</h3>
-                  
+
                   <div>
                     <Label htmlFor="location">Location *</Label>
                     <Input
@@ -227,74 +230,123 @@ const Register = () => {
                       {...register('location', { required: 'Location is required' })}
                       className="mt-1"
                     />
+                    {errors.location && (
+                      <p className="text-red-500 text-sm mt-1">{String(errors.location.message)}</p>
+                    )}
                   </div>
 
                   <div>
                     <Label htmlFor="userType">Are You *</Label>
-                    <Select {...register('userType', { required: 'Please select your type' })}>
-                      <SelectTrigger className="mt-1">
-                        <SelectValue placeholder="Select your type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="student">Student</SelectItem>
-                        <SelectItem value="employee">Employee</SelectItem>
-                        <SelectItem value="mentor">Mentor</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <Controller
+                      name="userType"
+                      control={control}
+                      rules={{ required: 'Please select your type' }}
+                      render={({ field }) => (
+                        <Select value={field.value} onValueChange={field.onChange}>
+                          <SelectTrigger className="mt-1">
+                            <SelectValue placeholder="Select your type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="student">Student</SelectItem>
+                            <SelectItem value="employee">Employee</SelectItem>
+                            <SelectItem value="mentor">Mentor</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
+                    {errors.userType && (
+                      <p className="text-red-500 text-sm mt-1">{String(errors.userType.message)}</p>
+                    )}
                   </div>
 
                   {userType === 'student' && (
-                    <>
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="space-y-6"
+                    >
                       <div>
                         <Label htmlFor="college">College Name *</Label>
-                        <Select {...register('college', { required: 'College is required' })}>
-                          <SelectTrigger className="mt-1">
-                            <SelectValue placeholder="Select your college" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {colleges.map((college) => (
-                              <SelectItem key={college} value={college}>
-                                {college}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <Controller
+                          name="college"
+                          control={control}
+                          rules={{ required: userType === 'student' ? 'College is required' : false }}
+                          render={({ field }) => (
+                            <Select value={field.value} onValueChange={field.onChange}>
+                              <SelectTrigger className="mt-1">
+                                <SelectValue placeholder="Select your college" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {colleges.map((college) => (
+                                  <SelectItem key={college} value={college}>
+                                    {college}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          )}
+                        />
+                        {errors.college && (
+                          <p className="text-red-500 text-sm mt-1">{String(errors.college.message)}</p>
+                        )}
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="semester">Semester *</Label>
-                          <Select {...register('semester', { required: 'Semester is required' })}>
-                            <SelectTrigger className="mt-1">
-                              <SelectValue placeholder="SEM" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {[1,2,3,4,5,6,7,8].map((sem) => (
-                                <SelectItem key={sem} value={sem.toString()}>
-                                  {sem}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <Controller
+                            name="semester"
+                            control={control}
+                            rules={{ required: userType === 'student' ? 'Semester is required' : false }}
+                            render={({ field }) => (
+                              <Select value={field.value} onValueChange={field.onChange}>
+                                <SelectTrigger className="mt-1">
+                                  <SelectValue placeholder="SEM" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {[1,2,3,4,5,6,7,8].map((sem) => (
+                                    <SelectItem key={sem} value={sem.toString()}>
+                                      {sem}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            )}
+                          />
+                          {errors.semester && (
+                            <p className="text-red-500 text-sm mt-1">{String(errors.semester.message)}</p>
+                          )}
                         </div>
 
                         <div>
                           <Label htmlFor="branch">Branch *</Label>
-                          <Select {...register('branch', { required: 'Branch is required' })}>
-                            <SelectTrigger className="mt-1">
-                              <SelectValue placeholder="Branch" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {branches.map((branch) => (
-                                <SelectItem key={branch} value={branch}>
-                                  {branch}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <Controller
+                            name="branch"
+                            control={control}
+                            rules={{ required: userType === 'student' ? 'Branch is required' : false }}
+                            render={({ field }) => (
+                              <Select value={field.value} onValueChange={field.onChange}>
+                                <SelectTrigger className="mt-1">
+                                  <SelectValue placeholder="Branch" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {branches.map((branch) => (
+                                    <SelectItem key={branch} value={branch}>
+                                      {branch}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            )}
+                          />
+                          {errors.branch && (
+                            <p className="text-red-500 text-sm mt-1">{String(errors.branch.message)}</p>
+                          )}
                         </div>
                       </div>
-                    </>
+                    </motion.div>
                   )}
 
                   <div>
@@ -305,6 +357,7 @@ const Register = () => {
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        {...register('password', { required: 'Password is required' })}
                         className="pr-10"
                       />
                       <button
@@ -315,7 +368,7 @@ const Register = () => {
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
                     </div>
-                    
+
                     {/* Password Criteria */}
                     <div className="mt-2 space-y-1">
                       {passwordCriteria.map((criteria, index) => (
@@ -331,6 +384,9 @@ const Register = () => {
                         </div>
                       ))}
                     </div>
+                    {errors.password && (
+                      <p className="text-red-500 text-sm mt-1">{String(errors.password.message)}</p>
+                    )}
                   </div>
 
                   <div>
@@ -339,7 +395,7 @@ const Register = () => {
                       <Input
                         id="confirmPassword"
                         type={showConfirmPassword ? "text" : "password"}
-                        {...register('confirmPassword', { 
+                        {...register('confirmPassword', {
                           required: 'Please confirm your password',
                           validate: (value) => value === password || 'Passwords do not match'
                         })}
@@ -359,7 +415,18 @@ const Register = () => {
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="terms" {...register('terms', { required: 'You must agree to terms' })} />
+                    <Controller
+                      name="terms"
+                      control={control}
+                      rules={{ required: 'You must agree to terms' }}
+                      render={({ field }) => (
+                        <Checkbox
+                          id="terms"
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      )}
+                    />
                     <Label htmlFor="terms" className="text-sm">
                       I agree to the Terms & Conditions *
                     </Label>
