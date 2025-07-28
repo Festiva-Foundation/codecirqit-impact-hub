@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Download } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Download, Play, Target, TreePine, CheckCircle, BookOpen, Wrench } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useState } from 'react';
 
 const ActivityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [selectedVideo, setSelectedVideo] = useState(0);
   
   // Mock activity data - in real app, fetch based on ID
   const activities = [
@@ -75,6 +77,20 @@ const ActivityDetail = () => {
       description: "Develop sustainable food packaging solutions to reduce waste.",
       fullDescription: "Research and develop innovative food preservation and packaging technologies that reduce food waste and environmental impact. This project focuses on creating sustainable packaging materials, developing preservation techniques that extend shelf life, and designing cost-effective solutions for food storage and transportation. Participants will work on biodegradable packaging alternatives, preservation methods suitable for different climates, and distribution strategies that minimize food loss.",
       image: "/api/placeholder/600/400"
+    },
+    {
+      id: 6,
+      name: "Waste Segregation & Plastic-Free Awareness Campaign",
+      activityNo: "06",
+      startDate: "2025-07-20",
+      endDate: "2025-08-10",
+      points: 25,
+      hours: 80,
+      mode: "Community Interaction, On-Ground Tasks & Awareness Campaign",
+      description: "Educate and empower communities about waste segregation and plastic alternatives through hands-on awareness campaigns.",
+      fullDescription: "The improper disposal and mixing of biodegradable and non-biodegradable waste is one of the key contributors to environmental pollution, blocked drainage, and health hazards. Through this activity, we aim to educate, engage, and empower students and local communities about the importance of waste segregation, plastic alternatives, and sustainable habits.",
+      image: "/api/placeholder/600/400",
+      isWasteCampaign: true
     }
   ];
 
@@ -116,6 +132,292 @@ const ActivityDetail = () => {
     // Simulate opening external links
     window.open(url, '_blank');
   };
+
+  // Video data for waste campaign
+  const videoData = [
+    {
+      title: "What is Waste Segregation?",
+      url: "https://youtu.be/0ZiD_Lb3Tm0?si=TOKn7_Udot26r9jT",
+      embedId: "0ZiD_Lb3Tm0"
+    },
+    {
+      title: "The Problems of Single Use Plastic",
+      url: "https://youtu.be/J8QKy1nh5Ek?si=di0eSsuSWp19C0Qj",
+      embedId: "J8QKy1nh5Ek"
+    },
+    {
+      title: "How Plastic Bags Impact Environment?",
+      url: "https://youtu.be/CubtcwIZEWc?si=QdQz8YFTXmXT0NeC",
+      embedId: "CubtcwIZEWc"
+    },
+    {
+      title: "Paper Bag Making at Home!",
+      url: "https://youtu.be/uncLL1SC8xg?si=-OGjVuytfCNkHwAO",
+      embedId: "uncLL1SC8xg"
+    },
+    {
+      title: "Swachh Bharat Mission – Awareness Video",
+      url: "https://youtu.be/dQw4w9WgXcQ",
+      embedId: "dQw4w9WgXcQ"
+    }
+  ];
+
+  const renderWasteCampaignContent = () => (
+    <div className="space-y-8">
+      {/* Why This Activity Section */}
+      <Card className="ngo-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="w-5 h-5 text-primary" />
+            Why This Activity?
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground leading-relaxed">
+            {activity.fullDescription}
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Objectives Section */}
+      <Card className="ngo-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 text-primary" />
+            Objectives
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-3 text-muted-foreground">
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              Develop a clear understanding of waste segregation
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              Spread awareness about single-use plastics
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              Promote eco-friendly alternatives like paper bags
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              Involve students in real-life impact-driven tasks
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      {/* Impact on Society Section */}
+      <Card className="ngo-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <TreePine className="w-5 h-5 text-primary" />
+            Impact on Society
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-3 text-muted-foreground">
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+              Reduces environmental pollution
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+              Encourages eco-conscious habits among citizens
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+              Minimizes plastic consumption at street-level
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+              Provides sustainable solutions to small vendors and households
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+              Builds a generation of responsible, informed youth
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      {/* Video Resource Player Section */}
+      <Card className="ngo-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Play className="w-5 h-5 text-primary" />
+            Video Resource Player
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Video Player */}
+            <div className="lg:col-span-2">
+              <div className="aspect-video bg-black rounded-lg overflow-hidden">
+                <iframe
+                  src={`https://www.youtube.com/embed/${videoData[selectedVideo].embedId}`}
+                  title={videoData[selectedVideo].title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              <h3 className="text-lg font-semibold mt-4">{videoData[selectedVideo].title}</h3>
+            </div>
+            
+            {/* Video Selection Buttons */}
+            <div className="space-y-3">
+              {videoData.map((video, index) => (
+                <Button
+                  key={index}
+                  variant={selectedVideo === index ? "default" : "outline"}
+                  onClick={() => setSelectedVideo(index)}
+                  className="w-full text-left justify-start text-sm h-auto py-3 px-4"
+                >
+                  <Play className="w-4 h-4 mr-2 flex-shrink-0" />
+                  <span className="truncate">{video.title}</span>
+                </Button>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Task Breakdown Section */}
+      <Card className="ngo-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-primary" />
+            Task Breakdown
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Task 1 */}
+          <div className="border-l-4 border-primary pl-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Badge variant="outline">Task 1</Badge>
+              <span className="text-sm text-muted-foreground">15 Hours</span>
+            </div>
+            <h4 className="font-semibold text-lg mb-2">Understanding Waste Segregation (Awareness Phase)</h4>
+            <p className="text-muted-foreground mb-3">
+              <strong>Objective:</strong> Learn the importance and process of waste segregation at source.
+            </p>
+            <div className="space-y-2 text-sm">
+              <p><strong>Instructions:</strong></p>
+              <ul className="space-y-1 ml-4 text-muted-foreground">
+                <li>• Research biodegradable vs. non-biodegradable waste</li>
+                <li>• Learn two-bin/three-bin disposal methods</li>
+                <li>• Create awareness posters/infographics</li>
+                <li>• Prepare a basic explanation module or PPT</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Task 2 */}
+          <div className="border-l-4 border-blue-500 pl-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Badge variant="outline">Task 2</Badge>
+              <span className="text-sm text-muted-foreground">25 Hours</span>
+            </div>
+            <h4 className="font-semibold text-lg mb-2">Street-Level Awareness Drive (Execution Phase)</h4>
+            <p className="text-muted-foreground mb-3">
+              <strong>Objective:</strong> Engage local vendors, residents, and students.
+            </p>
+            <div className="space-y-2 text-sm">
+              <p><strong>Instructions:</strong></p>
+              <ul className="space-y-1 ml-4 text-muted-foreground">
+                <li>• Form groups of 4–5</li>
+                <li>• Identify areas with poor disposal practices</li>
+                <li>• Conduct door-to-door or street interactions</li>
+                <li>• Use posters, flyers, or short street plays</li>
+                <li>• Collect documentation: Photos, Short videos, Impact summaries</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Task 3 */}
+          <div className="border-l-4 border-green-500 pl-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Badge variant="outline">Task 3</Badge>
+              <span className="text-sm text-muted-foreground">25 Hours</span>
+            </div>
+            <h4 className="font-semibold text-lg mb-2">Say NO to Plastic – Promote Paper Bags</h4>
+            <p className="text-muted-foreground mb-3">
+              <strong>Objective:</strong> Discourage plastic use by promoting paper bags.
+            </p>
+            <div className="space-y-2 text-sm">
+              <p><strong>Instructions:</strong></p>
+              <ul className="space-y-1 ml-4 text-muted-foreground">
+                <li>• Learn to make durable paper bags</li>
+                <li>• Make and distribute 20–50 bags per group</li>
+                <li>• Educate vendors through demos</li>
+                <li>• Collect: Photos, Testimonials, Count of bags given</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Task 4 */}
+          <div className="border-l-4 border-orange-500 pl-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Badge variant="outline">Task 4</Badge>
+              <span className="text-sm text-muted-foreground">15 Hours</span>
+            </div>
+            <h4 className="font-semibold text-lg mb-2">Final Community Awareness Showcase (Report & Reflect)</h4>
+            <p className="text-muted-foreground mb-3">
+              <strong>Objective:</strong> Compile results and reflect on community impact.
+            </p>
+            <div className="space-y-2 text-sm">
+              <p><strong>Instructions:</strong></p>
+              <ul className="space-y-1 ml-4 text-muted-foreground">
+                <li>• Submit a brief report (2–3 pages)</li>
+                <li>• Include: Total people reached, Posters created, Number of paper bags, Feedback received, Media (photos/videos)</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Tools & Materials Section */}
+      <Card className="ngo-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Wrench className="w-5 h-5 text-primary" />
+            Tools & Materials Required
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4">
+            <ul className="space-y-2 text-muted-foreground">
+              <li>• Colored paper/newspapers</li>
+              <li>• Glue, scissors, stapler</li>
+            </ul>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>• Poster boards, markers</li>
+              <li>• Mobile phone for documentation</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Final Note */}
+      <Card className="ngo-card bg-gradient-to-r from-primary/10 to-green-500/10 border-primary/20">
+        <CardContent className="pt-6">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold mb-4">Final Note</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              This activity is not just academic – it's about shaping a mindset.
+              Every shared poster, every avoided plastic bag, and every informed vendor contributes to a cleaner, more conscious India.
+              <br />
+              <span className="font-semibold text-primary">Let's inspire real change. 🌱</span>
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-ngo-neutral">
@@ -211,31 +513,35 @@ const ActivityDetail = () => {
         >
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="ngo-card">
-              <CardHeader>
-                <CardTitle>Activity Description</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
-                  {activity.fullDescription}
-                </p>
-              </CardContent>
-            </Card>
+            {activity.isWasteCampaign ? renderWasteCampaignContent() : (
+              <>
+                <Card className="ngo-card">
+                  <CardHeader>
+                    <CardTitle>Activity Description</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {activity.fullDescription}
+                    </p>
+                  </CardContent>
+                </Card>
 
-            <Card className="ngo-card">
-              <CardHeader>
-                <CardTitle>Objectives & Learning Outcomes</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Develop practical solutions for real-world challenges</li>
-                  <li>• Gain hands-on experience in community development</li>
-                  <li>• Collaborate with teams and stakeholders</li>
-                  <li>• Create measurable impact in target communities</li>
-                  <li>• Document and share learnings with the community</li>
-                </ul>
-              </CardContent>
-            </Card>
+                <Card className="ngo-card">
+                  <CardHeader>
+                    <CardTitle>Objectives & Learning Outcomes</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Develop practical solutions for real-world challenges</li>
+                      <li>• Gain hands-on experience in community development</li>
+                      <li>• Collaborate with teams and stakeholders</li>
+                      <li>• Create measurable impact in target communities</li>
+                      <li>• Document and share learnings with the community</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </>
+            )}
           </div>
 
           {/* Action Panel */}
@@ -286,16 +592,26 @@ const ActivityDetail = () => {
 
             <Card className="ngo-card">
               <CardHeader>
-                <CardTitle>Guidelines</CardTitle>
+                <CardTitle>Guidelines{activity.isWasteCampaign ? ' for All Volunteers' : ''}</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Complete all required documentation</li>
-                  <li>• Submit regular progress updates</li>
-                  <li>• Follow safety protocols for offline activities</li>
-                  <li>• Maintain professional conduct</li>
-                  <li>• Seek guidance when needed</li>
-                </ul>
+                {activity.isWasteCampaign ? (
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Wear ID badges (if issued)</li>
+                    <li>• Maintain discipline and decorum</li>
+                    <li>• Respect privacy for photo/video documentation</li>
+                    <li>• Avoid plagiarism – submit original work</li>
+                    <li>• Submit on time to your activity coordinator</li>
+                  </ul>
+                ) : (
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Complete all required documentation</li>
+                    <li>• Submit regular progress updates</li>
+                    <li>• Follow safety protocols for offline activities</li>
+                    <li>• Maintain professional conduct</li>
+                    <li>• Seek guidance when needed</li>
+                  </ul>
+                )}
               </CardContent>
             </Card>
           </div>
