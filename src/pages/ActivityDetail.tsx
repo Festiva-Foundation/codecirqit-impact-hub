@@ -15,16 +15,17 @@ const ActivityDetail = () => {
   const activities = [
     {
       id: 1,
-      name: "Efficient Garbage Disposal System",
+      name: "Waste Segregation & Plastic-Free Awareness Campaign",
       activityNo: "01", 
-      startDate: "2025-08-05",
-      endDate: "2025-08-15",
-      points: 20,
+      startDate: "2025-07-20",
+      endDate: "2025-08-10",
+      points: 25,
       hours: 80,
-      mode: "Online",
-      description: "Implement and design efficient waste management systems for local communities. This comprehensive project involves researching current waste management practices, identifying inefficiencies, and developing innovative solutions that can be implemented at a community level.",
-      fullDescription: "This activity focuses on developing sustainable waste management solutions for urban and rural communities. Participants will engage in comprehensive research, system design, and implementation planning. The project includes analyzing current waste disposal methods, identifying environmental impacts, and proposing technology-driven solutions that can reduce waste, improve recycling rates, and create cleaner communities. Participants will work in teams to develop practical implementations that can be scaled across different community sizes.",
-      image: "/api/placeholder/600/400"
+      mode: "Community Interaction, On-Ground Tasks & Awareness Campaign",
+      description: "Educate and empower communities about waste segregation and plastic alternatives through hands-on awareness campaigns.",
+      fullDescription: "The improper disposal and mixing of biodegradable and non-biodegradable waste is one of the key contributors to environmental pollution, blocked drainage, and health hazards. Through this activity, we aim to educate, engage, and empower students and local communities about the importance of waste segregation, plastic alternatives, and sustainable habits.",
+      image: "/api/placeholder/600/400",
+      isWasteCampaign: true
     },
     {
       id: 2,
@@ -77,20 +78,6 @@ const ActivityDetail = () => {
       description: "Develop sustainable food packaging solutions to reduce waste.",
       fullDescription: "Research and develop innovative food preservation and packaging technologies that reduce food waste and environmental impact. This project focuses on creating sustainable packaging materials, developing preservation techniques that extend shelf life, and designing cost-effective solutions for food storage and transportation. Participants will work on biodegradable packaging alternatives, preservation methods suitable for different climates, and distribution strategies that minimize food loss.",
       image: "/api/placeholder/600/400"
-    },
-    {
-      id: 6,
-      name: "Waste Segregation & Plastic-Free Awareness Campaign",
-      activityNo: "06",
-      startDate: "2025-07-20",
-      endDate: "2025-08-10",
-      points: 25,
-      hours: 80,
-      mode: "Community Interaction, On-Ground Tasks & Awareness Campaign",
-      description: "Educate and empower communities about waste segregation and plastic alternatives through hands-on awareness campaigns.",
-      fullDescription: "The improper disposal and mixing of biodegradable and non-biodegradable waste is one of the key contributors to environmental pollution, blocked drainage, and health hazards. Through this activity, we aim to educate, engage, and empower students and local communities about the importance of waste segregation, plastic alternatives, and sustainable habits.",
-      image: "/api/placeholder/600/400",
-      isWasteCampaign: true
     }
   ];
 
