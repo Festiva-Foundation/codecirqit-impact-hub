@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import food from '@/assets/food-2.jpeg';
 import food1 from '@/assets/food-3.jpeg';
+import cleaning from '@/assets/cleaning.jpeg';
+import school from '@/assets/school.jpeg';
+import books from '@/assets/books.jpeg';
+import book from '@/assets/dist.jpeg';
+import clean from '@/assets/Clean.jpeg';
+import food3 from '@/assets/food.jpeg';
 
 
 const GallerySection = () => {
@@ -21,35 +27,35 @@ const GallerySection = () => {
     },
     {
       id: 2,
-      src: '/api/placeholder/600/400',
+      src: cleaning,
       title: 'Swachh Bharat Initiative',
       category: 'Swachh Bharat',
       description: 'Community clean-up drives for a cleaner tomorrow'
     },
     {
       id: 3,
-      src: '/api/placeholder/600/400',
+      src: school,
       title: 'Digital Literacy Program',
       category: 'Education',
       description: 'Teaching computer skills to rural children'
     },
     {
       id: 4,
-      src: '/api/placeholder/600/400',
-      title: 'Social Awareness Campaign',
-      category: 'Social Awareness',
+      src: book,
+      title: 'Study Materials Distribution',
+      category: 'Education',
       description: 'Community awareness sessions and social initiatives'
     },
     {
       id: 5,
-      src: '/api/placeholder/600/400',
-      title: 'Volunteer Orientation Session',
+      src: books,
+      title: 'Books Distribution',
       category: 'Education',
       description: 'Training new volunteers for community service'
     },
     {
       id: 6,
-      src: '/api/placeholder/600/400',
+      src: clean,
       title: 'Environmental Conservation Drive',
       category: 'Swachh Bharat',
       description: 'Beach cleanup and environmental awareness'
@@ -63,10 +69,10 @@ const GallerySection = () => {
     },
     {
       id: 8,
-      src: '/api/placeholder/600/400',
+      src: food3,
       title: 'Community Awareness Program',
       category: 'Social Awareness',
-      description: 'Educating communities on social issues and rights'
+      description: 'Educating communities on Food Packaging'
     }
   ];
 

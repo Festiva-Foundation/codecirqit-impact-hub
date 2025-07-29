@@ -22,7 +22,7 @@ const Footer = () => {
               />
               <span className="text-2xl font-bold">Festiva Foundation</span>
             </Link>
-            <p className="text-gray-300 mb-6 max-w-md">
+            <p className="text-gray-300 mb-6 max-w-md text-justify">
               A social initiative in collaboration with MIT NGO, 
               empowering individuals to build humanity through structured volunteering programs.
             </p>
@@ -44,7 +44,7 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="mailto:contact@festivafoundation.org"
+                href="mailto:festivamoments77@gmail.com"
                 className="p-2 bg-white/10 rounded-lg hover:bg-primary transition-colors"
               >
                 <Mail size={20} />
@@ -93,15 +93,15 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:contact@festivafoundation.org"
+                  href="mailto:festivamoments77@gmail.com"
                   className="text-gray-300 hover:text-primary transition-colors"
                 >
-                  contact@festivafoundation.org
+                  festivamoments77@gmail.com
                 </a>
               </li>
               <li>
                 <Link to="/admin-login" className="text-gray-300 hover:text-primary transition-colors">
-                  Admin Login
+                  Festiva Foundation
                 </Link>
               </li>
             </ul>

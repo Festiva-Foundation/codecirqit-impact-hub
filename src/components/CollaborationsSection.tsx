@@ -61,7 +61,7 @@ const CollaborationsSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Our <span className="text-gradient">MoUs & Partnerships</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-justify">
             Festiva Foundation operates through strategic partnerships with registered NGOs, educational institutions, 
             and corporate organizations to ensure legal compliance and maximum impact.
           </p>
@@ -103,7 +103,7 @@ const CollaborationsSection = () => {
             </div>
             <div>
               <h3 className="text-xl font-bold mb-3">MIT NGO Collaboration</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-justify">
                 Our primary partnership is with MIT NGO, a fully registered charitable organization 
                 holding all necessary certifications including 80G tax exemption status, 12A registration, 
                 and CSR compliance approvals. This partnership ensures that all our activities are 

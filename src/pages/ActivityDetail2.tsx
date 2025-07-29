@@ -87,7 +87,7 @@ const ActivityDetail2 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-lg leading-relaxed"
+            className="text-lg leading-relaxed text-justify"
           >
             India is on a transformative journey toward becoming a digitally empowered society. Despite wide access to mobile devices and UPI services, a large portion of the population — including shopkeepers, senior citizens, and low-income communities — still rely heavily on cash.
           </motion.p>
@@ -95,7 +95,7 @@ const ActivityDetail2 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="text-lg leading-relaxed mt-4"
+            className="text-lg leading-relaxed mt-4 text-justify"
           >
             This activity aims to bridge the digital divide and support the Digital India mission through awareness drives, hands-on training, and vendor support. The campaign contributes directly to financial inclusion, transparency, digital trust, and a cashless economy.
           </motion.p>
@@ -445,7 +445,7 @@ const ActivityDetail2 = () => {
         className="text-center p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg border border-primary/20"
       >
         <h3 className="text-2xl font-bold text-gradient mb-4">Final Note</h3>
-        <p className="text-lg leading-relaxed max-w-4xl mx-auto">
+        <p className="text-lg leading-relaxed max-w-4xl mx-auto text-justify">
           This is more than just a digital task — it's about empowering India's citizens. Every senior who sends money confidently or every vendor who accepts UPI is a milestone in building a transparent, inclusive digital economy. <strong>Your effort matters.</strong>
         </p>
       </motion.div>
@@ -478,10 +478,10 @@ const ActivityDetail2 = () => {
               transition={{ delay: 0.1 }}
               className="mb-8"
             >
-              <img 
-                src={digitalpay} 
-                alt="Digital Payments" 
-                className="w-full h-64 object-cover rounded-lg shadow-lg"
+              <img
+                src={digitalpay}
+                alt="Digital Payments"
+                className="w-full h-64 object-cover rounded-lg"
               />
             </motion.div>
 
@@ -560,35 +560,35 @@ const ActivityDetail2 = () => {
                 <CardContent className="space-y-4">
                   <Button 
                     variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <Upload className="w-5 h-5" />
+                    <Upload className="w-6 h-6" />
                     Upload Images
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <Eye className="w-5 h-5" />
+                    <Eye className="w-6 h-6" />
                     View Report
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <FileText className="w-5 h-5" />
+                    <FileText className="w-6 h-6" />
                     Submit Task
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <Download className="w-5 h-5" />
-                    Download Resources
+                    <Download className="w-6 h-6" />
+                    Download Certificate
                   </Button>
                   {activityStatus.status === 'Completed' && (
                     <Button 

@@ -163,7 +163,7 @@ const ActivityDetail = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-justify">
             {activity.fullDescription}
           </p>
         </CardContent>
@@ -435,11 +435,11 @@ const ActivityDetail = () => {
         <CardContent className="pt-6">
           <div className="text-center">
             <h3 className="text-xl font-semibold mb-4">Final Note</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed text-justify">
               This activity is not just academic – it's about shaping a mindset.
               Every shared poster, every avoided plastic bag, and every informed vendor contributes to a cleaner, more conscious India.
               <br />
-              <span className="font-semibold text-primary">Let's inspire real change. 🌱</span>
+              <span className="font-semibold text-primary text-center"> Let's inspire real change. 🌱</span>
             </p>
           </div>
         </CardContent>

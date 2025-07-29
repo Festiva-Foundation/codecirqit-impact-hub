@@ -78,7 +78,7 @@ const MetricsSection = () => {
     },
     {
       icon: Heart,
-      number: 1000,
+      number: 100,
       suffix: "+",
       label: "Meals Distributed",
       color: "text-red-500"
