@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 
+
 const ActivityDetail3 = () => {
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(0);
@@ -16,10 +17,10 @@ const ActivityDetail3 = () => {
     activityNo: "03",
     startDate: "2025-08-29",
     endDate: "2025-09-10",
-    points: 25,
+    points: 20,
     hours: 80,
     mode: "Hybrid (Online + Rural-Friendly Delivery)",
-    initiative: "AICTE Activity Points Program"
+    initiative: "Festiva Foundation"
   };
 
   const videoData = [

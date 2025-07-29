@@ -6,6 +6,9 @@ import { Badge } from '@/components/ui/badge';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import wastesegregation from '@/assets/wastesegregation.jpg';
+import digitalpay from '@/assets/digitalpay.jpg';
+import edu from '@/assets/education.jpg';
 
 const VolunteerDashboard = () => {
   const navigate = useNavigate();
@@ -18,39 +21,39 @@ const VolunteerDashboard = () => {
   const activities = [
     {
       id: 1,
-      name: "Waste Segregation & Plastic-Free Awareness Campaign",
+      name: "Waste Segregation & Awareness Campaign",
       activityNo: "01", 
       startDate: "2025-07-26",
       endDate: "2025-08-15",
       points: 20,
       hours: 80,
-      mode: "Online",
-      description: "Implement and design efficient waste management systems for local communities.",
-      image: "/api/placeholder/400/250"
+      mode: "Community Interaction & Awareness Campaign",
+      description: "Educate and empower communities about waste segregation and plastic alternatives.",
+      image: wastesegregation
     },
     {
       id: 2,
-      name: "Digitized Transactions",
+      name: "Promoting 100% Digitized Transactions",
       activityNo: "02",
-      startDate: "2025-08-16", 
+      startDate: "2025-07-16",
       endDate: "2025-08-28",
       points: 20,
       hours: 80,
-      mode: "Online",
+      mode: "Awareness, Training & Field Execution",
       description: "Develop digital payment solutions for small businesses and vendors.",
-      image: "/api/placeholder/400/250"
+      image: digitalpay
     },
     {
       id: 3,
       name: "Ensuring Quality Education",
       activityNo: "03",
-      startDate: "2025-08-29",
+      startDate: "2025-07-29",
       endDate: "2025-09-10", 
       points: 20,
       hours: 80,
       mode: "Online",
       description: "Create educational tools and resources for underprivileged students.",
-      image: "/api/placeholder/400/250"
+      image: edu
     },
     {
       id: 4,
@@ -201,7 +204,7 @@ const VolunteerDashboard = () => {
                         <img
                           src={activity.image}
                           alt={activity.name}
-                          className="w-full h-32 object-cover rounded-lg mb-4"
+                          className="w-full h-41 object-cover rounded-lg mb-4"
                         />
                         <Badge className={`absolute top-2 left-2 ${color} text-white`}>
                           {status}

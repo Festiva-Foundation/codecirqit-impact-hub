@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
+import wastesegregation from '@/assets/wastesegregation.jpg';
+import edu from '@/assets/education.jpg';
+import digitalpay from '@/assets/digitalpay.jpg';
 
 const ActivityDetail = () => {
   const { id } = useParams();
@@ -19,12 +22,12 @@ const ActivityDetail = () => {
       activityNo: "01", 
       startDate: "2025-07-20",
       endDate: "2025-08-10",
-      points: 25,
+      points: 20,
       hours: 80,
       mode: "Community Interaction, On-Ground Tasks & Awareness Campaign",
       description: "Educate and empower communities about waste segregation and plastic alternatives through hands-on awareness campaigns.",
       fullDescription: "The improper disposal and mixing of biodegradable and non-biodegradable waste is one of the key contributors to environmental pollution, blocked drainage, and health hazards. Through this activity, we aim to educate, engage, and empower students and local communities about the importance of waste segregation, plastic alternatives, and sustainable habits.",
-      image: "/api/placeholder/600/400",
+      image: wastesegregation,
       isWasteCampaign: true
     },
     {
@@ -38,7 +41,7 @@ const ActivityDetail = () => {
       mode: "Online",
       description: "Develop digital payment solutions for small businesses and vendors.",
       fullDescription: "Focus on creating accessible digital payment systems for small businesses, street vendors, and rural entrepreneurs. This project involves understanding the challenges faced by small-scale businesses in adopting digital payments, designing user-friendly interfaces, and developing solutions that work in low-connectivity environments. Participants will research existing payment technologies, identify gaps in current systems, and propose innovative solutions that can increase financial inclusion and economic empowerment.",
-      image: "/api/placeholder/600/400"
+      image: digitalpay
     },
     {
       id: 3,
@@ -51,7 +54,7 @@ const ActivityDetail = () => {
       mode: "Online",
       description: "Create educational tools and resources for underprivileged students.",
       fullDescription: "Develop innovative educational tools, digital resources, and learning methodologies to bridge the education gap for underprivileged students. This comprehensive project involves creating interactive learning materials, designing low-cost educational technologies, and developing teaching methodologies that can be implemented in resource-constrained environments. Participants will focus on making quality education accessible through technology and innovative teaching approaches.",
-      image: "/api/placeholder/600/400"
+      image: edu
     },
     {
       id: 4,

@@ -16,7 +16,7 @@ const ActivityDetail2 = () => {
     activityNo: "02",
     startDate: "2025-08-16",
     endDate: "2025-08-28",
-    points: 25,
+    points: 20,
     hours: 80,
     mode: "Awareness, Training & Field Execution",
     initiative: "Festiva Foundation"
