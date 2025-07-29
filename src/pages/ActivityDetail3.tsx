@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
+import education from '@/assets/education.jpg';
 
 
 const ActivityDetail3 = () => {
@@ -192,17 +193,27 @@ const ActivityDetail3 = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-6">
+          <div className="grid gap-6">
             {/* Task 1 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4 }}
-              className="border-l-4 border-blue-500 pl-6"
+              className="group hover:scale-102 transition-transform duration-200"
             >
-              <h4 className="text-xl font-semibold mb-2">Task 1: Create AI-Enabled Learning Materials</h4>
-              <p className="text-lg mb-3"><strong>Tools used:</strong> Khan Academy Kids, Read Along, Curipod</p>
-              <p className="text-lg"><strong>Output:</strong> Short videos, flashcards, digital worksheets</p>
+              <Card className="border-l-4 border-blue-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-blue-100 text-blue-700">Task 1</Badge>
+                    <Badge variant="outline" className="text-xs">20 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-blue-700">Create AI-Enabled Learning Materials</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground"><strong>Tools used:</strong> Khan Academy Kids, Read Along, Curipod</p>
+                  <p className="text-sm text-muted-foreground"><strong>Output:</strong> Short videos, flashcards, digital worksheets</p>
+                </CardContent>
+              </Card>
             </motion.div>
 
             {/* Task 2 */}
@@ -210,15 +221,25 @@ const ActivityDetail3 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 }}
-              className="border-l-4 border-green-500 pl-6"
+              className="group hover:scale-102 transition-transform duration-200"
             >
-              <h4 className="text-xl font-semibold mb-2">Task 2: Digital Literacy for Teachers</h4>
-              <p className="text-lg mb-3">Host Zoom/Meet sessions to train teachers on:</p>
-              <ul className="list-disc ml-6 space-y-1">
-                <li>ChatGPT for content</li>
-                <li>Canva for visuals</li>
-                <li>Voice note tools in local language</li>
-              </ul>
+              <Card className="border-l-4 border-green-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-green-100 text-green-700">Task 2</Badge>
+                    <Badge variant="outline" className="text-xs">20 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-green-700">Digital Literacy for Teachers</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground">Host Zoom/Meet sessions to train teachers on:</p>
+                  <ul className="text-sm space-y-1 ml-4 text-muted-foreground">
+                    <li>• ChatGPT for content</li>
+                    <li>• Canva for visuals</li>
+                    <li>• Voice note tools in local language</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </motion.div>
 
             {/* Task 3 */}
@@ -226,11 +247,21 @@ const ActivityDetail3 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8 }}
-              className="border-l-4 border-purple-500 pl-6"
+              className="group hover:scale-102 transition-transform duration-200"
             >
-              <h4 className="text-xl font-semibold mb-2">Task 3: WhatsApp Learning Kit Distribution</h4>
-              <p className="text-lg mb-3">PDF activity kits (15–20) with mini-games, QR-linked videos</p>
-              <p className="text-lg">Shared via school WhatsApp groups or printed sheets</p>
+              <Card className="border-l-4 border-purple-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-purple-100 text-purple-700">Task 3</Badge>
+                    <Badge variant="outline" className="text-xs">20 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-purple-700">WhatsApp Learning Kit Distribution</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground">PDF activity kits (15–20) with mini-games, QR-linked videos</p>
+                  <p className="text-sm text-muted-foreground">Shared via school WhatsApp groups or printed sheets</p>
+                </CardContent>
+              </Card>
             </motion.div>
 
             {/* Task 4 */}
@@ -238,14 +269,24 @@ const ActivityDetail3 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.0 }}
-              className="border-l-4 border-orange-500 pl-6"
+              className="group hover:scale-102 transition-transform duration-200"
             >
-              <h4 className="text-xl font-semibold mb-2">Task 4: Feedback Collection</h4>
-              <p className="text-lg mb-3">Use Google Forms or voice surveys to understand:</p>
-              <ul className="list-disc ml-6 space-y-1">
-                <li>Child comprehension</li>
-                <li>Ease of use for rural parents/teachers</li>
-              </ul>
+              <Card className="border-l-4 border-orange-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-orange-100 text-orange-700">Task 4</Badge>
+                    <Badge variant="outline" className="text-xs">20 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-orange-700">Feedback Collection</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground">Use Google Forms or voice surveys to understand:</p>
+                  <ul className="text-sm space-y-1 ml-4 text-muted-foreground">
+                    <li>• Child comprehension</li>
+                    <li>• Ease of use for rural parents/teachers</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </motion.div>
           </div>
         </CardContent>
@@ -421,6 +462,20 @@ const ActivityDetail3 = () => {
           </Button>
 
           <div className="bg-white/50 backdrop-blur-sm rounded-lg p-8 border border-white/20">
+            {/* Top Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              className="mb-8"
+            >
+              <img 
+                src={education} 
+                alt="Quality Education" 
+                className="w-full h-64 object-cover rounded-lg shadow-lg"
+              />
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -476,7 +531,65 @@ const ActivityDetail3 = () => {
         </motion.div>
 
         {/* Content */}
-        {renderQualityEducationContent()}
+        <div className="grid lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
+            {renderQualityEducationContent()}
+          </div>
+          
+          {/* Right Side Action Panel */}
+          <div className="lg:col-span-1">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+              className="sticky top-8"
+            >
+              <Card className="ngo-card">
+                <CardHeader>
+                  <CardTitle className="text-center text-gradient">Quick Actions</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  >
+                    <Upload className="w-5 h-5" />
+                    Upload Images
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  >
+                    <Eye className="w-5 h-5" />
+                    View Report
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  >
+                    <FileText className="w-5 h-5" />
+                    Submit Task
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  >
+                    <Download className="w-5 h-5" />
+                    Download Resources
+                  </Button>
+                  {activityStatus.status === 'Completed' && (
+                    <Button 
+                      className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                    >
+                      <Download className="w-5 h-5" />
+                      Download Certificate
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
 
         {/* Action Panel */}
         <motion.div

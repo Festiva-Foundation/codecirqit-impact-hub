@@ -284,88 +284,126 @@ const ActivityDetail = () => {
             Task Breakdown
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          {/* Task 1 */}
-          <div className="border-l-4 border-primary pl-6">
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="outline">Task 1</Badge>
-              <span className="text-sm text-muted-foreground">15 Hours</span>
-            </div>
-            <h4 className="font-semibold text-lg mb-2">Understanding Waste Segregation (Awareness Phase)</h4>
-            <p className="text-muted-foreground mb-3">
-              <strong>Objective:</strong> Learn the importance and process of waste segregation at source.
-            </p>
-            <div className="space-y-2 text-sm">
-              <p><strong>Instructions:</strong></p>
-              <ul className="space-y-1 ml-4 text-muted-foreground">
-                <li>• Research biodegradable vs. non-biodegradable waste</li>
-                <li>• Learn two-bin/three-bin disposal methods</li>
-                <li>• Create awareness posters/infographics</li>
-                <li>• Prepare a basic explanation module or PPT</li>
-              </ul>
-            </div>
-          </div>
+        <CardContent>
+          <div className="grid gap-6">
+            {/* Task 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4 }}
+              className="group hover:scale-102 transition-transform duration-200"
+            >
+              <Card className="border-l-4 border-primary shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-primary/10 text-primary">Task 1</Badge>
+                    <Badge variant="outline" className="text-xs">15 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-primary">Understanding Waste Segregation (Awareness Phase)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground"><strong>Objective:</strong> Learn the importance and process of waste segregation at source.</p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium">Instructions:</p>
+                    <ul className="text-sm space-y-1 ml-4 text-muted-foreground">
+                      <li>• Research biodegradable vs. non-biodegradable waste</li>
+                      <li>• Learn two-bin/three-bin disposal methods</li>
+                      <li>• Create awareness posters/infographics</li>
+                      <li>• Prepare a basic explanation module or PPT</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-          {/* Task 2 */}
-          <div className="border-l-4 border-blue-500 pl-6">
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="outline">Task 2</Badge>
-              <span className="text-sm text-muted-foreground">25 Hours</span>
-            </div>
-            <h4 className="font-semibold text-lg mb-2">Street-Level Awareness Drive (Execution Phase)</h4>
-            <p className="text-muted-foreground mb-3">
-              <strong>Objective:</strong> Engage local vendors, residents, and students.
-            </p>
-            <div className="space-y-2 text-sm">
-              <p><strong>Instructions:</strong></p>
-              <ul className="space-y-1 ml-4 text-muted-foreground">
-                <li>• Form groups of 4–5</li>
-                <li>• Identify areas with poor disposal practices</li>
-                <li>• Conduct door-to-door or street interactions</li>
-                <li>• Use posters, flyers, or short street plays</li>
-                <li>• Collect documentation: Photos, Short videos, Impact summaries</li>
-              </ul>
-            </div>
-          </div>
+            {/* Task 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6 }}
+              className="group hover:scale-102 transition-transform duration-200"
+            >
+              <Card className="border-l-4 border-blue-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-blue-100 text-blue-700">Task 2</Badge>
+                    <Badge variant="outline" className="text-xs">25 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-blue-700">Street-Level Awareness Drive (Execution Phase)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground"><strong>Objective:</strong> Engage local vendors, residents, and students.</p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium">Instructions:</p>
+                    <ul className="text-sm space-y-1 ml-4 text-muted-foreground">
+                      <li>• Form groups of 4–5</li>
+                      <li>• Identify areas with poor disposal practices</li>
+                      <li>• Conduct door-to-door or street interactions</li>
+                      <li>• Use posters, flyers, or short street plays</li>
+                      <li>• Collect documentation: Photos, Short videos, Impact summaries</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-          {/* Task 3 */}
-          <div className="border-l-4 border-green-500 pl-6">
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="outline">Task 3</Badge>
-              <span className="text-sm text-muted-foreground">25 Hours</span>
-            </div>
-            <h4 className="font-semibold text-lg mb-2">Say NO to Plastic – Promote Paper Bags</h4>
-            <p className="text-muted-foreground mb-3">
-              <strong>Objective:</strong> Discourage plastic use by promoting paper bags.
-            </p>
-            <div className="space-y-2 text-sm">
-              <p><strong>Instructions:</strong></p>
-              <ul className="space-y-1 ml-4 text-muted-foreground">
-                <li>• Learn to make durable paper bags</li>
-                <li>• Make and distribute 20–50 bags per group</li>
-                <li>• Educate vendors through demos</li>
-                <li>• Collect: Photos, Testimonials, Count of bags given</li>
-              </ul>
-            </div>
-          </div>
+            {/* Task 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.8 }}
+              className="group hover:scale-102 transition-transform duration-200"
+            >
+              <Card className="border-l-4 border-green-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-green-100 text-green-700">Task 3</Badge>
+                    <Badge variant="outline" className="text-xs">25 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-green-700">Say NO to Plastic – Promote Paper Bags</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground"><strong>Objective:</strong> Discourage plastic use by promoting paper bags.</p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium">Instructions:</p>
+                    <ul className="text-sm space-y-1 ml-4 text-muted-foreground">
+                      <li>• Learn to make durable paper bags</li>
+                      <li>• Make and distribute 20–50 bags per group</li>
+                      <li>• Educate vendors through demos</li>
+                      <li>• Collect: Photos, Testimonials, Count of bags given</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-          {/* Task 4 */}
-          <div className="border-l-4 border-orange-500 pl-6">
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="outline">Task 4</Badge>
-              <span className="text-sm text-muted-foreground">15 Hours</span>
-            </div>
-            <h4 className="font-semibold text-lg mb-2">Final Community Awareness Showcase (Report & Reflect)</h4>
-            <p className="text-muted-foreground mb-3">
-              <strong>Objective:</strong> Compile results and reflect on community impact.
-            </p>
-            <div className="space-y-2 text-sm">
-              <p><strong>Instructions:</strong></p>
-              <ul className="space-y-1 ml-4 text-muted-foreground">
-                <li>• Submit a brief report (2–3 pages)</li>
-                <li>• Include: Total people reached, Posters created, Number of paper bags, Feedback received, Media (photos/videos)</li>
-              </ul>
-            </div>
+            {/* Task 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.0 }}
+              className="group hover:scale-102 transition-transform duration-200"
+            >
+              <Card className="border-l-4 border-orange-500 shadow-md hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="bg-orange-100 text-orange-700">Task 4</Badge>
+                    <Badge variant="outline" className="text-xs">15 Hours</Badge>
+                  </div>
+                  <CardTitle className="text-lg text-orange-700">Final Community Awareness Showcase (Report & Reflect)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground"><strong>Objective:</strong> Compile results and reflect on community impact.</p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium">Instructions:</p>
+                    <ul className="text-sm space-y-1 ml-4 text-muted-foreground">
+                      <li>• Submit a brief report (2–3 pages)</li>
+                      <li>• Include: Total people reached, Posters created, Number of paper bags, Feedback received, Media (photos/videos)</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </CardContent>
       </Card>
