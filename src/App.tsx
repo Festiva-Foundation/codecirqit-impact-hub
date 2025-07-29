@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import VolunteerDashboard from "./pages/VolunteerDashboard";
 import ActivityDetail from "./pages/ActivityDetail";
+import ActivityDetail2 from "./pages/ActivityDetail2";
+import ActivityDetail3 from "./pages/ActivityDetail3";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/volunteer-dashboard" element={<VolunteerDashboard />} />
           <Route path="/activity/:id" element={<ActivityDetail />} />
+          <Route path="/activity-2" element={<ActivityDetail2 />} />
+          <Route path="/activity-3" element={<ActivityDetail3 />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

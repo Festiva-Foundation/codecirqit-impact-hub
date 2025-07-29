@@ -101,7 +101,14 @@ const VolunteerDashboard = () => {
 
   const handleActivityClick = (activity: any) => {
     if (isActivityClickable(activity.startDate)) {
-      navigate(`/activity/${activity.id}`);
+      // Route to specific activity pages
+      if (activity.id === 2) {
+        navigate('/activity-2');
+      } else if (activity.id === 3) {
+        navigate('/activity-3');
+      } else {
+        navigate(`/activity/${activity.id}`);
+      }
     } else {
       setSelectedActivity(activity);
       setShowPopup(true);
@@ -179,7 +186,7 @@ const VolunteerDashboard = () => {
                       isClickable 
                         ? 'hover:scale-105 cursor-pointer' 
                         : 'cursor-not-allowed'
-                    } ${!isClickable ? 'filter blur-sm' : ''}`}
+                    }`}
                     onClick={() => handleActivityClick(activity)}
                   >
                     {/* Lock Icon for Not Started Activities */}
