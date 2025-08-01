@@ -8,13 +8,60 @@ import festivaLogo from '@/assets/festiva-logo.png';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const menuItems = [
+  // Check login status
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const loginStatus = localStorage.getItem('isLoggedIn');
+      const loginTime = localStorage.getItem('loginTime');
+      
+      if (loginStatus && loginTime) {
+        const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+        const currentTime = Date.now();
+        
+        if ((currentTime - parseInt(loginTime)) <= sevenDaysMs) {
+          setIsLoggedIn(true);
+        } else {
+          localStorage.removeItem('isLoggedIn');
+          localStorage.removeItem('loginTime');
+          localStorage.removeItem('volunteerName');
+          setIsLoggedIn(false);
+        }
+      }
+    };
+
+    checkLoginStatus();
+    
+    // Check login status when localStorage changes
+    const handleStorageChange = () => {
+      checkLoginStatus();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Also check periodically in case of same-tab changes
+    const interval = setInterval(checkLoginStatus, 1000);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const menuItems = isLoggedIn ? [
     { label: 'About', href: '#about' },
     { label: 'Vision', href: '#vision' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Blogs', href: '/blogs' },
+    { label: 'Volunteer Dashboard', href: '/volunteer-dashboard' },
+    { label: 'Get In Touch', href: '#contact' },
+  ] : [
+    { label: 'About', href: '#about' },
+    { label: 'Vision', href: '#vision' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Blogs', href: '/blogs' },
     { label: 'Volunteer With Us', href: '/register' },
     { label: 'Get In Touch', href: '#contact' },

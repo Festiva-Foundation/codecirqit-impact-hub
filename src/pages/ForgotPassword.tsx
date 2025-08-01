@@ -10,11 +10,9 @@ import { useToast } from '@/hooks/use-toast';
 import festivaLogo from '@/assets/festiva-logo.png';
 
 const ForgotPassword = () => {
-  const [step, setStep] = useState(1); // 1: Email, 2: OTP, 3: New Password
+  const [step, setStep] = useState(1); // 1: Email, 2: New Password
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
   const [password, setPassword] = useState('');
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -29,30 +27,10 @@ const ForgotPassword = () => {
     { label: "One special character", check: /[!@#$%^&*(),.?":{}|<>]/.test(password) }
   ];
 
-  const sendOTP = () => {
-    setOtpSent(true);
-    setStep(2);
-    toast({
-      title: "OTP Sent!",
-      description: "Please check your email for the verification code.",
-    });
-  };
-
-  const verifyOTP = () => {
-    setOtpVerified(true);
-    setStep(3);
-    toast({
-      title: "OTP Verified!",
-      description: "Please set your new password.",
-    });
-  };
-
   const onSubmit = (data: any) => {
     if (step === 1) {
-      sendOTP();
+      setStep(2);
     } else if (step === 2) {
-      verifyOTP();
-    } else if (step === 3) {
       toast({
         title: "Password Reset Successful!",
         description: "Your password has been updated. Redirecting to login...",
@@ -84,9 +62,8 @@ const ForgotPassword = () => {
             </Link>
             <h1 className="text-3xl font-bold mb-2">Reset Password</h1>
             <p className="text-muted-foreground">
-              {step === 1 && "Enter your email to receive a reset code"}
-              {step === 2 && "Enter the OTP sent to your email"}
-              {step === 3 && "Create your new password"}
+              {step === 1 && "Enter your email and create a new password"}
+              {step === 2 && "Create your new password"}
             </p>
           </div>
 
@@ -103,12 +80,6 @@ const ForgotPassword = () => {
                 step >= 2 ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-600'
               }`}>
                 2
-              </div>
-              <div className={`w-8 h-1 ${step >= 3 ? 'bg-primary' : 'bg-gray-200'}`} />
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                step >= 3 ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-600'
-              }`}>
-                3
               </div>
             </div>
           </div>
@@ -142,48 +113,12 @@ const ForgotPassword = () => {
 
                 <Button type="submit" className="w-full btn-ngo-primary">
                   <Mail className="mr-2" size={20} />
-                  Send Reset Code
+                  Continue
                 </Button>
               </motion.div>
             )}
 
             {step === 2 && (
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="space-y-6"
-              >
-                <div>
-                  <Label htmlFor="otp">Enter OTP</Label>
-                  <Input
-                    id="otp"
-                    maxLength={6}
-                    {...register('otp', { required: 'OTP is required' })}
-                    className="mt-1 text-center text-lg tracking-widest"
-                    placeholder="000000"
-                  />
-                  {errors.otp && (
-                    <p className="text-red-500 text-sm mt-1">{String(errors.otp.message)}</p>
-                  )}
-                </div>
-
-                <div className="flex space-x-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setStep(1)}
-                    className="flex-1"
-                  >
-                    Back
-                  </Button>
-                  <Button type="submit" className="flex-1 btn-ngo-primary">
-                    Verify OTP
-                  </Button>
-                </div>
-              </motion.div>
-            )}
-
-            {step === 3 && (
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -256,7 +191,7 @@ const ForgotPassword = () => {
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => setStep(2)}
+                    onClick={() => setStep(1)}
                     className="flex-1"
                   >
                     Back

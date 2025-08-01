@@ -6,48 +6,37 @@ import { Button } from '@/components/ui/button';
 const BlogSection = () => {
   const featuredBlogs = [
     {
-      id: 'FCM001',
-      title: 'Coding Compassion: 1000 Meals Distributed',
-      excerpt: 'How technology students came together to serve the community and make a real impact through organized food distribution.',
+      id: 'WSP001',
+      title: 'Building a Cleaner Tomorrow — Waste Segregation & Plastic-Free Initiative',
+      excerpt: 'How Festiva Foundation empowered 800+ villagers through waste segregation awareness and distributed 500+ paper bags to promote eco-friendly practices.',
       author: 'Rohith S V',
       role: 'Founder',
       date: '2024-12-15',
-      image: '/api/placeholder/400/250',
-      category: 'Food Drive',
-      readTime: '5 min read'
+      image: '/src/assets/wastesegregation.jpg',
+      category: 'Environment & Sustainability',
+      readTime: '8 min read'
     },
     {
-      id: 'ENV002',
-      title: 'Green Code: Engineering for Environment',
-      excerpt: 'Our environmental initiative brought together 50+ volunteers for a massive tree plantation drive across Bangalore.',
+      id: 'DIG002',
+      title: 'Towards a Cashless Rural India — Digital Empowerment Initiative',
+      excerpt: 'Our digital literacy drive enabled 150+ villagers to perform their first UPI transactions and built trust in cashless payment systems.',
       author: 'Priya Sharma',
-      role: 'Environmental Lead',
+      role: 'Digital Coordinator',
       date: '2024-12-10',
-      image: '/api/placeholder/400/250',
-      category: 'Environment',
-      readTime: '4 min read'
-    },
-    {
-      id: 'EDU003',
-      title: 'Teaching Tomorrow: Digital Literacy',
-      excerpt: 'Engineering students bridge the digital divide by teaching computer basics to rural children.',
-      author: 'Arjun Kumar',
-      role: 'Education Coordinator',
-      date: '2024-12-05',
-      image: '/api/placeholder/400/250',
-      category: 'Education',
+      image: '/src/assets/digitalpay.jpg',
+      category: 'Digital Literacy',
       readTime: '6 min read'
     },
     {
-      id: 'ORG004',
-      title: 'Building CodeCirqit: A Journey',
-      excerpt: 'The journey of creating a structured platform for engineering students to contribute to society.',
-      author: 'Bhuvan',
-      role: 'Co-Founder',
-      date: '2024-11-28',
-      image: '/api/placeholder/400/250',
-      category: 'Organization',
-      readTime: '8 min read'
+      id: 'EDU003',
+      title: 'Empowering Through Education — Bridging Rural Gaps with AI',
+      excerpt: 'Using AI-powered tools and digital content, we reached 300+ children across 5 rural belts, creating mentorship circles and educational resources.',
+      author: 'Arjun Kumar',
+      role: 'Education Lead',
+      date: '2024-12-05',
+      image: '/src/assets/education.jpg',
+      category: 'Education & Innovation',
+      readTime: '7 min read'
     }
   ];
 

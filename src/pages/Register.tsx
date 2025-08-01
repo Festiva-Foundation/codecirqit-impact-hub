@@ -64,10 +64,15 @@ const Register = () => {
   };
 
   const onSubmit = (data) => {
-    if (step === 1 && otpVerified) {
+    if (step === 1) {
       setStep(2);
     } else if (step === 2) {
       console.log('Registration data:', data);
+      // Set login status and save for 7 days
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('loginTime', Date.now().toString());
+      localStorage.setItem('volunteerName', data.name);
+      
       toast({
         title: "Registration Successful!",
         description: "Welcome to Festiva Foundation! Redirecting to dashboard...",
@@ -165,50 +170,21 @@ const Register = () => {
 
                   <div>
                     <Label htmlFor="email">Email *</Label>
-                    <div className="flex gap-2 mt-1">
-                      <Input
-                        id="email"
-                        type="email"
-                        {...register('email', { required: 'Email is required' })}
-                        className="flex-1"
-                        placeholder="Enter Mail ID (Ex: john2@gmail.com)"
-                        disabled={otpVerified}
-                      />
-                      <Button
-                        type="button"
-                        onClick={sendOTP}
-                        disabled={otpSent || otpVerified}
-                        variant="outline"
-                      >
-                        {otpVerified ? 'Verified' : otpSent ? 'Sent' : 'Send OTP'}
-                      </Button>
-                    </div>
+                    <Input
+                      id="email"
+                      type="email"
+                      {...register('email', { required: 'Email is required' })}
+                      className="mt-1"
+                      placeholder="Enter Mail ID (Ex: john2@gmail.com)"
+                    />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">{String(errors.email.message)}</p>
                     )}
                   </div>
 
-                  {otpSent && !otpVerified && (
-                    <div>
-                      <Label htmlFor="otp">Enter OTP *</Label>
-                      <div className="flex gap-2 mt-1">
-                        <Input
-                          id="otp"
-                          maxLength={6}
-                          placeholder="6-digit code"
-                          className="flex-1"
-                        />
-                        <Button type="button" onClick={verifyOTP}>
-                          Verify
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-
                   <Button
                     type="submit"
                     className="w-full btn-ngo-primary"
-                    disabled={!otpVerified}
                   >
                     Continue to Step 2
                   </Button>

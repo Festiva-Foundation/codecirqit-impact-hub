@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import food from '@/assets/food-2.jpeg';
 import food1 from '@/assets/food-3.jpeg';
 import cleaning from '@/assets/cleaning.jpeg';
@@ -11,8 +12,7 @@ import book from '@/assets/dist.jpeg';
 import clean from '@/assets/Clean.jpeg';
 import food3 from '@/assets/food.jpeg';
 
-
-const GallerySection = () => {
+const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
@@ -102,93 +102,89 @@ const GallerySection = () => {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="text-gradient">Gallery</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Capturing moments of impact, service, and community transformation
-          </p>
-        </motion.div>
-
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-primary text-primary-foreground shadow-lg scale-105'
-                  : 'bg-secondary text-secondary-foreground hover:bg-primary/10 hover:text-primary'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-          {filteredImages.map((image, index) => (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
+          <div className="container mx-auto px-4">
             <motion.div
-              key={image.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => openLightbox(index)}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-white text-center p-4">
-                    <h3 className="font-semibold mb-2">{image.title}</h3>
-                    <p className="text-sm text-gray-200">{image.description}</p>
-                  </div>
-                </div>
-              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Our <span className="text-gradient">Gallery</span>
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Capturing moments of impact, service, and community transformation through our various initiatives and volunteer activities
+              </p>
             </motion.div>
-          ))}
-        </div>
 
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <Link 
-            to="/gallery" 
-            className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            View All Gallery
-            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </motion.div>
+            {/* Category Filter */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-wrap justify-center gap-4 mb-12"
+            >
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-primary text-primary-foreground shadow-lg scale-105'
+                      : 'bg-secondary text-secondary-foreground hover:bg-primary/10 hover:text-primary'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </motion.div>
+
+            {/* Gallery Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredImages.map((image, index) => (
+                <motion.div
+                  key={image.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={() => openLightbox(index)}
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.title}
+                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white text-center p-4">
+                        <h3 className="font-semibold mb-2">{image.title}</h3>
+                        <p className="text-sm text-gray-200">{image.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* No Results */}
+            {filteredImages.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20"
+              >
+                <p className="text-xl text-muted-foreground">No images found for this category.</p>
+              </motion.div>
+            )}
+          </div>
+        </section>
 
         {/* Lightbox */}
         <AnimatePresence>
@@ -253,9 +249,11 @@ const GallerySection = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 };
 
-export default GallerySection;
+export default Gallery;

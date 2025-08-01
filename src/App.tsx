@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import VolunteerDashboard from "./pages/VolunteerDashboard";
+import EnhancedVolunteerDashboard from "./pages/EnhancedVolunteerDashboard";
+import Gallery from "./pages/Gallery";
 import ActivityDetail from "./pages/ActivityDetail";
 import ActivityDetail2 from "./pages/ActivityDetail2";
 import ActivityDetail3 from "./pages/ActivityDetail3";
@@ -27,10 +29,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/volunteer-dashboard" element={<VolunteerDashboard />} />
+          <Route path="/volunteer-dashboard" element={<EnhancedVolunteerDashboard />} />
           <Route path="/activity/:id" element={<ActivityDetail />} />
           <Route path="/activity-2" element={<ActivityDetail2 />} />
           <Route path="/activity-3" element={<ActivityDetail3 />} />

@@ -36,7 +36,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://instagram.com/festiva.foundation"
+                href="https://www.instagram.com/festivafoundation?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-lg hover:bg-primary transition-colors"
@@ -62,12 +62,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/#vision" className="text-gray-300 hover:text-primary transition-colors">
+                <Link to="/#about" className="text-gray-300 hover:text-primary transition-colors">
                   Vision & Mission
                 </Link>
               </li>
               <li>
-                <Link to="/#gallery" className="text-gray-300 hover:text-primary transition-colors">
+                <Link to="/gallery" className="text-gray-300 hover:text-primary transition-colors">
                   Gallery
                 </Link>
               </li>
@@ -84,12 +84,9 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Connect</h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={scrollToVolunteer}
-                  className="text-gray-300 hover:text-primary transition-colors"
-                >
+                <Link to="/#volunteer" className="text-gray-300 hover:text-primary transition-colors">
                   Volunteer With Us
-                </button>
+                </Link>
               </li>
               <li>
                 <a
