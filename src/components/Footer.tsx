@@ -3,9 +3,8 @@ import { Linkedin, Instagram, Mail, Heart } from 'lucide-react';
 import festivaLogo from '@/assets/festiva-logo.png';
 
 const Footer = () => {
-  const scrollToVolunteer = () => {
-    const element = document.querySelector('#volunteer');
-    element?.scrollIntoView({ behavior: 'smooth' });
+  const handleVolunteerClick = () => {
+    window.location.href = '/register';
   };
 
   return (
@@ -84,9 +83,12 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Connect</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/#volunteer" className="text-gray-300 hover:text-primary transition-colors">
+                <button 
+                  onClick={handleVolunteerClick}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
+                >
                   Volunteer With Us
-                </Link>
+                </button>
               </li>
               <li>
                 <a

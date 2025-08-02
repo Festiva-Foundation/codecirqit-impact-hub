@@ -18,6 +18,7 @@ const EnhancedVolunteerDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [showPopup, setShowPopup] = useState(false);
+  const [showCommunityDialog, setShowCommunityDialog] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<any>(null);
   const [volunteerName, setVolunteerName] = useState("John Doe");
   
@@ -148,10 +149,16 @@ const EnhancedVolunteerDashboard = () => {
   const handleActivityClick = (activity: any) => {
     if (isActivityClickable(activity.startDate)) {
       if (activity.id === 2) {
+        // Scroll to top and navigate
+        window.scrollTo(0, 0);
         navigate('/activity-2');
       } else if (activity.id === 3) {
+        // Scroll to top and navigate
+        window.scrollTo(0, 0);
         navigate('/activity-3');
       } else {
+        // Scroll to top and navigate
+        window.scrollTo(0, 0);
         navigate(`/activity/${activity.id}`);
       }
     } else {
@@ -296,13 +303,13 @@ const EnhancedVolunteerDashboard = () => {
                   <BookOpen size={24} />
                   <span>View Resources</span>
                 </Button>
-                <Button variant="outline" className="h-16 flex flex-col items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-16 flex flex-col items-center gap-2"
+                  onClick={() => setShowCommunityDialog(true)}
+                >
                   <Heart size={24} />
                   <span>Community</span>
-                </Button>
-                <Button variant="outline" className="h-16 flex flex-col items-center gap-2">
-                  <Target size={24} />
-                  <span>Set Goals</span>
                 </Button>
               </div>
             </CardContent>
@@ -323,16 +330,19 @@ const EnhancedVolunteerDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg flex items-center justify-center border-2 border-dashed border-primary/20">
-                <div className="text-center">
-                  <FileText className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <p className="text-lg font-semibold text-primary">Welcome Orientation Video</p>
-                  <p className="text-sm text-muted-foreground">Interactive training content will be embedded here</p>
-                  <Button className="mt-4 btn-ngo-primary">
-                    <Eye className="mr-2" size={16} />
-                    Start Training
-                  </Button>
-                </div>
+              <div className="aspect-video bg-black rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/UYcQn_W71vw"
+                  title="Festiva Foundation Orientation Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-lg font-semibold text-primary">Welcome to Festiva Foundation</p>
+                <p className="text-sm text-muted-foreground">Complete orientation to unlock your volunteer journey</p>
               </div>
             </CardContent>
           </Card>
@@ -501,6 +511,46 @@ const EnhancedVolunteerDashboard = () => {
             <div className="flex justify-center mt-6">
               <Button onClick={() => setShowPopup(false)} className="btn-ngo-primary">
                 Got it! 🚀
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Community Dialog */}
+        <Dialog open={showCommunityDialog} onOpenChange={setShowCommunityDialog}>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle className="text-center text-2xl font-bold text-gradient">
+                🌟 Festiva Community Section
+              </DialogTitle>
+              <DialogDescription className="text-center space-y-4 pt-4">
+                <div className="text-lg leading-relaxed">
+                  <p className="text-foreground font-medium mb-3">
+                    Welcome to Festiva's vibrant community of changemakers!
+                  </p>
+                  <p className="text-muted-foreground">
+                    Stay tuned for exciting updates, community events, volunteer meetups, and opportunities to connect with fellow volunteers making a difference across Karnataka.
+                  </p>
+                  <div className="mt-6 p-4 bg-primary/10 rounded-lg">
+                    <p className="text-sm text-primary font-medium">
+                      🚀 Coming Soon: Community chat groups, volunteer leaderboards, and exclusive events!
+                    </p>
+                  </div>
+                </div>
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-center mt-6 space-x-3">
+              <Button onClick={() => setShowCommunityDialog(false)} variant="outline">
+                Close
+              </Button>
+              <Button 
+                onClick={() => {
+                  setShowCommunityDialog(false);
+                  // Future: Add action for joining community
+                }} 
+                className="btn-ngo-primary"
+              >
+                Join Community 💫
               </Button>
             </div>
           </DialogContent>

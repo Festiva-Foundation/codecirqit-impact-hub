@@ -42,9 +42,8 @@ const HeroSection = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const scrollToVolunteer = () => {
-    const element = document.querySelector('#volunteer');
-    element?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToRegister = () => {
+    window.location.href = '/register';
   };
 
   return (
@@ -119,7 +118,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <Button
-              onClick={scrollToVolunteer}
+              onClick={scrollToRegister}
               className="btn-ngo-primary text-lg px-8 py-4 hover:shadow-2xl"
             >
               Volunteer With Us

@@ -18,14 +18,19 @@ const Login = () => {
 
   const onSubmit = (data: any) => {
     // Simulate login
+    // Store login info
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('loginTime', Date.now().toString());
+    localStorage.setItem('volunteerName', data.email.split('@')[0]);
+    
     toast({
       title: "Login Successful!",
-      description: "Welcome back to CodeCirqit. Redirecting to dashboard...",
+      description: "Welcome back to Festiva Foundation. Redirecting to dashboard...",
     });
-    // Redirect to volunteer dashboard
+    // Redirect to volunteer dashboard immediately
     setTimeout(() => {
       navigate('/volunteer-dashboard');
-    }, 1500);
+    }, 1000);
   };
 
   return (

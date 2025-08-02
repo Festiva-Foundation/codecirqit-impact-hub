@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Downl
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import edu from '@/assets/education.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
@@ -13,6 +13,11 @@ const ActivityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(0);
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   // Mock activity data - in real app, fetch based on ID
   const activities = [

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -15,6 +15,11 @@ import food3 from '@/assets/food.jpeg';
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const categories = ['All', 'Food Drive', 'Swachh Bharat', 'Education', 'Social Awareness'];
 
