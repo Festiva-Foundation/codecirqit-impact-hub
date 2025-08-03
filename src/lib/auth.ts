@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { supabase } from '@/integrations/supabase/client';
 
 // Secure mapping of allowed emails to display names
 // In production, this would come from environment variables or remote config
