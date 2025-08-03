@@ -1,22 +1,98 @@
 import { motion } from 'framer-motion';
-import { Calendar, Clock, MapPin, Users, FileText, Download, Upload, Eye, Lock } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, FileText, Download, Upload, Eye, Lock, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { signOut, onAuthStateChange, getDisplayName } from '@/lib/auth';
+import { useToast } from '@/hooks/use-toast';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
 import edu from '@/assets/education.jpg';
 
 const VolunteerDashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [showPopup, setShowPopup] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<any>(null);
+  const [volunteerName, setVolunteerName] = useState<string>('');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   
-  // Simulated user data
-  const volunteerName = "John Doe";
+  useEffect(() => {
+    // Check if user is logged in and get their display name
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const storedName = localStorage.getItem('volunteerName');
+    const userEmail = localStorage.getItem('userEmail');
+    
+    if (isLoggedIn && storedName) {
+      setVolunteerName(storedName);
+      setIsAuthenticated(true);
+    } else if (userEmail) {
+      // Fallback to getting name from email
+      const displayName = getDisplayName(userEmail);
+      setVolunteerName(displayName);
+      setIsAuthenticated(true);
+    } else {
+      // Redirect to login if not authenticated
+      navigate('/login');
+    }
+
+    // Set up auth state listener
+    const { data: { subscription } } = onAuthStateChange((user, displayName) => {
+      if (user && displayName) {
+        setVolunteerName(displayName);
+        setIsAuthenticated(true);
+        localStorage.setItem('volunteerName', displayName);
+        localStorage.setItem('userEmail', user.email || '');
+        localStorage.setItem('isLoggedIn', 'true');
+      } else {
+        setIsAuthenticated(false);
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('volunteerName');
+        localStorage.removeItem('userEmail');
+        navigate('/login');
+      }
+    });
+
+    return () => {
+      subscription?.unsubscribe?.();
+    };
+  }, [navigate]);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('volunteerName');
+      localStorage.removeItem('userEmail');
+      
+      toast({
+        title: "Signed Out",
+        description: "You have been successfully signed out.",
+      });
+      
+      navigate('/');
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to sign out. Please try again.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background to-ngo-neutral flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Authenticating...</h1>
+          <p className="text-muted-foreground">Please wait while we verify your access.</p>
+        </div>
+      </div>
+    );
+  }
   
   const activities = [
     {
@@ -121,6 +197,23 @@ const VolunteerDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-ngo-neutral">
       <div className="container mx-auto px-4 py-8">
+        {/* Header with Sign Out */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex justify-between items-center mb-8"
+        >
+          <div></div>
+          <Button
+            variant="outline"
+            onClick={handleSignOut}
+            className="flex items-center gap-2"
+          >
+            <LogOut size={16} />
+            Sign Out
+          </Button>
+        </motion.div>
+
         {/* Welcome Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

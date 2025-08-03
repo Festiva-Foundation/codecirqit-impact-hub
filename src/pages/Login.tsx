@@ -7,30 +7,48 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { signInWithEmail } from '@/lib/auth';
 import festivaLogo from '@/assets/festiva-logo.png';
 
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const onSubmit = (data: any) => {
-    // Simulate login
-    // Store login info
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('loginTime', Date.now().toString());
-    localStorage.setItem('volunteerName', data.email.split('@')[0]);
+  const onSubmit = async (data: any) => {
+    setIsLoading(true);
     
-    toast({
-      title: "Login Successful!",
-      description: "Welcome back to Festiva Foundation. Redirecting to dashboard...",
-    });
-    // Redirect to volunteer dashboard immediately
-    setTimeout(() => {
-      navigate('/volunteer-dashboard');
-    }, 1000);
+    try {
+      const result = await signInWithEmail(data.email, data.password);
+      
+      // Store authenticated user info
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('loginTime', Date.now().toString());
+      localStorage.setItem('volunteerName', result.displayName);
+      localStorage.setItem('userEmail', data.email);
+      
+      toast({
+        title: "Login Successful!",
+        description: `Welcome back, ${result.displayName}! Redirecting to dashboard...`,
+      });
+      
+      // Redirect to volunteer dashboard
+      setTimeout(() => {
+        navigate('/volunteer-dashboard');
+      }, 1000);
+      
+    } catch (error: any) {
+      toast({
+        title: "Authentication Failed",
+        description: error.message || "Please check your credentials and try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -116,9 +134,9 @@ const Login = () => {
               </Link>
             </div>
 
-            <Button type="submit" className="w-full btn-ngo-primary">
+            <Button type="submit" disabled={isLoading} className="w-full btn-ngo-primary">
               <LogIn className="mr-2" size={20} />
-              Login to Dashboard
+              {isLoading ? 'Authenticating...' : 'Login to Dashboard'}
             </Button>
           </form>
 

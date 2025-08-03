@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, Controller } from 'react-hook-form';
-import { Check, X, Eye, EyeOff, UserPlus, ArrowLeft } from 'lucide-react';
+import { Check, X, Eye, EyeOff, UserPlus, ArrowLeft, Info } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,15 +9,16 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/lib/supabase';
+import { getDisplayName } from '@/lib/auth';
 import festivaLogo from '@/assets/festiva-logo.png';
 
 const Register = () => {
   const [step, setStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
-  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [password, setPassword] = useState('Festiva@CIT#2026'); // Pre-fill with shared password
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -47,39 +48,70 @@ const Register = () => {
 
   const userType = watch('userType');
 
-  const sendOTP = () => {
-    setOtpSent(true);
-    toast({
-      title: "OTP Sent!",
-      description: "Please check your email for the verification code.",
-    });
-  };
-
-  const verifyOTP = () => {
-    setOtpVerified(true);
-    toast({
-      title: "Email Verified!",
-      description: "You can now proceed to the next step.",
-    });
-  };
-
-  const onSubmit = (data) => {
+  const onSubmit = async (data: any) => {
     if (step === 1) {
+      // Check if email is in allowed list
+      const displayName = getDisplayName(data.email);
+      if (displayName === 'Unauthorized User') {
+        toast({
+          title: "Registration Not Allowed",
+          description: "This email is not authorized for registration. Please contact the administrator.",
+          variant: "destructive"
+        });
+        return;
+      }
       setStep(2);
     } else if (step === 2) {
-      console.log('Registration data:', data);
-      // Set login status and save for 7 days
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('loginTime', Date.now().toString());
-      localStorage.setItem('volunteerName', data.name);
+      setIsLoading(true);
       
-      toast({
-        title: "Registration Successful!",
-        description: "Welcome to Festiva Foundation! Redirecting to dashboard...",
-      });
-      setTimeout(() => {
-        navigate('/volunteer-dashboard');
-      }, 1500);
+      try {
+        // Register with Supabase using the shared password
+        const { data: authData, error } = await supabase.auth.signUp({
+          email: data.email,
+          password: data.password,
+          options: {
+            data: {
+              full_name: data.name,
+              phone: data.phone,
+              location: data.location,
+              user_type: data.userType,
+              college: data.college,
+              semester: data.semester,
+              branch: data.branch
+            }
+          }
+        });
+
+        if (error) throw error;
+
+        if (authData.user) {
+          // Get display name for this email
+          const displayName = getDisplayName(data.email);
+          
+          // Store user info
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('loginTime', Date.now().toString());
+          localStorage.setItem('volunteerName', displayName);
+          localStorage.setItem('userEmail', data.email);
+          
+          toast({
+            title: "Registration Successful!",
+            description: `Welcome to Festiva Foundation, ${displayName}! Redirecting to dashboard...`,
+          });
+          
+          setTimeout(() => {
+            navigate('/volunteer-dashboard');
+          }, 1500);
+        }
+      } catch (error: any) {
+        toast({
+          title: "Registration Failed",
+          description: error.message || "Please try again later.",
+          variant: "destructive"
+        });
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -325,6 +357,22 @@ const Register = () => {
                     </motion.div>
                   )}
 
+                  {/* Information about pre-filled password */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <div className="flex items-start gap-3">
+                      <Info className="text-blue-500 mt-0.5" size={16} />
+                      <div>
+                        <h4 className="font-medium text-blue-900 mb-1">Shared Password Information</h4>
+                        <p className="text-sm text-blue-700">
+                          All volunteers use the same password: <code className="bg-blue-100 px-1 rounded">Festiva@CIT#2026</code>
+                        </p>
+                        <p className="text-xs text-blue-600 mt-1">
+                          This password has been pre-filled for your convenience.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
                   <div>
                     <Label htmlFor="password">Password *</Label>
                     <div className="relative mt-1">
@@ -333,8 +381,12 @@ const Register = () => {
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        {...register('password', { required: 'Password is required' })}
+                        {...register('password', { 
+                          required: 'Password is required',
+                          validate: (value) => value === 'Festiva@CIT#2026' || 'Please use the provided shared password'
+                        })}
                         className="pr-10"
+                        readOnly
                       />
                       <button
                         type="button"
@@ -343,22 +395,6 @@ const Register = () => {
                       >
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
-                    </div>
-
-                    {/* Password Criteria */}
-                    <div className="mt-2 space-y-1">
-                      {passwordCriteria.map((criteria, index) => (
-                        <div key={index} className="flex items-center space-x-2 text-sm">
-                          {criteria.check ? (
-                            <Check className="text-green-500" size={16} />
-                          ) : (
-                            <X className="text-red-500" size={16} />
-                          )}
-                          <span className={criteria.check ? 'text-green-500 line-through' : 'text-muted-foreground'}>
-                            {criteria.label}
-                          </span>
-                        </div>
-                      ))}
                     </div>
                     {errors.password && (
                       <p className="text-red-500 text-sm mt-1">{String(errors.password.message)}</p>
@@ -376,6 +412,8 @@ const Register = () => {
                           validate: (value) => value === password || 'Passwords do not match'
                         })}
                         className="pr-10"
+                        defaultValue="Festiva@CIT#2026"
+                        readOnly
                       />
                       <button
                         type="button"
@@ -420,9 +458,9 @@ const Register = () => {
                     >
                       Back
                     </Button>
-                    <Button type="submit" className="flex-1 btn-ngo-primary">
+                    <Button type="submit" disabled={isLoading} className="flex-1 btn-ngo-primary">
                       <UserPlus className="mr-2" size={20} />
-                      Register
+                      {isLoading ? 'Creating Account...' : 'Register'}
                     </Button>
                   </div>
                 </motion.div>
