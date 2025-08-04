@@ -53,9 +53,9 @@ const ForgotPassword = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center space-x-3 mb-6 group">
-              <img 
-                src={festivaLogo} 
-                alt="Festiva Foundation Logo" 
+              <img
+                src={festivaLogo}
+                alt="Festiva Foundation Logo"
                 className="w-12 h-12 transition-transform group-hover:scale-110"
               />
               <span className="text-2xl font-bold">Festiva Foundation</span>
@@ -96,7 +96,7 @@ const ForgotPassword = () => {
                   <Input
                     id="email"
                     type="email"
-                    {...register('email', { 
+                    {...register('email', {
                       required: 'Email is required',
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -143,7 +143,7 @@ const ForgotPassword = () => {
                       {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                     </button>
                   </div>
-                  
+
                   {/* Password Criteria */}
                   <div className="mt-2 space-y-1">
                     {passwordCriteria.map((criteria, index) => (
@@ -167,7 +167,7 @@ const ForgotPassword = () => {
                     <Input
                       id="confirmPassword"
                       type={showConfirmPassword ? "text" : "password"}
-                      {...register('confirmPassword', { 
+                      {...register('confirmPassword', {
                         required: 'Please confirm your password',
                         validate: (value) => value === password || 'Passwords do not match'
                       })}
@@ -209,7 +209,7 @@ const ForgotPassword = () => {
             <Link to="/login" className="text-sm text-primary hover:underline font-medium">
               Back to Login
             </Link>
-            
+
             <Link
               to="/"
               className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"

@@ -23,7 +23,7 @@ const VolunteerDashboard = () => {
       id: 1,
       name: "Waste Segregation & Awareness Campaign",
       activityNo: "01", 
-      startDate: "2025-07-26",
+      startDate: "2025-09-20",
       endDate: "2025-08-15",
       points: 20,
       hours: 80,

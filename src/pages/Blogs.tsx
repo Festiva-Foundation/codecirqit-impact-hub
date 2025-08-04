@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -10,71 +10,43 @@ import Footer from '@/components/Footer';
 const Blogs = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const blogs = [
     {
-      id: 'FCM001',
-      title: 'Coding Compassion: 1000 Meals Distributed in Our First Food Drive',
-      excerpt: 'How technology students came together to serve the community and make a real impact through organized food distribution.',
+      id: 'WSP001',
+      title: 'Building a Cleaner Tomorrow — Waste Segregation & Plastic-Free Initiative',
+      excerpt: 'How Festiva Foundation empowered 800+ villagers through waste segregation awareness and distributed 500+ paper bags to promote eco-friendly practices.',
       author: 'Rohith S V',
       role: 'Founder',
       date: '2024-12-15',
-      image: '/api/placeholder/600/300',
-      category: 'Food Drive',
-      readTime: '5 min read'
-    },
-    {
-      id: 'ENV002',
-      title: 'Green Code: Planting 500 Trees Through Engineering Teamwork',
-      excerpt: 'Our environmental initiative brought together 50+ volunteers for a massive tree plantation drive across Bangalore.',
-      author: 'Priya Sharma',
-      role: 'Environmental Lead',
-      date: '2024-12-10',
-      image: '/api/placeholder/600/300',
-      category: 'Environment',
-      readTime: '4 min read'
-    },
-    {
-      id: 'EDU003',
-      title: 'Teaching Tomorrow: Digital Literacy Program in Rural Schools',
-      excerpt: 'Engineering students bridge the digital divide by teaching computer basics to rural children.',
-      author: 'Arjun Kumar',
-      role: 'Education Coordinator',
-      date: '2024-12-05',
-      image: '/api/placeholder/600/300',
-      category: 'Education',
-      readTime: '6 min read'
-    },
-    {
-      id: 'ORG004',
-      title: 'Building CodeCirqit: From Idea to 150+ Volunteer Community',
-      excerpt: 'The journey of creating a structured platform for engineering students to contribute to society.',
-      author: 'Bhuvan',
-      role: 'Co-Founder',
-      date: '2024-11-28',
-      image: '/api/placeholder/600/300',
-      category: 'Organization',
+      image: '/src/assets/wastesegregation.jpg',
+      category: 'Environment & Sustainability',
       readTime: '8 min read'
     },
     {
-      id: 'HEALTH005',
-      title: 'Code for Care: Health Awareness Campaign in IT Corridors',
-      excerpt: 'How we organized health checkups and awareness sessions for IT professionals and students.',
-      author: 'Dr. Meera Nair',
-      role: 'Health Initiative Lead',
-      date: '2024-11-20',
-      image: '/api/placeholder/600/300',
-      category: 'Health',
-      readTime: '5 min read'
+      id: 'DIG002',
+      title: 'Towards a Cashless Rural India — Digital Empowerment Initiative',
+      excerpt: 'Our digital literacy drive enabled 150+ villagers to perform their first UPI transactions and built trust in cashless payment systems.',
+      author: 'Priya Sharma',
+      role: 'Digital Coordinator',
+      date: '2024-12-10',
+      image: '/src/assets/digitalpay.jpg',
+      category: 'Digital Literacy',
+      readTime: '6 min read'
     },
     {
-      id: 'TECH006',
-      title: 'Technology for Good: Building Apps for NGO Management',
-      excerpt: 'Student developers create management systems for local NGOs to track their community impact.',
-      author: 'Karthik Reddy',
-      role: 'Tech Lead',
-      date: '2024-11-15',
-      image: '/api/placeholder/600/300',
-      category: 'Technology',
+      id: 'EDU003',
+      title: 'Empowering Through Education — Bridging Rural Gaps with AI',
+      excerpt: 'Using AI-powered tools and digital content, we reached 300+ children across 5 rural belts, creating mentorship circles and educational resources.',
+      author: 'Arjun Kumar',
+      role: 'Education Lead',
+      date: '2024-12-05',
+      image: '/src/assets/education.jpg',
+      category: 'Education & Innovation',
       readTime: '7 min read'
     }
   ];
@@ -85,7 +57,7 @@ const Blogs = () => {
     blog.author.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const categories = ['All', 'Food Drive', 'Environment', 'Education', 'Organization', 'Health', 'Technology'];
+  const categories = ['All', 'Environment & Sustainability', 'Digital Literacy', 'Education & Innovation', 'Food Drive', 'Environment', 'Organization'];
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categoryFilteredBlogs = selectedCategory === 'All' 

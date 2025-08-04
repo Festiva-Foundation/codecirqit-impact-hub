@@ -1,17 +1,22 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Download, Play, Target, GraduationCap, CheckCircle, BookOpen, Wrench } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Download, Play, Target, GraduationCap, CheckCircle, BookOpen, Wrench, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import education from '@/assets/education.jpg';
-
 
 const ActivityDetail3 = () => {
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(0);
-  
+  const [showCertificatePopup, setShowCertificatePopup] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const activity = {
     id: 3,
     name: "Ensuring Quality Education",
@@ -32,7 +37,7 @@ const ActivityDetail3 = () => {
     },
     {
       title: "Rural India is Transforming our Education System!",
-      videoId: "eEGV5DoY3HM", 
+      videoId: "eEGV5DoY3HM",
       description: "How rural communities are driving educational change"
     },
     {
@@ -46,16 +51,36 @@ const ActivityDetail3 = () => {
     const now = new Date();
     const start = new Date(startDate);
     const end = new Date(endDate);
-    
+
     if (now < start) return { status: 'Not Started', color: 'bg-yellow-500' };
     if (now > end) return { status: 'Completed', color: 'bg-green-500' };
     return { status: 'In Progress', color: 'bg-blue-500' };
   };
 
+  const isCertificateAvailable = (endDate: string) => {
+    const now = new Date();
+    const end = new Date(endDate);
+    const fifteenDaysAfterEnd = new Date(end.getTime() + (15 * 24 * 60 * 60 * 1000));
+    return now >= fifteenDaysAfterEnd;
+  };
+
+  const handleExternalLink = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleCertificateClick = () => {
+    if (certificateAvailable) {
+      handleExternalLink('/volunteer-dashboard');
+    } else {
+      setShowCertificatePopup(true);
+    }
+  };
+
   const activityStatus = getActivityStatus(activity.startDate, activity.endDate);
+  const certificateAvailable = isCertificateAvailable(activity.endDate);
 
   const renderQualityEducationContent = () => (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
@@ -70,7 +95,7 @@ const ActivityDetail3 = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -78,7 +103,7 @@ const ActivityDetail3 = () => {
           >
             Access to quality education remains a challenge in many rural and underserved areas. With over 100 million youth globally still illiterate, this activity focuses on bridging the learning gap using AI-powered digital tools and inclusive outreach methods.
           </motion.p>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -101,7 +126,7 @@ const ActivityDetail3 = () => {
           <div className="grid gap-4">
             {[
               "Bridge rural learning gaps via digital kits",
-              "Train teachers to use simple AI tools", 
+              "Train teachers to use simple AI tools",
               "Promote early literacy through gamification",
               "Enable inclusive access (girls, non-English speakers)"
             ].map((objective, index) => (
@@ -469,10 +494,10 @@ const ActivityDetail3 = () => {
               transition={{ delay: 0.1 }}
               className="mb-8"
             >
-              <img 
-                src={education} 
-                alt="Quality Education" 
-                className="w-full h-64 object-cover rounded-lg shadow-lg"
+              <img
+                src={education}
+                alt="Quality Education"
+                className="w-full h-96 md:h-[500px] lg:h-[600px] object-cover shadow-2xl"
               />
             </motion.div>
 
@@ -485,17 +510,17 @@ const ActivityDetail3 = () => {
                 <Badge variant="outline" className="text-lg px-4 py-2">
                   Activity {activity.activityNo}
                 </Badge>
-                <Badge 
+                <Badge
                   className={`${activityStatus.color} text-white px-4 py-2`}
                 >
                   {activityStatus.status}
                 </Badge>
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
                 {activity.name}
               </h1>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 <div className="flex flex-col items-center gap-2">
                   <Calendar className="w-8 h-8 text-primary" />
@@ -535,7 +560,7 @@ const ActivityDetail3 = () => {
           <div className="lg:col-span-3">
             {renderQualityEducationContent()}
           </div>
-          
+
           {/* Right Side Action Panel */}
           <div className="lg:col-span-1">
             <motion.div
@@ -549,79 +574,87 @@ const ActivityDetail3 = () => {
                   <CardTitle className="text-center text-gradient">Quick Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  <Button
+                    variant="outline"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
+                    onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <Upload className="w-5 h-5" />
+                    <Upload className="w-6 h-6" />
                     Upload Images
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  <Button
+                    variant="outline"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
+                    onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <Eye className="w-5 h-5" />
+                    <Eye className="w-6 h-6" />
                     View Report
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  <Button
+                    variant="outline"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
+                    onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
-                    <FileText className="w-5 h-5" />
+                    <FileText className="w-6 h-6" />
                     Submit Task
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-xs"
+                  <Button
+                    variant="outline"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s cursor-pointer"
+                    onClick={handleCertificateClick}
                   >
-                    <Download className="w-5 h-5" />
-                    Download Resources
+                    <Download className="w-6 h-6" />
+                    Download Certificate
                   </Button>
-                  {activityStatus.status === 'Completed' && (
-                    <Button 
-                      className="w-full h-14 flex flex-col items-center gap-1 text-xs"
-                    >
-                      <Download className="w-5 h-5" />
-                      Download Certificate
-                    </Button>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>
           </div>
         </div>
 
-        {/* Action Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.7 }}
-          className="mt-12"
-        >
-          <Card className="ngo-card">
-            <CardHeader>
-              <CardTitle className="text-center text-gradient">Action Panel</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-4">
-                <Button variant="outline" className="h-16">
-                  <Upload className="w-5 h-5 mr-2" />
-                  Upload Images
+        {/* Certificate Popup */}
+        {showCertificatePopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+            onClick={() => setShowCertificatePopup(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-white rounded-lg p-6 max-w-md w-full mx-4 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowCertificatePopup(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Download className="w-8 h-8 text-orange-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Certificate Not Available</h3>
+                <p className="text-gray-600 mb-4">
+                  Your certificate will be available for download 15 days after the activity end date.
+                </p>
+                <p className="text-sm text-gray-500 mb-4">
+                  Activity ends: {new Date(activity.endDate).toLocaleDateString()}
+                  <br />
+                  Certificate available: {new Date(new Date(activity.endDate).getTime() + (15 * 24 * 60 * 60 * 1000)).toLocaleDateString()}
+                </p>
+                <Button
+                  onClick={() => setShowCertificatePopup(false)}
+                  className="w-full"
+                >
+                  Got it
                 </Button>
-                <Button variant="outline" className="h-16">
-                  <Eye className="w-5 h-5 mr-2" />
-                  View/Submit Report
-                </Button>
-                {activityStatus.status === 'Completed' && (
-                  <Button className="h-16">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Certificate
-                  </Button>
-                )}
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

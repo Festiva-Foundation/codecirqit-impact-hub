@@ -84,7 +84,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Connect</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/#volunteer" className="text-gray-300 hover:text-primary transition-colors">
+                <Link to="/login" className="text-gray-300 hover:text-primary transition-colors">
                   Volunteer With Us
                 </Link>
               </li>
@@ -111,7 +111,7 @@ const Footer = () => {
             © 2025 Festiva Foundation. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm flex items-center">
-            Made with <Heart className="mx-1 text-red-500" size={16} /> for humanity
+            Made with <Heart className="mx-1 text-red-800" size={16} /> for humanity
           </p>
         </div>
       </div>

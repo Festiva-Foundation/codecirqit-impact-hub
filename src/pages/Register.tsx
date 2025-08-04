@@ -1,88 +1,10 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useForm, Controller } from 'react-hook-form';
-import { Check, X, Eye, EyeOff, UserPlus, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Mail, Phone, ArrowLeft, Users, Heart, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { useToast } from '@/hooks/use-toast';
 import festivaLogo from '@/assets/festiva-logo.png';
 
 const Register = () => {
-  const [step, setStep] = useState(1);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
-  const [password, setPassword] = useState('');
-  const { toast } = useToast();
-  const navigate = useNavigate();
-
-  const { register, handleSubmit, watch, control, formState: { errors } } = useForm();
-
-  const colleges = [
-    "Cambridge Institute Of Technology",
-    "Sai Vidya Institute Of Technology",
-    "Bengalore Technological Institute",
-    "Nitte Meenakshi Institute of Technology",
-    "BMS Institute of Technology",
-    "JSS Academy of Technical Education",
-    "Other"
-  ];
-
-  const branches = [
-    "CSE", "ISE", "AIML", "DS", "IOT", "MECH", "CIVIL", "ECE", "EEE", "Others"
-  ];
-
-  const passwordCriteria = [
-    { label: "8-12 characters", check: password.length >= 8 && password.length <= 12 },
-    { label: "One uppercase letter", check: /[A-Z]/.test(password) },
-    { label: "One lowercase letter", check: /[a-z]/.test(password) },
-    { label: "One number", check: /\d/.test(password) },
-    { label: "One special character", check: /[!@#$%^&*(),.?":{}|<>]/.test(password) }
-  ];
-
-  const userType = watch('userType');
-
-  const sendOTP = () => {
-    setOtpSent(true);
-    toast({
-      title: "OTP Sent!",
-      description: "Please check your email for the verification code.",
-    });
-  };
-
-  const verifyOTP = () => {
-    setOtpVerified(true);
-    toast({
-      title: "Email Verified!",
-      description: "You can now proceed to the next step.",
-    });
-  };
-
-  const onSubmit = (data) => {
-    if (step === 1) {
-      setStep(2);
-    } else if (step === 2) {
-      console.log('Registration data:', data);
-      // Set login status and save for 7 days
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('loginTime', Date.now().toString());
-      localStorage.setItem('volunteerName', data.name);
-      
-      toast({
-        title: "Registration Successful!",
-        description: "Welcome to Festiva Foundation! Redirecting to dashboard...",
-      });
-      setTimeout(() => {
-        navigate('/volunteer-dashboard');
-      }, 1500);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-ngo-neutral">
       <div className="container mx-auto px-4 py-8">
@@ -101,10 +23,10 @@ const Register = () => {
             <span className="text-3xl font-bold">Festiva Foundation</span>
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Volunteer</span> Registration!
+            <span className="text-gradient">Volunteer</span> Registration
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join our community of changemakers and start making a difference
+            Be part of the change you want to see in the world
           </p>
         </motion.div>
 
@@ -115,332 +37,146 @@ const Register = () => {
           className="max-w-2xl mx-auto"
         >
           <div className="ngo-card">
-            {/* Step Indicator */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="flex items-center space-x-4">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                  step >= 1 ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-600'
-                }`}>
-                  1
+            {/* Initiative Banner */}
+            <div className="text-center mb-8 p-6 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-primary/20 rounded-full">
+                  <Heart className="w-8 h-8 text-primary" />
                 </div>
-                <div className={`w-16 h-1 ${step >= 2 ? 'bg-primary' : 'bg-gray-200'}`} />
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                  step >= 2 ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-600'
-                }`}>
-                  2
-                </div>
+              </div>
+              <h2 className="text-2xl font-bold mb-3 text-primary">
+                An Initiative of Festiva Foundation
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Join our mission to drive meaningful social change in communities across the nation.
+                We're building a network of passionate volunteers committed to creating lasting impact
+                through collaborative social drives and community outreach programs.
+              </p>
+            </div>
+
+            {/* Registration Process */}
+            <div className="space-y-6 mb-8">
+              <h3 className="text-2xl font-semibold text-center">How to Register</h3>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-center p-4 rounded-lg bg-primary/5 border border-primary/10"
+                >
+                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Step 1</h4>
+                  <p className="text-sm text-muted-foreground">Contact our team via email</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-center p-4 rounded-lg bg-primary/5 border border-primary/10"
+                >
+                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Step 2</h4>
+                  <p className="text-sm text-muted-foreground">Connect with your local SPOC</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-center p-4 rounded-lg bg-primary/5 border border-primary/10"
+                >
+                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Globe className="w-6 h-6 text-primary" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Step 3</h4>
+                  <p className="text-sm text-muted-foreground">Join upcoming social drives</p>
+                </motion.div>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {step === 1 && (
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="space-y-6"
-                >
-                  <h3 className="text-2xl font-semibold text-center mb-6">Basic Details</h3>
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold text-center mb-6">Get in Touch with Festiva Foundation</h3>
 
-                  <div>
-                    <Label htmlFor="name">Full Name *</Label>
-                    <Input
-                      id="name"
-                      {...register('name', { required: 'Name is required' })}
-                      className="mt-1"
-                      placeholder="Enter Full Name (Ex: John E)"
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.name.message)}</p>
-                    )}
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-6">
+                <div className="text-center space-y-4">
+                  <div className="flex justify-center">
+                    <div className="p-3 bg-blue-100 rounded-full">
+                      <Mail className="w-8 h-8 text-blue-600" />
+                    </div>
                   </div>
 
                   <div>
-                    <Label htmlFor="phone">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      {...register('phone', { required: 'Phone number is required' })}
-                      className="mt-1"
-                      placeholder="Enter Mobile Number (Ex: 9876543210)"
-                    />
-                    {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.phone.message)}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      {...register('email', { required: 'Email is required' })}
-                      className="mt-1"
-                      placeholder="Enter Mail ID (Ex: john2@gmail.com)"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.email.message)}</p>
-                    )}
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full btn-ngo-primary"
-                  >
-                    Continue to Step 2
-                  </Button>
-                </motion.div>
-              )}
-
-              {step === 2 && (
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="space-y-6"
-                >
-                  <h3 className="text-2xl font-semibold text-center mb-6">Extended Details</h3>
-
-                  <div>
-                    <Label htmlFor="location">Location *</Label>
-                    <Input
-                      id="location"
-                      {...register('location', { required: 'Location is required' })}
-                      className="mt-1"
-                    />
-                    {errors.location && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.location.message)}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <Label htmlFor="userType">Are You *</Label>
-                    <Controller
-                      name="userType"
-                      control={control}
-                      rules={{ required: 'Please select your type' }}
-                      render={({ field }) => (
-                        <Select value={field.value} onValueChange={field.onChange}>
-                          <SelectTrigger className="mt-1">
-                            <SelectValue placeholder="Select your type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="student">Student</SelectItem>
-                            <SelectItem value="employee">Employee</SelectItem>
-                            <SelectItem value="mentor">Mentor</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      )}
-                    />
-                    {errors.userType && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.userType.message)}</p>
-                    )}
-                  </div>
-
-                  {userType === 'student' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="space-y-6"
+                    <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                      Registration & General Inquiries
+                    </h4>
+                    <a
+                      href="mailto:contact@festivafoundation.org"
+                      className="text-blue-600 hover:text-blue-800 font-medium text-lg transition-colors"
                     >
-                      <div>
-                        <Label htmlFor="college">College Name *</Label>
-                        <Controller
-                          name="college"
-                          control={control}
-                          rules={{ required: userType === 'student' ? 'College is required' : false }}
-                          render={({ field }) => (
-                            <Select value={field.value} onValueChange={field.onChange}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select your college" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {colleges.map((college) => (
-                                  <SelectItem key={college} value={college}>
-                                    {college}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          )}
-                        />
-                        {errors.college && (
-                          <p className="text-red-500 text-sm mt-1">{String(errors.college.message)}</p>
-                        )}
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="semester">Semester *</Label>
-                          <Controller
-                            name="semester"
-                            control={control}
-                            rules={{ required: userType === 'student' ? 'Semester is required' : false }}
-                            render={({ field }) => (
-                              <Select value={field.value} onValueChange={field.onChange}>
-                                <SelectTrigger className="mt-1">
-                                  <SelectValue placeholder="SEM" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {[1,2,3,4,5,6,7,8].map((sem) => (
-                                    <SelectItem key={sem} value={sem.toString()}>
-                                      {sem}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            )}
-                          />
-                          {errors.semester && (
-                            <p className="text-red-500 text-sm mt-1">{String(errors.semester.message)}</p>
-                          )}
-                        </div>
-
-                        <div>
-                          <Label htmlFor="branch">Branch *</Label>
-                          <Controller
-                            name="branch"
-                            control={control}
-                            rules={{ required: userType === 'student' ? 'Branch is required' : false }}
-                            render={({ field }) => (
-                              <Select value={field.value} onValueChange={field.onChange}>
-                                <SelectTrigger className="mt-1">
-                                  <SelectValue placeholder="Branch" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {branches.map((branch) => (
-                                    <SelectItem key={branch} value={branch}>
-                                      {branch}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            )}
-                          />
-                          {errors.branch && (
-                            <p className="text-red-500 text-sm mt-1">{String(errors.branch.message)}</p>
-                          )}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  <div>
-                    <Label htmlFor="password">Password *</Label>
-                    <div className="relative mt-1">
-                      <Input
-                        id="password"
-                        type={showPassword ? "text" : "password"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        {...register('password', { required: 'Password is required' })}
-                        className="pr-10"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                      >
-                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                      </button>
-                    </div>
-
-                    {/* Password Criteria */}
-                    <div className="mt-2 space-y-1">
-                      {passwordCriteria.map((criteria, index) => (
-                        <div key={index} className="flex items-center space-x-2 text-sm">
-                          {criteria.check ? (
-                            <Check className="text-green-500" size={16} />
-                          ) : (
-                            <X className="text-red-500" size={16} />
-                          )}
-                          <span className={criteria.check ? 'text-green-500 line-through' : 'text-muted-foreground'}>
-                            {criteria.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    {errors.password && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.password.message)}</p>
-                    )}
+                      contact@festivafoundation.org
+                    </a>
                   </div>
 
-                  <div>
-                    <Label htmlFor="confirmPassword">Confirm Password *</Label>
-                    <div className="relative mt-1">
-                      <Input
-                        id="confirmPassword"
-                        type={showConfirmPassword ? "text" : "password"}
-                        {...register('confirmPassword', {
-                          required: 'Please confirm your password',
-                          validate: (value) => value === password || 'Passwords do not match'
-                        })}
-                        className="pr-10"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                      >
-                        {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                      </button>
-                    </div>
-                    {errors.confirmPassword && (
-                      <p className="text-red-500 text-sm mt-1">{String(errors.confirmPassword.message)}</p>
-                    )}
+                  <div className="pt-4 border-t border-blue-200">
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      📧 Send us your details and we'll connect you with opportunities to make a difference
+                      <br />
+                      🤝 Our team will help you find the perfect volunteer role matching your interests
+                      <br />
+                      🌟 Get updates about upcoming social change drives in your area
+                    </p>
                   </div>
+                </div>
+              </div>
 
-                  <div className="flex items-center space-x-2">
-                    <Controller
-                      name="terms"
-                      control={control}
-                      rules={{ required: 'You must agree to terms' }}
-                      render={({ field }) => (
-                        <Checkbox
-                          id="terms"
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      )}
-                    />
-                    <Label htmlFor="terms" className="text-sm">
-                      I agree to the Terms & Conditions *
-                    </Label>
-                  </div>
-                  {errors.terms && (
-                    <p className="text-red-500 text-sm">{String(errors.terms.message)}</p>
-                  )}
+              {/* Alternative Contact Methods */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                  <Phone className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <h5 className="font-semibold text-green-800">Call Us</h5>
+                  <p className="text-green-700 text-sm">+91 98765 43210</p>
+                </div>
 
-                  <div className="flex space-x-4">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setStep(1)}
-                      className="flex-1"
-                    >
-                      Back
-                    </Button>
-                    <Button type="submit" className="flex-1 btn-ngo-primary">
-                      <UserPlus className="mr-2" size={20} />
-                      Register
-                    </Button>
-                  </div>
-                </motion.div>
-              )}
-            </form>
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
+                  <Users className="w-6 h-6 text-purple-600 mx-auto mb-2" />
+                  <h5 className="font-semibold text-purple-800">Visit Our Office</h5>
+                  <p className="text-purple-700 text-sm">Bangalore, Karnataka</p>
+                </div>
+              </div>
 
-            {/* Login Link */}
-            <div className="mt-6 text-center">
+              {/* CTA Button */}
+              <div className="text-center pt-4">
+                <Button
+                  asChild
+                  className="btn-ngo-primary px-8 py-3 text-lg"
+                >
+                  <a href="mailto:contact@festivafoundation.org?subject=Volunteer Registration Interest&body=Hi Festiva Foundation Team,%0A%0AI am interested in volunteering for your social change drives. Please provide me with more information about registration and upcoming opportunities.%0A%0AThank you!">
+                    <Mail className="mr-2" size={20} />
+                    Contact Us for Registration
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            {/* Links */}
+            <div className="mt-8 text-center space-y-4 pt-6 border-t border-gray-200">
               <p className="text-sm text-muted-foreground">
-                Already have an account?{' '}
+                Already registered with us?{' '}
                 <Link to="/login" className="text-primary hover:underline font-medium">
                   Login here
                 </Link>
               </p>
-              
+
               <Link
                 to="/"
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors mt-4"
+                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <ArrowLeft className="mr-1" size={16} />
                 Back to Home

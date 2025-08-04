@@ -20,17 +20,17 @@ const EnhancedVolunteerDashboard = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<any>(null);
   const [volunteerName, setVolunteerName] = useState("John Doe");
-  
+
   // Check if user is logged in and get name
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     const loginTime = localStorage.getItem('loginTime');
     const savedName = localStorage.getItem('volunteerName');
-    
+
     // Check if login is within 7 days (7 * 24 * 60 * 60 * 1000 ms)
     const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
     const currentTime = Date.now();
-    
+
     if (!isLoggedIn || !loginTime || (currentTime - parseInt(loginTime)) > sevenDaysMs) {
       // Session expired or not logged in
       localStorage.removeItem('isLoggedIn');
@@ -39,12 +39,12 @@ const EnhancedVolunteerDashboard = () => {
       navigate('/login');
       return;
     }
-    
+
     if (savedName) {
       setVolunteerName(savedName);
     }
   }, [navigate]);
-  
+
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('loginTime');
@@ -55,14 +55,14 @@ const EnhancedVolunteerDashboard = () => {
     });
     navigate('/');
   };
-  
+
   const activities = [
     {
       id: 1,
       name: "Waste Segregation & Awareness Campaign",
-      activityNo: "01", 
-      startDate: "2025-07-26",
-      endDate: "2025-08-15",
+      activityNo: "01",
+      startDate: "2025-07-20",
+      endDate: "2025-07-25",
       points: 20,
       hours: 80,
       mode: "Community Interaction & Awareness Campaign",
@@ -88,7 +88,7 @@ const EnhancedVolunteerDashboard = () => {
       name: "Ensuring Quality Education",
       activityNo: "03",
       startDate: "2025-07-29",
-      endDate: "2025-09-10", 
+      endDate: "2025-09-10",
       points: 20,
       hours: 80,
       mode: "Online",
@@ -104,7 +104,7 @@ const EnhancedVolunteerDashboard = () => {
       endDate: "2025-08-25",
       points: 20,
       hours: 80,
-      mode: "Offline", 
+      mode: "Offline",
       description: "Participate in clean-up drives and awareness campaigns in local communities.",
       image: "/api/placeholder/400/250",
       progress: 0
@@ -130,7 +130,7 @@ const EnhancedVolunteerDashboard = () => {
 
   const getActivityStatus = (startDate: string, endDate: string) => {
     const today = getCurrentDate();
-    
+
     if (today < startDate) {
       return { status: 'Not Started', color: 'bg-gray-500' };
     } else if (today >= startDate && today <= endDate) {
@@ -161,11 +161,6 @@ const EnhancedVolunteerDashboard = () => {
   };
 
   // Calculate stats
-  const totalPoints = activities.reduce((sum, activity) => {
-    const { status } = getActivityStatus(activity.startDate, activity.endDate);
-    return sum + (status === 'Completed' ? activity.points : activity.progress * activity.points / 100);
-  }, 0);
-
   const completedActivities = activities.filter(activity => {
     const { status } = getActivityStatus(activity.startDate, activity.endDate);
     return status === 'Completed';
@@ -176,10 +171,13 @@ const EnhancedVolunteerDashboard = () => {
     return status === 'In Progress';
   }).length;
 
+  // Attained points = number of completed activities * 20
+  const attainedPoints = completedActivities * 20;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-8 pt-24">
         {/* Header with Logout */}
         <motion.div
@@ -195,7 +193,7 @@ const EnhancedVolunteerDashboard = () => {
               Ready to make a difference today? Your dedication is transforming communities one step at a time.
             </p>
           </div>
-          <Button 
+          <Button
             onClick={handleLogout}
             variant="outline"
             className="hidden md:flex items-center gap-2 hover:bg-destructive hover:text-destructive-foreground"
@@ -211,7 +209,7 @@ const EnhancedVolunteerDashboard = () => {
           animate={{ opacity: 1 }}
           className="md:hidden mb-6"
         >
-          <Button 
+          <Button
             onClick={handleLogout}
             variant="outline"
             className="w-full flex items-center justify-center gap-2 hover:bg-destructive hover:text-destructive-foreground"
@@ -233,7 +231,7 @@ const EnhancedVolunteerDashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Total Points</p>
-                  <p className="text-3xl font-bold text-blue-600">{Math.round(totalPoints)}</p>
+                  <p className="text-3xl font-bold text-blue-600">100</p>
                 </div>
                 <Trophy className="h-8 w-8 text-blue-500" />
               </div>
@@ -268,8 +266,8 @@ const EnhancedVolunteerDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Impact Score</p>
-                  <p className="text-3xl font-bold text-purple-600">A+</p>
+                  <p className="text-sm font-medium text-muted-foreground">Attained Points</p>
+                  <p className="text-3xl font-bold text-purple-600">{attainedPoints}</p>
                 </div>
                 <Star className="h-8 w-8 text-purple-500" />
               </div>
@@ -291,7 +289,7 @@ const EnhancedVolunteerDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Button className="h-16 flex flex-col items-center gap-2 btn-ngo-primary">
                   <BookOpen size={24} />
                   <span>View Resources</span>
@@ -299,10 +297,6 @@ const EnhancedVolunteerDashboard = () => {
                 <Button variant="outline" className="h-16 flex flex-col items-center gap-2">
                   <Heart size={24} />
                   <span>Community</span>
-                </Button>
-                <Button variant="outline" className="h-16 flex flex-col items-center gap-2">
-                  <Target size={24} />
-                  <span>Set Goals</span>
                 </Button>
               </div>
             </CardContent>
@@ -323,16 +317,23 @@ const EnhancedVolunteerDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg flex items-center justify-center border-2 border-dashed border-primary/20">
-                <div className="text-center">
-                  <FileText className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <p className="text-lg font-semibold text-primary">Welcome Orientation Video</p>
-                  <p className="text-sm text-muted-foreground">Interactive training content will be embedded here</p>
-                  <Button className="mt-4 btn-ngo-primary">
-                    <Eye className="mr-2" size={16} />
-                    Start Training
-                  </Button>
-                </div>
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/blRoc74ctwA"
+                  title="Welcome Orientation Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="rounded-lg shadow-lg"
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-lg font-semibold text-primary mb-2">Welcome Orientation Video</p>
+                <p className="text-sm text-muted-foreground">
+                  Watch this comprehensive training to get started with your volunteer journey
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -347,12 +348,12 @@ const EnhancedVolunteerDashboard = () => {
           <h2 className="text-3xl font-bold text-center mb-8">
             Your <span className="text-gradient">Activities</span> 🎯
           </h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activities.map((activity, index) => {
               const { status, color } = getActivityStatus(activity.startDate, activity.endDate);
               const isClickable = isActivityClickable(activity.startDate);
-              
+
               return (
                 <motion.div
                   key={activity.id}
@@ -362,10 +363,10 @@ const EnhancedVolunteerDashboard = () => {
                   whileHover={{ y: -5, scale: isClickable ? 1.02 : 1 }}
                   className={`relative ${!isClickable ? 'opacity-70' : ''}`}
                 >
-                  <Card 
+                  <Card
                     className={`ngo-card h-full transition-all duration-300 ${
-                      isClickable 
-                        ? 'hover:shadow-2xl cursor-pointer border-primary/20 hover:border-primary/40' 
+                      isClickable
+                        ? 'hover:shadow-2xl cursor-pointer border-primary/20 hover:border-primary/40'
                         : 'cursor-not-allowed'
                     } ${status === 'In Progress' ? 'ring-2 ring-blue-200 shadow-lg' : ''}`}
                     onClick={() => handleActivityClick(activity)}
@@ -376,7 +377,7 @@ const EnhancedVolunteerDashboard = () => {
                         <Lock className="w-5 h-5 text-gray-500" />
                       </div>
                     )}
-                    
+
                     <CardHeader className="pb-3">
                       <div className="relative overflow-hidden rounded-lg">
                         <img
@@ -391,7 +392,7 @@ const EnhancedVolunteerDashboard = () => {
                         <Badge variant="outline" className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm">
                           #{activity.activityNo}
                         </Badge>
-                        
+
                         {/* Progress indicator for in-progress activities */}
                         {status === 'In Progress' && (
                           <div className="absolute bottom-3 left-3 right-3">
@@ -402,33 +403,33 @@ const EnhancedVolunteerDashboard = () => {
                           </div>
                         )}
                       </div>
-                      
+
                       <CardTitle className="text-lg font-bold line-clamp-2 mt-3">
                         {activity.name}
                       </CardTitle>
                     </CardHeader>
-                    
+
                     <CardContent className="pt-0">
                       <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
                         {activity.description}
                       </p>
-                      
+
                       <div className="space-y-3 text-sm">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4 text-primary" />
                           <span className="font-medium">{activity.startDate} - {activity.endDate}</span>
                         </div>
-                        
+
                         <div className="flex items-center gap-2">
                           <Clock className="w-4 h-4 text-primary" />
                           <span>{activity.hours} Hours</span>
                         </div>
-                        
+
                         <div className="flex items-center gap-2">
                           <MapPin className="w-4 h-4 text-primary" />
                           <span>{activity.mode}</span>
                         </div>
-                        
+
                         <div className="flex items-center gap-2">
                           <Trophy className="w-4 h-4 text-primary" />
                           <span className="font-semibold text-primary">{activity.points} Points</span>
@@ -458,10 +459,10 @@ const EnhancedVolunteerDashboard = () => {
                   You're making incredible progress. Every small action creates ripples of positive change.
                 </p>
               </div>
-              
+
               <div className="flex justify-center items-center gap-8 text-sm">
                 <div className="text-center">
-                  <div className="font-bold text-lg text-primary">{Math.round(totalPoints)}</div>
+                  <div className="font-bold text-lg text-primary">{attainedPoints}</div>
                   <div className="text-muted-foreground">Points Earned</div>
                 </div>
                 <div className="text-center">

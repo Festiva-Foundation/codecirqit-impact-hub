@@ -37,10 +37,10 @@ const ContactSection = () => {
                 <div>
                   <h3 className="text-xl font-bold mb-2">Email Us</h3>
                   <a 
-                    href="mailto:codecirqit@gmail.com"
+                    href="mailto:festivamoments77@gmail.com"
                     className="text-primary hover:underline text-lg font-medium"
                   >
-                    codecirqit@gmail.com
+                    festivamoments77@gmail.com
                   </a>
                   <p className="text-muted-foreground mt-1">
                     For general inquiries, volunteer applications, and partnership opportunities
@@ -104,9 +104,9 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-lg text-primary">Festiva</h4>
+                  <h4 className="font-semibold text-lg text-primary">Festiva Moments</h4>
                   <p className="text-muted-foreground">
-                    The parent organization under which CodeCirqit operates, providing 
+                    The parent organization under which Festiva Foundation operates, providing
                     institutional support and guidance.
                   </p>
                 </div>

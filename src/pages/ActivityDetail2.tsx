@@ -1,16 +1,22 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Download, Play, Target, CreditCard, CheckCircle, BookOpen, Wrench } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Download, Play, Target, CreditCard, CheckCircle, BookOpen, Wrench, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import digitalpay from '@/assets/digitalpay.jpg';
 
 const ActivityDetail2 = () => {
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(0);
-  
+  const [showCertificatePopup, setShowCertificatePopup] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const activity = {
     id: 2,
     name: "Promoting 100% Digitized Transactions",
@@ -31,7 +37,7 @@ const ActivityDetail2 = () => {
     },
     {
       title: "How UPI Works – Real-Time Payments",
-      videoId: "iI2NaN_QVTI", 
+      videoId: "iI2NaN_QVTI",
       description: "Learn the technology behind instant payments"
     },
     {
@@ -51,24 +57,40 @@ const ActivityDetail2 = () => {
     }
   ];
 
-  const getActivityStatus = (startDate: string, endDate: string) => {
+  const getActivityStatus = (startDate, endDate) => {
     const now = new Date();
     const start = new Date(startDate);
     const end = new Date(endDate);
-    
+
     if (now < start) return { status: 'Not Started', color: 'bg-yellow-500' };
     if (now > end) return { status: 'Completed', color: 'bg-green-500' };
     return { status: 'In Progress', color: 'bg-blue-500' };
   };
 
-  const handleExternalLink = (url: string) => {
+  const isCertificateAvailable = (endDate) => {
+    const now = new Date();
+    const end = new Date(endDate);
+    const fifteenDaysAfterEnd = new Date(end.getTime() + (15 * 24 * 60 * 60 * 1000));
+    return now >= fifteenDaysAfterEnd;
+  };
+
+  const handleExternalLink = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const handleCertificateClick = () => {
+    if (certificateAvailable) {
+      handleExternalLink('/volunteer-dashboard');
+    } else {
+      setShowCertificatePopup(true);
+    }
+  };
+
   const activityStatus = getActivityStatus(activity.startDate, activity.endDate);
+  const certificateAvailable = isCertificateAvailable(activity.endDate);
 
   const renderDigitalTransactionContent = () => (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
@@ -83,7 +105,7 @@ const ActivityDetail2 = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -91,7 +113,7 @@ const ActivityDetail2 = () => {
           >
             India is on a transformative journey toward becoming a digitally empowered society. Despite wide access to mobile devices and UPI services, a large portion of the population — including shopkeepers, senior citizens, and low-income communities — still rely heavily on cash.
           </motion.p>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -114,7 +136,7 @@ const ActivityDetail2 = () => {
           <div className="grid gap-4">
             {[
               "Educate people about the importance and security of digital payments",
-              "Promote UPI, Mobile Wallets, and Internet Banking usage", 
+              "Promote UPI, Mobile Wallets, and Internet Banking usage",
               "Help vendors and low-income groups shift from cash to digital",
               "Create a grassroots-level digital economy"
             ].map((objective, index) => (
@@ -383,7 +405,7 @@ const ActivityDetail2 = () => {
           <div className="grid md:grid-cols-2 gap-4">
             {[
               "Smartphone with UPI apps",
-              "Internet/hotspot", 
+              "Internet/hotspot",
               "Flyers/posters in local language",
               "ID cards",
               "Documentation notebook",
@@ -470,21 +492,8 @@ const ActivityDetail2 = () => {
             Back to Dashboard
           </Button>
 
+          {/* Activity Info Section */}
           <div className="bg-white/50 backdrop-blur-sm rounded-lg p-8 border border-white/20">
-            {/* Top Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="mb-8"
-            >
-              <img
-                src={digitalpay}
-                alt="Digital Payments"
-                className="w-full h-64 object-cover rounded-lg"
-              />
-            </motion.div>
-
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -494,18 +503,18 @@ const ActivityDetail2 = () => {
                 <Badge variant="outline" className="text-lg px-4 py-2">
                   Activity {activity.activityNo}
                 </Badge>
-                <Badge 
+                <Badge
                   className={`${activityStatus.color} text-white px-4 py-2`}
                 >
                   {activityStatus.status}
                 </Badge>
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
                 {activity.name}
               </h1>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div className="flex flex-col items-center gap-2">
                   <Calendar className="w-8 h-8 text-primary" />
                   <div>
@@ -539,12 +548,29 @@ const ActivityDetail2 = () => {
           </div>
         </motion.div>
 
+        {/* Full Width Image Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1 }}
+          className="-mx-4 mb-8 relative"
+        >
+          <div className="relative">
+            <img
+              src= {digitalpay}
+              alt="Digital Payments"
+              className="w-full md:h-[10px] lg:h-[800px] object-cover shadow-x"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+        </motion.div>
+
         {/* Content */}
         <div className="grid lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
             {renderDigitalTransactionContent()}
           </div>
-          
+
           {/* Right Side Action Panel */}
           <div className="lg:col-span-1">
             <motion.div
@@ -558,84 +584,87 @@ const ActivityDetail2 = () => {
                   <CardTitle className="text-center text-gradient">Quick Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
                     <Upload className="w-6 h-6" />
                     Upload Images
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
                     <Eye className="w-6 h-6" />
                     View Report
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full h-14 flex flex-col items-center gap-1 text-s"
                     onClick={() => handleExternalLink('/volunteer-dashboard')}
                   >
                     <FileText className="w-6 h-6" />
                     Submit Task
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 flex flex-col items-center gap-1 text-s"
-                    onClick={() => handleExternalLink('/volunteer-dashboard')}
+                  <Button
+                    variant="outline"
+                    className="w-full h-14 flex flex-col items-center gap-1 text-s cursor-pointer"
+                    onClick={handleCertificateClick}
                   >
                     <Download className="w-6 h-6" />
                     Download Certificate
                   </Button>
-                  {activityStatus.status === 'Completed' && (
-                    <Button 
-                      className="w-full h-14 flex flex-col items-center gap-1 text-xs"
-                      onClick={() => handleExternalLink('/volunteer-dashboard')}
-                    >
-                      <Download className="w-5 h-5" />
-                      Download Certificate
-                    </Button>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>
           </div>
         </div>
 
-        {/* Action Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.2 }}
-          className="mt-12"
-        >
-          <Card className="ngo-card">
-            <CardHeader>
-              <CardTitle className="text-center text-gradient">Action Panel</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-4">
-                <Button variant="outline" className="h-16">
-                  <Upload className="w-5 h-5 mr-2" />
-                  Upload Images
+        {/* Certificate Popup */}
+        {showCertificatePopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+            onClick={() => setShowCertificatePopup(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-white rounded-lg p-6 max-w-md w-full mx-4 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowCertificatePopup(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Download className="w-8 h-8 text-orange-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Certificate Not Available</h3>
+                <p className="text-gray-600 mb-4">
+                  Your certificate will be available for download 15 days after the activity end date.
+                </p>
+                <p className="text-sm text-gray-500 mb-4">
+                  Activity ends: {new Date(activity.endDate).toLocaleDateString()}
+                  <br />
+                  Certificate available: {new Date(new Date(activity.endDate).getTime() + (15 * 24 * 60 * 60 * 1000)).toLocaleDateString()}
+                </p>
+                <Button
+                  onClick={() => setShowCertificatePopup(false)}
+                  className="w-full"
+                >
+                  Got it
                 </Button>
-                <Button variant="outline" className="h-16">
-                  <Eye className="w-5 h-5 mr-2" />
-                  View/Submit Report
-                </Button>
-                {activityStatus.status === 'Completed' && (
-                  <Button className="h-16">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Certificate
-                  </Button>
-                )}
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

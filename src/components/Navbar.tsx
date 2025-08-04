@@ -63,7 +63,7 @@ const Navbar = () => {
     { label: 'Vision', href: '#vision' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Blogs', href: '/blogs' },
-    { label: 'Volunteer With Us', href: '/register' },
+    { label: 'Volunteer With Us', href: '/login' },
     { label: 'Get In Touch', href: '#contact' },
   ];
 

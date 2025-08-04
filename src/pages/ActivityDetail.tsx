@@ -4,24 +4,32 @@ import { ArrowLeft, Calendar, Clock, MapPin, Users, Upload, Eye, FileText, Downl
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import edu from '@/assets/education.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
+
 
 const ActivityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(0);
-  
+  const [showCertificatePopup, setShowCertificatePopup] = useState(false);
+
+  // Scroll to top when component mounts
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+
   // Mock activity data - in real app, fetch based on ID
   const activities = [
     {
       id: 1,
       name: "Waste Segregation & Plastic-Free Awareness Campaign",
-      activityNo: "01", 
-      startDate: "2025-07-20",
-      endDate: "2025-08-10",
+      activityNo: "01",
+      startDate: "2025-09-10",
+      endDate: "2025-09-15",
       points: 20,
       hours: 80,
       mode: "Community Interaction, On-Ground Tasks & Awareness Campaign",
@@ -32,7 +40,7 @@ const ActivityDetail = () => {
     },
     {
       id: 2,
-      name: "Digitized Transactions", 
+      name: "Digitized Transactions",
       activityNo: "02",
       startDate: "2025-08-16",
       endDate: "2025-08-28",
@@ -46,7 +54,7 @@ const ActivityDetail = () => {
     {
       id: 3,
       name: "Ensuring Quality Education",
-      activityNo: "03", 
+      activityNo: "03",
       startDate: "2025-08-29",
       endDate: "2025-09-10",
       points: 20,
@@ -60,7 +68,7 @@ const ActivityDetail = () => {
       id: 4,
       name: "Swachh Bharat",
       activityNo: "04",
-      startDate: "2025-08-11", 
+      startDate: "2025-08-11",
       endDate: "2025-08-25",
       points: 20,
       hours: 80,
@@ -74,7 +82,7 @@ const ActivityDetail = () => {
       name: "Food Preservation/Packaging",
       activityNo: "05",
       startDate: "2025-09-26",
-      endDate: "2025-10-09", 
+      endDate: "2025-10-09",
       points: 20,
       hours: 80,
       mode: "Offline",
@@ -105,7 +113,7 @@ const ActivityDetail = () => {
 
   const getActivityStatus = (startDate: string, endDate: string) => {
     const today = getCurrentDate();
-    
+
     if (today < startDate) {
       return { status: 'Not Started', color: 'bg-gray-500' };
     } else if (today >= startDate && today <= endDate) {
@@ -115,12 +123,32 @@ const ActivityDetail = () => {
     }
   };
 
+  const isCertificateAvailable = (endDate: string) => {
+    const today = new Date();
+    const activityEndDate = new Date(endDate);
+    const certificateAvailableDate = new Date(activityEndDate);
+    certificateAvailableDate.setDate(certificateAvailableDate.getDate() + 15);
+
+    return today >= certificateAvailableDate;
+  };
+
   const { status, color } = getActivityStatus(activity.startDate, activity.endDate);
   const isCompleted = status === 'Completed';
+  const certificateAvailable = isCertificateAvailable(activity.endDate);
 
   const handleExternalLink = (url: string) => {
     // Simulate opening external links
     window.open(url, '_blank');
+  };
+
+  const handleCertificateClick = () => {
+    if (!isCompleted) {
+      setShowCertificatePopup(true);
+    } else if (!certificateAvailable) {
+      setShowCertificatePopup(true);
+    } else {
+      handleExternalLink('https://drive.google.com');
+    }
   };
 
   // Video data for waste campaign
@@ -257,7 +285,7 @@ const ActivityDetail = () => {
               </div>
               <h3 className="text-lg font-semibold mt-4">{videoData[selectedVideo].title}</h3>
             </div>
-            
+
             {/* Video Selection Buttons */}
             <div className="space-y-3">
               {videoData.map((video, index) => (
@@ -456,8 +484,8 @@ const ActivityDetail = () => {
           animate={{ opacity: 1, x: 0 }}
           className="mb-6"
         >
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => navigate('/volunteer-dashboard')}
             className="flex items-center gap-2"
           >
@@ -472,8 +500,9 @@ const ActivityDetail = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <div className="flex flex-col lg:flex-row gap-8">
-            <div className="lg:w-2/3">
+          <div className="space-y-8">
+            {/* Activity Info */}
+            <div>
               <div className="flex items-center gap-4 mb-4">
                 <Badge className={`${color} text-white`}>
                   {status}
@@ -482,11 +511,11 @@ const ActivityDetail = () => {
                   Activity #{activity.activityNo}
                 </Badge>
               </div>
-              
-              <h1 className="text-4xl font-bold mb-4">
+
+              <h1 className="text-4xl font-bold mb-6">
                 <span className="text-gradient">{activity.name}</span>
               </h1>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-primary" />
@@ -495,7 +524,7 @@ const ActivityDetail = () => {
                     <p className="font-semibold">{activity.startDate} - {activity.endDate}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-primary" />
                   <div>
@@ -503,7 +532,7 @@ const ActivityDetail = () => {
                     <p className="font-semibold">{activity.hours} Hours</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary" />
                   <div>
@@ -511,7 +540,7 @@ const ActivityDetail = () => {
                     <p className="font-semibold">{activity.mode}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-primary" />
                   <div>
@@ -521,14 +550,23 @@ const ActivityDetail = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="lg:w-1/3">
-              <img
-                src={activity.image}
-                alt={activity.name}
-                className="w-full h-64 object-cover rounded-lg"
-              />
-            </div>
+          </div>
+        </motion.div>
+
+        {/* Full Width Hero Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="mb-8 -mx-4"
+        >
+          <div className="relative">
+            <img
+              src={activity.image}
+              alt={activity.name}
+              className="w-full h-96 md:h-[500px] lg:h-[600px] object-cover shadow-2xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
           </div>
         </motion.div>
 
@@ -579,72 +617,68 @@ const ActivityDetail = () => {
                 <CardTitle>Activity Resources</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Button 
-                  className="w-full" 
+                <Button
+                  className="w-full"
                   variant="outline"
                   onClick={() => handleExternalLink('https://drive.google.com')}
                 >
                   <Upload className="mr-2" size={16} />
                   Upload Activity Images
                 </Button>
-                
-                <Button 
-                  className="w-full" 
+
+                <Button
+                  className="w-full"
                   variant="outline"
                   onClick={() => handleExternalLink('https://drive.google.com')}
                 >
                   <Eye className="mr-2" size={16} />
                   View Sample Report
                 </Button>
-                
-                <Button 
-                  className="w-full" 
+
+                <Button
+                  className="w-full"
                   variant="outline"
                   onClick={() => handleExternalLink('https://forms.google.com')}
                 >
                   <FileText className="mr-2" size={16} />
                   Submit Activity Report
                 </Button>
-                
-                <Button 
-                  className={`w-full ${isCompleted ? 'btn-ngo-primary' : ''}`}
-                  variant={isCompleted ? "default" : "outline"}
-                  disabled={!isCompleted}
-                  onClick={() => isCompleted && handleExternalLink('https://drive.google.com')}
+
+                <Button
+                  className={`w-full ${isCompleted && certificateAvailable ? 'btn-ngo-primary' : ''}`}
+                  variant={isCompleted && certificateAvailable ? "default" : "outline"}
+                  onClick={handleCertificateClick}
                 >
                   <Download className="mr-2" size={16} />
-                  {isCompleted ? 'Download Certificate' : 'Certificate (Complete Activity)'}
+                  {isCompleted && certificateAvailable
+                    ? 'Download Certificate'
+                    : 'Certificate (Locked)'}
                 </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="ngo-card">
-              <CardHeader>
-                <CardTitle>Guidelines{activity.isWasteCampaign ? ' for All Volunteers' : ''}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {activity.isWasteCampaign ? (
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Wear ID badges (if issued)</li>
-                    <li>• Maintain discipline and decorum</li>
-                    <li>• Respect privacy for photo/video documentation</li>
-                    <li>• Avoid plagiarism – submit original work</li>
-                    <li>• Submit on time to your activity coordinator</li>
-                  </ul>
-                ) : (
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Complete all required documentation</li>
-                    <li>• Submit regular progress updates</li>
-                    <li>• Follow safety protocols for offline activities</li>
-                    <li>• Maintain professional conduct</li>
-                    <li>• Seek guidance when needed</li>
-                  </ul>
-                )}
               </CardContent>
             </Card>
           </div>
         </motion.div>
       </div>
+
+      {/* Certificate Popup */}
+      {showCertificatePopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg max-w-md mx-4">
+            <h3 className="text-lg font-semibold mb-4">Certificate Not Available</h3>
+            <p className="text-muted-foreground mb-4">
+              {!isCompleted
+                ? "Please complete the activity first to unlock your certificate."
+                : "Certificates are available 15 days after the activity end date. Please check back later."}
+            </p>
+            <Button
+              onClick={() => setShowCertificatePopup(false)}
+              className="w-full"
+            >
+              OK
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
