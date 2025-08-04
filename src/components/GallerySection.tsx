@@ -9,7 +9,8 @@ import school from '@/assets/school.jpeg';
 import books from '@/assets/books.jpeg';
 import book from '@/assets/dist.jpeg';
 import clean from '@/assets/Clean.jpeg';
-import food3 from '@/assets/food.jpeg';
+import food3 from '@/assets/food-1 (3).jpeg';
+import educate from '@/assets/educate.jpeg'
 
 
 const GallerySection = () => {
@@ -28,7 +29,7 @@ const GallerySection = () => {
     },
     {
       id: 2,
-      src: cleaning,
+      src: clean,
       title: 'Swachh Bharat Initiative',
       category: 'Swachh Bharat',
       description: 'Community clean-up drives for a cleaner tomorrow'
@@ -49,7 +50,7 @@ const GallerySection = () => {
     },
     {
       id: 5,
-      src: books,
+      src: educate,
       title: 'Books Distribution',
       category: 'Education',
       description: 'Training new volunteers for community service'
