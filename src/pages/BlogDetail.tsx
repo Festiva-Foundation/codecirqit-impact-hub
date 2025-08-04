@@ -13,7 +13,7 @@ const blogData = {
   'WSP001': {
     id: 'WSP001',
     title: 'Building a Cleaner Tomorrow — Waste Segregation & Plastic-Free Initiative',
-    excerpt: 'How Festiva Foundation empowered 800+ villagers through waste segregation awareness and distributed 500+ paper bags to promote eco-friendly practices.',
+    excerpt: 'How Festiva Foundation empowered 100+ villagers through waste segregation awareness and distributed 500+ paper bags to promote eco-friendly practices.',
     author: 'Rohith S V',
     role: 'Founder',
     date: '2024-12-15',
