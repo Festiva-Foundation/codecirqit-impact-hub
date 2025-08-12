@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import digital from '@/assets/digitalpay.jpg';
-import eductaion from '@/assets/education.jpg';
+import education from '@/assets/education.jpg';
 
 const BlogSection = () => {
   const featuredBlogs = [
