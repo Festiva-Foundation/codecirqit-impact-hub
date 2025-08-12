@@ -7,6 +7,9 @@ import { Badge } from '@/components/ui/badge';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
+import wastesegregation from '@/assets/wastesegregation.jpg';
+import digital from '@/assets/digitalpay.jpg';
+import eductaion from '@/assets/education.jpg';
 
 // Enhanced Blog data with more content
 const blogData = {
@@ -17,7 +20,7 @@ const blogData = {
     author: 'Rohith S V',
     role: 'Founder',
     date: '2024-12-15',
-    image: '/src/assets/wastesegregation.jpg',
+    image: wastesegregation,
     category: 'Environment & Sustainability',
     readTime: '12 min read',
     sections: [
@@ -132,7 +135,7 @@ const blogData = {
     author: 'Rohith S V',
     role: 'Founder',
     date: '2024-12-10',
-    image: '/src/assets/digitalpay.jpg',
+    image: digital,
     category: 'Digital Literacy',
     readTime: '10 min read',
     sections: [
@@ -247,7 +250,7 @@ const blogData = {
     author: 'Rohith S V',
     role: 'Founder',
     date: '2024-12-05',
-    image: '/src/assets/education.jpg',
+    image: eductaion,
     category: 'Education & Innovation',
     readTime: '11 min read',
     sections: [
