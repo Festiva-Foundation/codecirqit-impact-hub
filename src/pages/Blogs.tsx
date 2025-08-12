@@ -6,6 +6,9 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import wastesegregation from '@/assets/wastesegregation.jpg';
+import digital from '@/assets/digitalpay.jpg';
+import education from '@/assets/education.jpg';
 
 const Blogs = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,7 +26,7 @@ const Blogs = () => {
       author: 'Rohith S V',
       role: 'Founder',
       date: '2024-12-15',
-      image: '/src/assets/wastesegregation.jpg',
+      image: wastesegregation,
       category: 'Environment & Sustainability',
       readTime: '8 min read'
     },
@@ -34,7 +37,7 @@ const Blogs = () => {
       author: 'Priya Sharma',
       role: 'Digital Coordinator',
       date: '2024-12-10',
-      image: '/src/assets/digitalpay.jpg',
+      image: digital,
       category: 'Digital Literacy',
       readTime: '6 min read'
     },
@@ -45,7 +48,7 @@ const Blogs = () => {
       author: 'Arjun Kumar',
       role: 'Education Lead',
       date: '2024-12-05',
-      image: '/src/assets/education.jpg',
+      image: education,
       category: 'Education & Innovation',
       readTime: '7 min read'
     }
