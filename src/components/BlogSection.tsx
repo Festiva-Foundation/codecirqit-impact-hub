@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import wastesegregation from '@/assets/wastesegregation.jpg';
 
 const BlogSection = () => {
   const featuredBlogs = [
@@ -12,7 +13,7 @@ const BlogSection = () => {
       author: 'Rohith S V',
       role: 'Founder',
       date: '2024-12-15',
-      image: '/src/assets/wastesegregation.jpg',
+      image: wastesegregation,
       category: 'Environment & Sustainability',
       readTime: '8 min read'
     },
