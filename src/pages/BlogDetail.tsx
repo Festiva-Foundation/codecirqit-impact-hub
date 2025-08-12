@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import digital from '@/assets/digitalpay.jpg';
-import eductaion from '@/assets/education.jpg';
+import education from '@/assets/education.jpg';
 
 // Enhanced Blog data with more content
 const blogData = {
@@ -250,7 +250,7 @@ const blogData = {
     author: 'Rohith S V',
     role: 'Founder',
     date: '2024-12-05',
-    image: eductaion,
+    image: education,
     category: 'Education & Innovation',
     readTime: '11 min read',
     sections: [
