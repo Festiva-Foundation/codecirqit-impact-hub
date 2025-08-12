@@ -3,6 +3,8 @@ import { Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import wastesegregation from '@/assets/wastesegregation.jpg';
+import digital from '@/assets/digitalpay.jpg';
+import eductaion from '@/assets/education.jpg';
 
 const BlogSection = () => {
   const featuredBlogs = [
@@ -24,7 +26,7 @@ const BlogSection = () => {
       author: 'Priya Sharma',
       role: 'Digital Coordinator',
       date: '2024-12-10',
-      image: '/src/assets/digitalpay.jpg',
+      image: digital,
       category: 'Digital Literacy',
       readTime: '6 min read'
     },
@@ -35,7 +37,7 @@ const BlogSection = () => {
       author: 'Arjun Kumar',
       role: 'Education Lead',
       date: '2024-12-05',
-      image: '/src/assets/education.jpg',
+      image: education,
       category: 'Education & Innovation',
       readTime: '7 min read'
     }
