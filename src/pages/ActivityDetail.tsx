@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import edu from '@/assets/education.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
+import fooddrive from '@/assets/fooddrive.png';
+import cleaningimp from '@/assets/cleaningimp.png';
 
 
 const ActivityDetail = () => {
@@ -75,7 +77,7 @@ const ActivityDetail = () => {
       mode: "Offline",
       description: "Participate in clean-up drives and awareness campaigns in local communities.",
       fullDescription: "Engage in comprehensive cleanliness and hygiene awareness programs as part of the Swachh Bharat initiative. This hands-on project involves organizing community clean-up drives, conducting awareness campaigns about sanitation and hygiene, and implementing sustainable cleanliness practices. Participants will work directly with communities to promote behavioral change, install waste management systems, and create long-term strategies for maintaining clean environments.",
-      image: "/api/placeholder/600/400"
+      image: cleaningimp
     },
     {
       id: 5,
@@ -88,7 +90,7 @@ const ActivityDetail = () => {
       mode: "Offline",
       description: "Develop sustainable food packaging solutions to reduce waste.",
       fullDescription: "Research and develop innovative food preservation and packaging technologies that reduce food waste and environmental impact. This project focuses on creating sustainable packaging materials, developing preservation techniques that extend shelf life, and designing cost-effective solutions for food storage and transportation. Participants will work on biodegradable packaging alternatives, preservation methods suitable for different climates, and distribution strategies that minimize food loss.",
-      image: "/api/placeholder/600/400"
+      image: fooddrive
     }
   ];
 
