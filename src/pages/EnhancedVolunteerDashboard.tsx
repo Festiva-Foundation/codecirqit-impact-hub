@@ -14,6 +14,7 @@ import wastesegregation from '@/assets/wastesegregation.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
 import edu from '@/assets/education.jpg';
 import cleaningimp from '@/assets/cleaningimg.png';
+import fooddrive from '@/assets/fooddrive.png';
 
 const EnhancedVolunteerDashboard = () => {
   const navigate = useNavigate();
@@ -120,7 +121,7 @@ const EnhancedVolunteerDashboard = () => {
       hours: 80,
       mode: "Offline",
       description: "Develop sustainable food packaging solutions to reduce waste.",
-      image: "/api/placeholder/400/250",
+      image: fooddrive,
       progress: 0
     }
   ];
