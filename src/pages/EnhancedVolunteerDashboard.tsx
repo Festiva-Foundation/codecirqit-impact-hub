@@ -13,6 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import wastesegregation from '@/assets/wastesegregation.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
 import edu from '@/assets/education.jpg';
+import cleaningimp from '@/assets/cleaningimg.png';
 
 const EnhancedVolunteerDashboard = () => {
   const navigate = useNavigate();
@@ -106,7 +107,7 @@ const EnhancedVolunteerDashboard = () => {
       hours: 80,
       mode: "Offline",
       description: "Participate in clean-up drives and awareness campaigns in local communities.",
-      image: "/api/placeholder/400/250",
+      image: cleaningimp,
       progress: 0
     },
     {
