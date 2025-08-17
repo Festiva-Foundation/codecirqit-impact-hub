@@ -92,7 +92,7 @@ const EnhancedVolunteerDashboard = () => {
       endDate: "2025-10-15",
       points: 20,
       hours: 80,
-      mode: "Online",
+      mode: "Hybrid (Online + Rural-Friendly Delivery)",
       description: "Create educational tools and resources for underprivileged students.",
       image: edu,
       progress: 45
