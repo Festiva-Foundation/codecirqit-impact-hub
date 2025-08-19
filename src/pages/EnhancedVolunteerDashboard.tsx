@@ -244,7 +244,7 @@ const EnhancedVolunteerDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Completed</p>
+                  <p className="text-sm font-medium text-muted-foreground">In Progress</p>
                   <p className="text-3xl font-bold text-green-600">{completedActivities}</p>
                 </div>
                 <Award className="h-8 w-8 text-green-500" />
@@ -256,7 +256,7 @@ const EnhancedVolunteerDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">In Progress</p>
+                  <p className="text-sm font-medium text-muted-foreground">Completed</p>
                   <p className="text-3xl font-bold text-orange-600">{inProgressActivities}</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-orange-500" />
