@@ -10,7 +10,7 @@ import edu from '@/assets/education.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
 import fooddrive from '@/assets/fooddrive.png';
 import cleaningimp from '@/assets/cleaningimg.png';
-//Added
+//Added changes
 
 
 const ActivityDetail = () => {
