@@ -9,7 +9,7 @@ import wastesegregation from '@/assets/wastesegregation.jpg';
 import edu from '@/assets/education.jpg';
 import digitalpay from '@/assets/digitalpay.jpg';
 import fooddrive from '@/assets/fooddrive.png';
-import cleaningimp from '@/assets/cleaningimp.png';
+import cleaningimp from '@/assets/cleaningimg.png';
 
 
 const ActivityDetail = () => {
