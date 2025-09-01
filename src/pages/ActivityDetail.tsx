@@ -623,7 +623,7 @@ const ActivityDetail = () => {
                 <Button
                   className="w-full"
                   variant="outline"
-                  onClick={() => handleExternalLink('https://drive.google.com')}
+                  onClick={() => handleExternalLink('https://drive.google.com/drive/folders/1UoyPxRsd6awMINO1erucQ1MRIaPJPyc9?usp=sharing')}
                 >
                   <Upload className="mr-2" size={16} />
                   Upload Activity Images
@@ -632,7 +632,7 @@ const ActivityDetail = () => {
                 <Button
                   className="w-full"
                   variant="outline"
-                  onClick={() => handleExternalLink('https://drive.google.com')}
+                  onClick={() => handleExternalLink('https://drive.google.com/drive/folders/1pUbU6861dEGurFupnJNPxHXkYsLO7iLq?usp=sharing')}
                 >
                   <Eye className="mr-2" size={16} />
                   View Sample Report
@@ -641,7 +641,7 @@ const ActivityDetail = () => {
                 <Button
                   className="w-full"
                   variant="outline"
-                  onClick={() => handleExternalLink('https://forms.google.com')}
+                  onClick={() => handleExternalLink('https://forms.gle/KmUfP4E5xF7ANLDw6')}
                 >
                   <FileText className="mr-2" size={16} />
                   Submit Activity Report
