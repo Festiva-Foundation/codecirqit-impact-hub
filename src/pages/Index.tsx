@@ -6,6 +6,7 @@ import GallerySection from '@/components/GallerySection';
 import BlogSection from '@/components/BlogSection';
 import CollaborationsSection from '@/components/CollaborationsSection';
 import FoundersSection from '@/components/FoundersSection';
+import SocialImpactSection from '@/components/SocialImpactSection';
 import ContactSection from '@/components/ContactSection';
 
 import Footer from '@/components/Footer';
@@ -22,6 +23,7 @@ const Index = () => {
         <BlogSection />
         <CollaborationsSection />
         <FoundersSection />
+        <SocialImpactSection />
         <ContactSection />
         
       </main>

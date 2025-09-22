@@ -56,6 +56,7 @@ const Navbar = () => {
     { label: 'Vision', href: '#vision' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Blogs', href: '/blogs' },
+    { label: 'Social Impact Ambassador', href: '#social-impact' },
     { label: 'Volunteer Dashboard', href: '/volunteer-dashboard' },
     { label: 'Get In Touch', href: '#contact' },
   ] : [
@@ -63,6 +64,7 @@ const Navbar = () => {
     { label: 'Vision', href: '#vision' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Blogs', href: '/blogs' },
+    { label: 'Social Impact Ambassador', href: '#social-impact' },
     { label: 'Volunteer With Us', href: '/login' },
     { label: 'Get In Touch', href: '#contact' },
   ];

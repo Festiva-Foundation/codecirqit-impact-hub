@@ -90,7 +90,7 @@ const AboutSection = () => {
           <div className="ngo-card">
             <div className="flex items-start space-x-4">
               <div className="p-3 bg-primary/10 rounded-lg">
-                <sdglogo className="text-primary" size={24} />
+                <img src={sdglogo} alt="SDG Logo" className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-3">Our Approach</h3>
@@ -113,7 +113,6 @@ const AboutSection = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <motion.div
-                      className="p-3 bg-gradient-to-r from-blue-500/10 to-green-500/10 rounded-xl"
                       className="p-3 bg-gradient-to-r from-blue-500/10 to-green-500/10 rounded-xl"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
