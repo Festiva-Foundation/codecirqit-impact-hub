@@ -57,14 +57,14 @@ const MetricsSection = () => {
   const metrics = [
     {
       icon: Activity,
-      number: 100,
+      number: 120,
       suffix: "+",
       label: "CSR Activities Conducted",
       color: "text-orange-500"
     },
     {
       icon: Users,
-      number: 150,
+      number: 350,
       suffix: "+",
       label: "Active Volunteers",
       color: "text-blue-500"
@@ -78,7 +78,7 @@ const MetricsSection = () => {
     },
     {
       icon: Heart,
-      number: 100,
+      number: 150,
       suffix: "+",
       label: "Meals Distributed",
       color: "text-red-500"

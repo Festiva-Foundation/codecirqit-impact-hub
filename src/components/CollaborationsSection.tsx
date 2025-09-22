@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FileText, Award, Handshake, Building } from 'lucide-react';
 import mitLogo from '../assets/mit-logo.jpeg';
-import festivaLogo from '@/assets/festiva-logo.png';
+import festivaLogo1 from '@/assets/festiva-logo-1.png';
 import cybertrinetra from '@/assets/cybertrinetra-logo.png';
 
 const CollaborationsSection = () => {
@@ -15,7 +15,7 @@ const CollaborationsSection = () => {
     {
       name: "Festiva Moments",
       type: "Parent Organization",
-      logo: festivaLogo,
+      logo: festivaLogo1,
       description: "Institutional support and organizational guidance"
     },
     {

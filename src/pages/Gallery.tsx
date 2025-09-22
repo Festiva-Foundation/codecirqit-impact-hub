@@ -12,12 +12,17 @@ import book from '@/assets/dist.jpeg';
 import clean from '@/assets/Clean.jpeg';
 import food3 from '@/assets/food-1 (3).jpeg';
 import educate from '@/assets/educate.jpeg';
+import act_1_pic_1 from '@/assets/act_1_pic_1.jpeg';
+import act_1_pic_2 from '@/assets/act_1_pic_2.jpeg';
+import act_1_pic_3 from '@/assets/act_1_pic_3.jpeg';
+import act_1_pic_4 from '@/assets/act_1_pic_4.jpeg';
+import act_1_pic_5 from '@/assets/act_1_pic_5.jpeg';
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const categories = ['All', 'Food Drive', 'Swachh Bharat', 'Education', 'Social Awareness'];
+  const categories = ['All', 'Food Drive', 'Swachh Bharat', 'Education', 'Social Awareness', 'SayNotoPlastic'];
 
   const galleryImages = [
     {
@@ -57,9 +62,9 @@ const Gallery = () => {
     },
     {
       id: 6,
-      src: clean,
+      src: act_1_pic_5,
       title: 'Environmental Conservation Drive',
-      category: 'Swachh Bharat',
+      category: 'SayNotoPlastic',
       description: 'Beach cleanup and environmental awareness'
     },
     {
@@ -75,6 +80,34 @@ const Gallery = () => {
       title: 'Community Awareness Program',
       category: 'Social Awareness',
       description: 'Educating communities on Food Packaging'
+    },
+    {
+          id: 9,
+          src: act_1_pic_1,
+          title: 'Waste Segregation Awareness Program',
+          category: 'SayNotoPlastic ',
+          description: 'Educating communities on Waste Segregation'
+    },
+    {
+      id: 10,
+      src: act_1_pic_2,
+      title: 'Waste Segregation Awareness Program',
+      category: 'SayNotoPlastic ',
+      description: 'Educating communities on Waste Segregation'
+    },
+    {
+      id: 11,
+      src: act_1_pic_3,
+      title: 'Waste Segregation Awareness Program',
+      category: 'SayNotoPlastic ',
+      description: 'Educating communities on Waste Segregation'
+    },
+    {
+      id: 12,
+      src: act_1_pic_4,
+      title: 'Waste Segregation Awareness Program',
+      category: 'SayNotoPlastic ',
+      description: 'Educating communities on Waste Segregation'
     }
   ];
 
