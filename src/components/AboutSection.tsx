@@ -90,7 +90,7 @@ const AboutSection = () => {
           <div className="ngo-card">
             <div className="flex items-start space-x-4">
               <div className="p-3 bg-primary/10 rounded-lg">
-                <img src={sdglogo} alt="SDG Logo" className="w-6 h-6" />
+                <Handshake className="text-primary" size={24}  />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-3">Our Approach</h3>
@@ -121,7 +121,8 @@ const AboutSection = () => {
                     </motion.div>
                     <div>
                       <h3 className="text-xl font-bold">UN SDG Partner</h3>
-                      <p className="text-sm text-blue-600 font-medium">Act4SDGs Global Campaign</p>
+                      <p className="text-sm text-blue-600 font-medium">Act4SDGs Global Campaign </p>
+
                     </div>
                   </div>
                   <div className="flex space-x-1">

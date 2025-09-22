@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { GraduationCap, MapPin } from 'lucide-react';
+import kavya from '@/assets/Kavya.jpeg';
 
 const SocialImpactSection = () => {
   const ambassadors = [
@@ -8,7 +9,7 @@ const SocialImpactSection = () => {
       id: 1,
       name: "G KAVYA RAO",
       college: "Cambridge Institute of Technology",
-      image: "/api/placeholder/300/300", // You can replace with actual image
+      image: kavya, // You can replace with actual image
       description: "I am a 4th-year B.E. CSE student passionate about coding, problem-solving, and technology. Beyond academics, I support peers in gaining AICTE activity certificates, organize awareness programs, and engage in social causes. Currently serving as a Social Intern with Festiva Foundation, I aim to use technology not just to build systems but to build communities."
     },
     {
