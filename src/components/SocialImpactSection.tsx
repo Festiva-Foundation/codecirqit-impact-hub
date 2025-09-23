@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { GraduationCap, MapPin } from 'lucide-react';
 import kavya from '@/assets/Kavya.jpeg';
+import tejaswini from '@/assets/tejaswini.jpeg';
 
 const SocialImpactSection = () => {
   const ambassadors = [
@@ -14,10 +15,10 @@ const SocialImpactSection = () => {
     },
     {
       id: 2,
-      name: "PRIYA SHARMA",
-      college: "RV College of Engineering",
-      image: "/api/placeholder/300/300", // You can replace with actual image
-      description: "As a final-year student in Electronics Engineering, I believe in the power of technology to create positive social change. Through Festiva Foundation, I've been able to contribute to digital literacy programs and environmental awareness campaigns in rural communities."
+      name: "Naga Tejaswini P",
+      college: "Cambridge Institute of Technology",
+      image: tejaswini, // You can replace with actual image
+      description: "I am a 3rd-year CSE-IOT student who codes with purpose and occasionally caffeinated chaos. I build small systems, support peers, and sneak empathy into tech. Currently social-interning my way through community impact with Festiva Foundation. If it solves problems and brings people together, I’m in."
     },
     {
       id: 3,
