@@ -8,27 +8,29 @@ import CollaborationsSection from '@/components/CollaborationsSection';
 import FoundersSection from '@/components/FoundersSection';
 import SocialImpactSection from '@/components/SocialImpactSection';
 import ContactSection from '@/components/ContactSection';
-
+import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <MetricsSection />
-        <AboutSection />
-        <GallerySection />
-        <BlogSection />
-        <CollaborationsSection />
-        <FoundersSection />
-        <SocialImpactSection />
-        <ContactSection />
-        
-      </main>
-      <Footer />
-    </div>
+    <>
+      <SEO />
+      <div className="min-h-screen">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <MetricsSection />
+          <AboutSection />
+          <GallerySection />
+          <BlogSection />
+          <CollaborationsSection />
+          <FoundersSection />
+          <SocialImpactSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 

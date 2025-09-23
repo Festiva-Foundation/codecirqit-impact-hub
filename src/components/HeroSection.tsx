@@ -82,7 +82,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-4 text-center text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.p
             key={`subtitle-${currentSlide}`}
             initial={{ opacity: 0, y: 30 }}
@@ -98,7 +98,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-4"
           >
             {slides[currentSlide].title}
           </motion.h1>
