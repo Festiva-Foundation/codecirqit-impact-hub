@@ -142,12 +142,12 @@ const SocialImpactSection = () => {
                 onMouseEnter={() => setIsAutoScrolling(false)}
                 onMouseLeave={() => setIsAutoScrolling(true)}
               >
-                {[...ambassadors, ...ambassadors.slice(0, 3)].map((ambassador, index) => {
-                  const actualIndex = index % ambassadors.length;
-                  return (
-                    <motion.div
-                      key={`${ambassador.id}-${index}`}
-                      className="group min-w-[calc(33.333%-1.5rem)] flex-shrink-0"
+                 {[...ambassadors, ...ambassadors.slice(0, 3)].map((ambassador, index) => {
+                   const actualIndex = index % ambassadors.length;
+                   return (
+                     <motion.div
+                       key={`${ambassador.id}-${index}`}
+                       className="group min-w-[calc(100%-2rem)] sm:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.5rem)] flex-shrink-0"
                       initial={{ opacity: 0, y: 50, rotateX: -15 }}
                       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                       transition={{ 
