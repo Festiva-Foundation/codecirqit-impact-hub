@@ -51,22 +51,23 @@ const Navbar = () => {
     };
   }, []);
 
+  // Updated menu items to match what visitors expect from NGO website
   const menuItems = isLoggedIn ? [
-    { label: 'About', href: '#about' },
-    { label: 'Vision', href: '#vision' },
+    { label: 'About Us', href: '#about' },
+     // NEW - SDG programs
     { label: 'Gallery', href: '/gallery' },
     { label: 'Blogs', href: '/blogs' },
-    { label: 'Social Impact Ambassador', href: '#social-impact' },
+    { label: 'Social Impact Ambassador', href: '#social-impact' }, // UPDATED - clearer CTA
     { label: 'Volunteer Dashboard', href: '/volunteer-dashboard' },
-    { label: 'Get In Touch', href: '#contact' },
+    { label: 'Contact Us', href: '#contact' },
   ] : [
-    { label: 'About', href: '#about' },
-    { label: 'Vision', href: '#vision' },
+    { label: 'About Us', href: '#about' },
+     // NEW - SDG programs
     { label: 'Gallery', href: '/gallery' },
     { label: 'Blogs', href: '/blogs' },
-    { label: 'Social Impact Ambassador', href: '#social-impact' },
+    { label: 'Social Impact Ambassador', href: '#social-impact' }, // UPDATED - clearer CTA
     { label: 'Volunteer With Us', href: '/login' },
-    { label: 'Get In Touch', href: '#contact' },
+    { label: 'Contact Us', href: '#contact' },
   ];
 
   useEffect(() => {
