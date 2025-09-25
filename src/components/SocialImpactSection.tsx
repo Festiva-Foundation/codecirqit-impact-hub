@@ -125,118 +125,186 @@ const SocialImpactSection = () => {
             </motion.button>
           </div>
 
-          {/* Scrollable Cards Container */}
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 lg:gap-8 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
-            }}
-            onMouseEnter={() => setIsAutoScrolling(false)}
-            onMouseLeave={() => setIsAutoScrolling(true)}
-          >
-            {ambassadors.map((ambassador, index) => (
-              <motion.div
-                key={ambassador.id}
-                initial={{ opacity: 0, x: 100, rotateY: -20 }}
-                whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
+          {/* 3-Card Carousel Container */}
+          <div className="relative max-w-6xl mx-auto">
+            <div className="overflow-hidden">
+              <motion.div 
+                className="flex gap-8"
+                animate={{ 
+                  x: `${-currentIndex * (100 / 3)}%` 
                 }}
-                viewport={{ once: true }}
-                className="group min-w-[280px] sm:min-w-[320px] flex-shrink-0"
+                transition={{ 
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                  mass: 0.8
+                }}
+                onMouseEnter={() => setIsAutoScrolling(false)}
+                onMouseLeave={() => setIsAutoScrolling(true)}
               >
-                <Card className="h-full overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 transform-gpu perspective-1000">
-                  <CardHeader className="p-0 relative">
-                    <div className="relative overflow-hidden h-48 sm:h-56 md:h-64">
-                      <motion.img
-                        src={ambassador.image}
-                        alt={ambassador.name}
-                        className="w-full h-full object-cover transition-transform duration-700"
-                        whileHover={{ scale: 1.1, rotateZ: 2 }}
-                      />
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        initial={false}
-                        whileHover={{ opacity: 1 }}
-                      />
-                      
-                      {/* 3D Floating Badge */}
-                      <motion.div
-                        className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm shadow-lg"
-                        initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
-                        whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                        transition={{ delay: index * 0.1 + 0.5, type: "spring" }}
-                        whileHover={{ 
-                          scale: 1.1, 
-                          rotateZ: 360,
-                          transition: { duration: 0.5 }
-                        }}
-                      >
-                        Ambassador
-                      </motion.div>
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+                {[...ambassadors, ...ambassadors.slice(0, 3)].map((ambassador, index) => {
+                  const actualIndex = index % ambassadors.length;
+                  return (
                     <motion.div
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      key={`${ambassador.id}-${index}`}
+                      className="group min-w-[calc(33.333%-1.5rem)] flex-shrink-0"
+                      initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: actualIndex * 0.1,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        y: -10, 
+                        rotateY: 5,
+                        transition: { duration: 0.3 }
+                      }}
                     >
-                      <CardTitle className="text-lg sm:text-xl mb-2 text-foreground group-hover:text-primary transition-colors">
-                        {ambassador.name}
-                      </CardTitle>
-                      
-                      <div className="flex items-center space-x-2 mb-3 sm:mb-4 text-muted-foreground">
-                        <GraduationCap size={16} className="text-primary flex-shrink-0" />
-                        <CardDescription className="text-xs sm:text-sm font-medium line-clamp-2">
-                          {ambassador.college}
-                        </CardDescription>
-                      </div>
+                      <Card className="h-full overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 transform-gpu">
+                        <CardHeader className="p-0 relative">
+                          <div className="relative overflow-hidden h-80 md:h-96">
+                            <motion.img
+                              src={ambassador.image}
+                              alt={ambassador.name}
+                              className="w-full h-full object-cover object-center transition-transform duration-700"
+                              whileHover={{ scale: 1.1, rotateZ: 2 }}
+                              style={{
+                                objectPosition: 'center top'
+                              }}
+                            />
+                            <motion.div 
+                              className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                              initial={false}
+                              whileHover={{ opacity: 1 }}
+                            />
+                            
+                            {/* Enhanced 3D Floating Badge */}
+                            <motion.div
+                              className="absolute top-6 right-6 bg-primary/95 text-primary-foreground px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm shadow-xl border border-white/20"
+                              initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
+                              whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
+                              transition={{ delay: actualIndex * 0.1 + 0.5, type: "spring" }}
+                              whileHover={{ 
+                                scale: 1.1, 
+                                rotateZ: 360,
+                                boxShadow: "0 0 30px hsl(var(--primary) / 0.6)",
+                                transition: { duration: 0.5 }
+                              }}
+                            >
+                              Ambassador
+                            </motion.div>
+
+                            {/* Animated Corner Accent */}
+                            <motion.div
+                              className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-primary/30 to-transparent"
+                              style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}
+                              animate={{ 
+                                background: [
+                                  'linear-gradient(135deg, hsl(var(--primary) / 0.3), transparent)',
+                                  'linear-gradient(135deg, hsl(var(--secondary) / 0.3), transparent)',
+                                  'linear-gradient(135deg, hsl(var(--primary) / 0.3), transparent)'
+                                ]
+                              }}
+                              transition={{ duration: 3, repeat: Infinity }}
+                            />
+                          </div>
+                        </CardHeader>
+                        
+                        <CardContent className="p-6 space-y-4">
+                          <motion.div
+                            whileHover={{ x: 8 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <CardTitle className="text-xl md:text-2xl mb-3 text-foreground group-hover:text-primary transition-colors font-bold">
+                              {ambassador.name}
+                            </CardTitle>
+                            
+                            <div className="flex items-center space-x-3 mb-4 text-muted-foreground">
+                              <motion.div
+                                whileHover={{ rotate: 360 }}
+                                transition={{ duration: 0.5 }}
+                              >
+                                <GraduationCap size={20} className="text-primary flex-shrink-0" />
+                              </motion.div>
+                              <CardDescription className="text-sm font-medium">
+                                {ambassador.college}
+                              </CardDescription>
+                            </div>
+                          </motion.div>
+                          
+                          <motion.p 
+                            className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-4 group-hover:line-clamp-6 transition-all duration-500"
+                            whileHover={{ color: "hsl(var(--foreground))" }}
+                          >
+                            {ambassador.description}
+                          </motion.p>
+                          
+                          <motion.div 
+                            className="pt-4 border-t border-border/50"
+                            whileHover={{ borderColor: "hsl(var(--primary))" }}
+                          >
+                            <div className="flex items-center justify-between">
+                              <motion.span 
+                                className="text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full border border-primary/30"
+                                whileHover={{ 
+                                  scale: 1.05, 
+                                  backgroundColor: "hsl(var(--primary))", 
+                                  color: "hsl(var(--primary-foreground))",
+                                  boxShadow: "0 4px 20px hsl(var(--primary) / 0.3)"
+                                }}
+                              >
+                                Impact Leader
+                              </motion.span>
+                              <div className="flex space-x-2">
+                                <motion.div 
+                                  className="w-3 h-3 bg-primary rounded-full"
+                                  animate={{ 
+                                    scale: [1, 1.3, 1],
+                                    boxShadow: [
+                                      '0 0 0 0 hsl(var(--primary) / 0.4)',
+                                      '0 0 0 6px hsl(var(--primary) / 0)',
+                                      '0 0 0 0 hsl(var(--primary) / 0)'
+                                    ]
+                                  }}
+                                  transition={{ duration: 2, repeat: Infinity }}
+                                />
+                                <motion.div 
+                                  className="w-3 h-3 bg-secondary rounded-full"
+                                  animate={{ 
+                                    scale: [1, 1.3, 1],
+                                    boxShadow: [
+                                      '0 0 0 0 hsl(var(--secondary) / 0.4)',
+                                      '0 0 0 6px hsl(var(--secondary) / 0)',
+                                      '0 0 0 0 hsl(var(--secondary) / 0)'
+                                    ]
+                                  }}
+                                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                                />
+                                <motion.div 
+                                  className="w-3 h-3 bg-accent rounded-full"
+                                  animate={{ 
+                                    scale: [1, 1.3, 1],
+                                    boxShadow: [
+                                      '0 0 0 0 hsl(var(--accent) / 0.4)',
+                                      '0 0 0 6px hsl(var(--accent) / 0)',
+                                      '0 0 0 0 hsl(var(--accent) / 0)'
+                                    ]
+                                  }}
+                                  transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+                                />
+                              </div>
+                            </div>
+                          </motion.div>
+                        </CardContent>
+                      </Card>
                     </motion.div>
-                    
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed text-justify line-clamp-4 group-hover:line-clamp-none transition-all duration-300">
-                      {ambassador.description}
-                    </p>
-                    
-                    <motion.div 
-                      className="pt-3 sm:pt-4 border-t border-border/50"
-                      whileHover={{ borderColor: "hsl(var(--primary))" }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <motion.span 
-                          className="text-xs font-medium text-primary bg-primary/10 px-2 sm:px-3 py-1 rounded-full border border-primary/20"
-                          whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
-                        >
-                          Impact Leader
-                        </motion.span>
-                        <div className="flex space-x-1">
-                          <motion.div 
-                            className="w-2 h-2 bg-primary rounded-full"
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                          <motion.div 
-                            className="w-2 h-2 bg-secondary rounded-full"
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
-                          />
-                          <motion.div 
-                            className="w-2 h-2 bg-accent rounded-full"
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
-                          />
-                        </div>
-                      </div>
-                    </motion.div>
-                  </CardContent>
-                </Card>
+                  );
+                })}
               </motion.div>
-            ))}
+            </div>
           </div>
 
           {/* Mobile scroll indicators */}
