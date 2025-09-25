@@ -6,7 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import kavya from '@/assets/Kavya.jpeg';
 import tejaswini from '@/assets/tejaswini.jpeg';
-import shravanthi from '@/assets/shravanthi.jpeg'
+import shravanthi from '@/assets/shravanthi.jpeg';
+import sdgLogo from "@/assets/SDG Wheel_Transparent_WEB.png";
+
 
 const SocialImpactSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -372,7 +374,7 @@ const SocialImpactSection = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <div className="flex items-center gap-3">
                   <img 
-                    src="/src/assets/SDG Wheel_Transparent_WEB.png" 
+                    src={sdgLogo}
                     alt="UN SDG Logo" 
                     className="w-12 h-12 object-contain"
                   />
