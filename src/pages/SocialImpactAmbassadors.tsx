@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, ArrowLeft, Mail, Linkedin } from 'lucide-react';
+import { GraduationCap, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import kavya from '@/assets/Kavya.jpeg';
 import tejaswini from '@/assets/tejaswini.jpeg';
+import shravanthi from '@/assets/shravanthi.jpeg'
 
 const SocialImpactAmbassadors = () => {
   const ambassadors = [
@@ -17,15 +18,7 @@ const SocialImpactAmbassadors = () => {
       college: "Cambridge Institute of Technology",
       year: "4th Year B.E. CSE",
       image: kavya,
-      description: "I am a 4th-year B.E. CSE student passionate about coding, problem-solving, and technology. Beyond academics, I support peers in gaining AICTE activity certificates, organize awareness programs, and engage in social causes. Currently serving as a Social Intern with Festiva Foundation, I aim to use technology not just to build systems but to build communities.",
-      achievements: [
-        "Led AICTE certificate programs for 200+ students",
-        "Organized 15+ awareness campaigns",
-        "Mentored junior students in tech skills"
-      ],
-      skills: ["Full Stack Development", "Community Leadership", "Event Management"],
-      email: "kavya.rao@example.com",
-      linkedin: "https://linkedin.com/in/kavya-rao"
+      description: "I am a 4th-year B.E. CSE student passionate about coding, problem-solving, and technology. Beyond academics, I support peers in gaining AICTE activity certificates, organize awareness programs, and engage in social causes. Currently serving as a Social Intern with Festiva Foundation, I aim to use technology not just to build systems but to build communities."
     },
     {
       id: 2,
@@ -33,79 +26,15 @@ const SocialImpactAmbassadors = () => {
       college: "Cambridge Institute of Technology",
       year: "3rd Year CSE-IOT",
       image: tejaswini,
-      description: "I am a 3rd-year CSE-IOT student who codes with purpose and occasionally caffeinated chaos. I build small systems, support peers, and sneak empathy into tech. Currently social-interning my way through community impact with Festiva Foundation. If it solves problems and brings people together, I'm in.",
-      achievements: [
-        "Developed IoT solutions for social good",
-        "Conducted tech workshops for underprivileged students",
-        "Contributed to digital literacy programs"
-      ],
-      skills: ["IoT Development", "Community Outreach", "Technical Training"],
-      email: "tejaswini.p@example.com",
-      linkedin: "https://linkedin.com/in/tejaswini-p"
+      description: "I am a 3rd-year CSE-IOT student who codes with purpose and occasionally caffeinated chaos. I build small systems, support peers, and sneak empathy into tech. Currently social-interning my way through community impact with Festiva Foundation. If it solves problems and brings people together, I'm in."
     },
     {
       id: 3,
-      name: "ARJUN KRISHNA",
-      college: "PES University",
-      year: "Final Year Computer Science",
-      image: "/api/placeholder/400/400",
-      description: "Being part of Festiva Foundation has allowed me to combine my passion for software development with social service. I've led multiple initiatives focused on education technology and skill development for underprivileged youth.",
-      achievements: [
-        "Built educational apps for rural schools",
-        "Trained 100+ students in programming",
-        "Led 5+ community tech projects"
-      ],
-      skills: ["Software Architecture", "Education Technology", "Team Leadership"],
-      email: "arjun.krishna@example.com",
-      linkedin: "https://linkedin.com/in/arjun-krishna"
-    },
-    {
-      id: 4,
-      name: "PRIYA SHARMA",
-      college: "RV College of Engineering",
-      year: "Final Year Electronics",
-      image: "/api/placeholder/400/400",
-      description: "As a final-year student in Electronics Engineering, I believe in the power of technology to create positive social change. Through Festiva Foundation, I've been able to contribute to digital literacy programs and environmental awareness campaigns in rural communities.",
-      achievements: [
-        "Installed solar systems in 10+ villages",
-        "Conducted electronics workshops",
-        "Led environmental awareness campaigns"
-      ],
-      skills: ["Electronics Design", "Renewable Energy", "Rural Development"],
-      email: "priya.sharma@example.com",
-      linkedin: "https://linkedin.com/in/priya-sharma"
-    },
-    {
-      id: 5,
-      name: "ROHIT KUMAR",
-      college: "National Institute of Technology",
-      year: "3rd Year Mechanical Engineering",
-      image: "/api/placeholder/400/400",
-      description: "Engineering solutions for social problems is my passion. Through Festiva Foundation, I've worked on sustainable development projects and helped implement mechanical solutions for water purification in rural areas.",
-      achievements: [
-        "Designed water filtration systems",
-        "Led sustainable development projects",
-        "Mentored 50+ engineering students"
-      ],
-      skills: ["Mechanical Design", "Sustainable Technology", "Project Management"],
-      email: "rohit.kumar@example.com",
-      linkedin: "https://linkedin.com/in/rohit-kumar"
-    },
-    {
-      id: 6,
-      name: "ANANYA SINGH",
-      college: "Indian Institute of Science",
-      year: "PhD Research Scholar",
-      image: "/api/placeholder/400/400",
-      description: "My research in biotechnology drives my commitment to social impact. I work with Festiva Foundation to bring scientific awareness to communities and bridge the gap between research and real-world applications.",
-      achievements: [
-        "Published 10+ research papers",
-        "Conducted science outreach programs",
-        "Developed health awareness initiatives"
-      ],
-      skills: ["Research & Development", "Science Communication", "Health Advocacy"],
-      email: "ananya.singh@example.com",
-      linkedin: "https://linkedin.com/in/ananya-singh"
+      name: "Durga Shravanthi P",
+      college: "Sai Vidya Institute of Technology",
+      year: "Final Year AI ML ",
+      image: shravanthi,
+      description: "Being part of Festiva Foundation has allowed me to combine my passion for software development with social service. I've led multiple initiatives focused on education technology and skill development for underprivileged youth."
     }
   ];
 
@@ -114,20 +43,42 @@ const SocialImpactAmbassadors = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.2
       }
     }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -15 },
+    hidden: {
+      opacity: 0,
+      y: 100,
+      rotateX: -30,
+      rotateY: -15,
+      scale: 0.8
+    },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
+      rotateY: 0,
+      scale: 1,
       transition: {
-        duration: 0.6
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+        damping: 15
       }
+    }
+  };
+
+  const handleBecomeAmbassador = () => {
+    // Navigate to home page and then scroll to contact section
+    const element = document.getElementById('get-in-touch');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // If on different page, navigate to home with hash
+      window.location.href = '/#get-in-touch';
     }
   };
 
@@ -139,10 +90,10 @@ const SocialImpactAmbassadors = () => {
         keywords="social impact ambassadors, student volunteers, engineering students, community service, Karnataka colleges"
         url="https://festivafoundation.org/social-impact-ambassadors"
       />
-      
+
       <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <Navbar />
-        
+
         <main className="pt-20 pb-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
@@ -159,7 +110,7 @@ const SocialImpactAmbassadors = () => {
                 <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
                 <span>Back to Home</span>
               </Link>
-              
+
               <motion.h1
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -168,7 +119,7 @@ const SocialImpactAmbassadors = () => {
               >
                 Social Impact <span className="text-gradient">Ambassadors</span>
               </motion.h1>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -186,102 +137,149 @@ const SocialImpactAmbassadors = () => {
               initial="hidden"
               animate="visible"
               className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+              style={{ perspective: '1000px' }}
             >
               {ambassadors.map((ambassador, index) => (
                 <motion.div
                   key={ambassador.id}
                   variants={cardVariants}
-                  whileHover={{ 
-                    y: -10, 
-                    scale: 1.02,
-                    rotateY: 5,
-                    transition: { duration: 0.3 }
+                  whileHover={{
+                    y: -20,
+                    scale: 1.05,
+                    rotateX: 10,
+                    rotateY: 10,
+                    z: 50,
+                    transition: {
+                      duration: 0.4,
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20
+                    }
                   }}
-                  className="group perspective-1000"
+                  whileTap={{
+                    scale: 0.95,
+                    rotateX: -5,
+                    transition: { duration: 0.1 }
+                  }}
+                  className="group cursor-pointer"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
                 >
-                  <Card className="h-full overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 transition-all duration-500 transform-gpu">
+                  <Card className="h-full overflow-hidden bg-card/90 backdrop-blur-lg border-2 border-transparent hover:border-primary/30 transition-all duration-500 transform-gpu shadow-lg hover:shadow-2xl hover:shadow-primary/20">
                     <CardHeader className="p-0 relative">
                       <div className="relative overflow-hidden h-64 sm:h-48 md:h-64">
                         <motion.img
                           src={ambassador.image}
                           alt={ambassador.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          whileHover={{ scale: 1.1 }}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115"
+                          whileHover={{
+                            scale: 1.15,
+                            rotateZ: 2,
+                            transition: { duration: 0.6 }
+                          }}
+                          style={{ transformStyle: 'preserve-3d' }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        {/* Floating Action Buttons */}
-                        <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                          <motion.a
-                            href={`mailto:${ambassador.email}`}
-                            className="p-2 bg-white/90 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
-                            whileHover={{ scale: 1.1, rotate: 360 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Mail size={16} />
-                          </motion.a>
-                          <motion.a
-                            href={ambassador.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 bg-white/90 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
-                            whileHover={{ scale: 1.1, rotate: 360 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Linkedin size={16} />
-                          </motion.a>
-                        </div>
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          initial={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                        />
 
-                        {/* Year Badge */}
-                        <div className="absolute bottom-4 left-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
+                        {/* Floating Year Badge with 3D effect */}
+                        <motion.div
+                          className="absolute bottom-4 left-4 bg-primary/95 text-primary-foreground px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-lg"
+                          whileHover={{
+                            scale: 1.1,
+                            rotateX: 15,
+                            z: 20,
+                            transition: { duration: 0.3 }
+                          }}
+                          style={{ transformStyle: 'preserve-3d' }}
+                        >
                           {ambassador.year}
+                        </motion.div>
+
+                        {/* Floating particles effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                          {[...Array(6)].map((_, i) => (
+                            <motion.div
+                              key={i}
+                              className="absolute w-2 h-2 bg-primary/40 rounded-full"
+                              style={{
+                                left: `${20 + i * 15}%`,
+                                top: `${30 + (i % 3) * 20}%`,
+                              }}
+                              animate={{
+                                y: [-10, -30, -10],
+                                opacity: [0, 1, 0],
+                                scale: [0.5, 1, 0.5],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                delay: i * 0.3,
+                              }}
+                            />
+                          ))}
                         </div>
                       </div>
                     </CardHeader>
-                    
-                    <CardContent className="p-6 space-y-4">
-                      <div>
-                        <CardTitle className="text-xl mb-2 text-foreground group-hover:text-primary transition-colors">
-                          {ambassador.name}
-                        </CardTitle>
-                        
-                        <div className="flex items-center space-x-2 mb-4 text-muted-foreground">
-                          <GraduationCap size={16} className="text-primary flex-shrink-0" />
+
+                    <CardContent className="p-6 space-y-4 relative">
+                      {/* Animated background glow */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-lg"
+                        whileHover={{ opacity: 1 }}
+                      />
+
+                      <div className="relative z-10">
+                        <motion.div
+                          whileHover={{ x: 5, transition: { duration: 0.3 } }}
+                        >
+                          <CardTitle className="text-xl mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                            {ambassador.name}
+                          </CardTitle>
+                        </motion.div>
+
+                        <motion.div
+                          className="flex items-center space-x-2 mb-4 text-muted-foreground"
+                          whileHover={{ x: 3, transition: { duration: 0.3 } }}
+                        >
+                          <motion.div
+                            whileHover={{
+                              rotateY: 360,
+                              transition: { duration: 0.6 }
+                            }}
+                          >
+                            <GraduationCap size={16} className="text-primary flex-shrink-0" />
+                          </motion.div>
                           <CardDescription className="text-sm font-medium">
                             {ambassador.college}
                           </CardDescription>
-                        </div>
+                        </motion.div>
                       </div>
-                      
-                      <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-4">
+
+                      <motion.p
+                        className="text-sm text-muted-foreground leading-relaxed text-justify relative z-10"
+                        whileHover={{
+                          scale: 1.02,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
                         {ambassador.description}
-                      </p>
+                      </motion.p>
 
-                      {/* Skills */}
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {ambassador.skills.slice(0, 3).map((skill, skillIndex) => (
-                          <span
-                            key={skillIndex}
-                            className="text-xs bg-secondary/50 text-secondary-foreground px-2 py-1 rounded-full border"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Achievement Count */}
-                      <div className="pt-4 border-t border-border/50">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                            {ambassador.achievements.length} Key Achievements
-                          </span>
-                          <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse delay-100"></div>
-                            <div className="w-2 h-2 bg-accent rounded-full animate-pulse delay-200"></div>
-                          </div>
-                        </div>
-                      </div>
+                      {/* Animated border effect */}
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{
+                          scaleX: 1,
+                          transition: { duration: 0.6 }
+                        }}
+                      />
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -290,33 +288,97 @@ const SocialImpactAmbassadors = () => {
 
             {/* Call to Action */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-center mt-16 p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-border/20"
+              initial={{ opacity: 0, y: 50, rotateX: -20 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.8,
+                type: "spring",
+                stiffness: 100
+              }}
+              whileHover={{
+                scale: 1.02,
+                rotateX: 5,
+                transition: { duration: 0.3 }
+              }}
+              className="text-center mt-16 p-8 bg-card/60 backdrop-blur-lg rounded-3xl border border-border/30 shadow-xl hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500"
+              style={{ transformStyle: 'preserve-3d' }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              <motion.h3
+                className="text-2xl md:text-3xl font-bold mb-4"
+                whileHover={{
+                  scale: 1.05,
+                  textShadow: "0 0 20px rgba(var(--primary), 0.5)",
+                  transition: { duration: 0.3 }
+                }}
+              >
                 Ready to Make an Impact?
-              </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              </motion.h3>
+              <motion.p
+                className="text-muted-foreground mb-6 max-w-2xl mx-auto"
+                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              >
                 Join our growing community of Social Impact Ambassadors and help build a better tomorrow through technology and service.
-              </p>
+              </motion.p>
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{
+                  scale: 1.1,
+                  rotateX: 10,
+                  rotateY: 5,
+                  z: 20
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  rotateX: -5,
+                  transition: { duration: 0.1 }
+                }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 transform-gpu"
+                  onClick={handleBecomeAmbassador}
                 >
-                  Become an Ambassador
+                  <motion.span
+                    whileHover={{
+                      scale: 1.1,
+                      transition: { duration: 0.2 }
+                    }}
+                  >
+                    Become an Ambassador
+                  </motion.span>
                 </Button>
               </motion.div>
+
+              {/* Floating orbs around CTA */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(4)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm"
+                    style={{
+                      left: `${25 + i * 20}%`,
+                      top: `${20 + (i % 2) * 60}%`,
+                    }}
+                    animate={{
+                      y: [-20, 20, -20],
+                      x: [-10, 10, -10],
+                      opacity: [0.3, 0.8, 0.3],
+                      scale: [0.8, 1.2, 0.8],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      delay: i * 0.8,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
             </motion.div>
           </div>
         </main>
-        
+
         <Footer />
       </div>
     </>
