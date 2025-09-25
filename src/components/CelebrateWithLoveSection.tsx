@@ -59,7 +59,7 @@ const CelebrateWithLoveSection = () => {
           </motion.div>
 
           <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -67,16 +67,19 @@ const CelebrateWithLoveSection = () => {
             Celebrate Your Special Day with <span className="text-gradient bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent">Love</span> 💝
           </motion.h2>
           
-          <motion.p 
-            className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4"
+          <motion.div
+            className="max-w-4xl mx-auto space-y-4 px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Instead of just a party, make your birthday, anniversary, or any milestone truly meaningful!
-            <br className="hidden sm:block" />
-            Donate to support our initiatives and spread smiles.
-          </motion.p>
+            <p className="text-lg sm:text-xl text-foreground font-semibold">
+              Instead of just a party, make your birthday, anniversary, or any milestone truly meaningful!
+            </p>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Donate to support our initiatives and spread smiles.
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Main Content Card */}
@@ -88,11 +91,11 @@ const CelebrateWithLoveSection = () => {
           className="max-w-4xl mx-auto"
         >
           <Card className="overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-rose-200/50 dark:hover:border-rose-800/50 transition-all duration-500 shadow-xl hover:shadow-2xl">
-            <CardHeader className="bg-gradient-to-r from-rose-500/10 via-pink-500/10 to-purple-500/10 border-b border-border/20">
-              <CardTitle className="text-xl sm:text-2xl text-center font-bold text-foreground">
+            <CardHeader className="bg-gradient-to-r from-rose-500/10 via-pink-500/10 to-purple-500/10 border-b border-border/20 text-center">
+              <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
                 Every donation comes with a personalized certificate of gratitude
               </CardTitle>
-              <CardDescription className="text-center text-base sm:text-lg">
+              <CardDescription className="text-base sm:text-lg lg:text-xl font-medium text-muted-foreground">
                 — a memory of love that lasts forever.
               </CardDescription>
             </CardHeader>
