@@ -15,7 +15,7 @@ const SEO = ({
   description = "Join Festiva Foundation, a social initiative in collaboration with MIT NGO. 100+ CSR activities, 150+ volunteers, 1000+ meals distributed. Structured volunteering programs for socially responsible engineers.",
   keywords = "NGO, volunteering, social impact, CSR activities, community service, Karnataka, MIT NGO, social responsibility, humanitarian work, charity",
   image = "/hero-main.jpg",
-  url = "https://festivafoundation.org",
+  url = "https://foundation.festivamoments.co.in",
   type = "website",
   schemaData
 }: SEOProps) => {
