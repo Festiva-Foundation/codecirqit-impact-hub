@@ -59,7 +59,7 @@ const Navbar = () => {
     { label: 'Blogs', href: '/blogs' },
     { label: 'Social Impact Ambassador', href: '#social-impact' }, // UPDATED - clearer CTA
     { label: 'Volunteer Dashboard', href: '/volunteer-dashboard' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Get In Touch', href: '#contact' },
   ] : [
     { label: 'About Us', href: '#about' },
      // NEW - SDG programs
@@ -67,7 +67,7 @@ const Navbar = () => {
     { label: 'Blogs', href: '/blogs' },
     { label: 'Social Impact Ambassador', href: '#social-impact' }, // UPDATED - clearer CTA
     { label: 'Volunteer With Us', href: '/login' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Get In Touch', href: '#contact' },
   ];
 
   useEffect(() => {
