@@ -103,6 +103,7 @@ const AboutSection = () => {
             </div>
           </div>
 
+
             <motion.div
               className="ngo-card relative overflow-hidden group hover:shadow-2xl transition-all duration-500"
               whileHover={{ scale: 1.02, y: -5 }}
@@ -120,6 +121,7 @@ const AboutSection = () => {
                       <Globe className="text-transparent bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text" size={28} />
                     </motion.div>
                     <div>
+
                       <h3 className="text-xl font-bold">UN SDG Partner</h3>
                       <p className="text-sm text-blue-600 font-medium">Act4SDGs Global Campaign </p>
 
@@ -136,6 +138,7 @@ const AboutSection = () => {
                   Our initiatives align with UN Sustainable Development Goals, giving volunteers
                   internationally recognized certificates for AICTE points, scholarships, and global opportunities.
                 </p>
+
 
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   <div className="bg-blue-50 dark:bg-blue-950/20 p-3 rounded-lg text-center">

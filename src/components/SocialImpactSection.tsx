@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 import kavya from '@/assets/Kavya.jpeg';
 import tejaswini from '@/assets/tejaswini.jpeg';
 import shravanthi from '@/assets/shravanthi.jpeg';
+import asha from '@/assets/asha.jpeg';
 import sdgLogo from "@/assets/SDG Wheel_Transparent_WEB.png";
+import harsha from "@/assets/harsha.jpeg";
+import rohitspoc from "@/assets/rohit_spoc.jpeg";
 
 
 const SocialImpactSection = () => {
@@ -37,6 +40,28 @@ const SocialImpactSection = () => {
       image: shravanthi,
       description: "I am Durga Shravanthi P, a final-year CSE - AIML student at SVIT and President of the NSS Cell. I have organized health camps, cleanliness drives, and awareness programs with 50+ volunteers, focusing on community service. Passionate about social work and leadership, I aim to create a positive impact through both technology and volunteering."
     },
+    {
+      id: 4,
+      name: "Asha Sai T K",
+      college: "Bangalore Technological Institute",
+      image: asha,
+      description: "Hi, I’m Asha Sai T K  a 4th-year B.E. CSE student passionate about coding, problem-solving, and technology. Beyond academics, I support peers in gaining AICTE activity certificates, organize awareness programs, and actively engage in social causes. Currently serving as a Social Intern with Festiva Foundation, I aspire to use technology not just to build systems, but to build communities."
+    },
+    {
+      id: 5,
+      name: "K Harshavardhan",
+      college: "Sai Vidya Institute of Technology",
+      image: harsha,
+      description: "I’m K Harshavardhan, a final-year CSE - AIML student at SVIT and currently serving as the Technical Head of the NSS Cell. In this role, I have actively contributed to planning and executing several community-driven initiatives, including health camps, cleanliness drives, and awareness programs, supported by a team of over 50 volunteers. With a strong interest in technology and social impact, I aspire to use my technical skills to develop innovative solutions that uplift communities and promote sustainable change."
+    },
+    {
+      id: 6,
+      name: "Rohit D",
+      college: "Bangalore Technological Institute",
+      image: rohitspoc,
+      description: "Hi, I’m Rohit D, a final-year B.E. student in Electronics and Communication Engineering with a strong passion for coding, technology, and creative problem-solving. Alongside my studies, I assist fellow students in completing AICTE activities, lead awareness initiatives, and take part in various social impact programs. As a Social Intern at Festiva Foundation, my goal is to harness technology not only to create innovative solutions but also to strengthen and uplift communities."
+    }
+
   ];
 
   // Auto-scroll functionality
