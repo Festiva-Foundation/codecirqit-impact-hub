@@ -135,8 +135,8 @@ const SocialImpactSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* 3-Card Carousel Layout */}
-        <div className="relative max-w-7xl mx-auto">
+        {/* Desktop: 3-Card Carousel Layout */}
+        <div className="hidden md:block relative max-w-7xl mx-auto">
           {/* Navigation Buttons */}
           <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none z-20">
             <motion.button
@@ -204,22 +204,6 @@ const SocialImpactSection = () => {
                         initial={false}
                         whileHover={{ opacity: 1 }}
                       />
-
-                      {/* Enhanced 3D Floating Badge */}
-                      <motion.div
-                        className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-sm shadow-lg border border-white/20"
-                        initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
-                        animate={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                        transition={{ delay: index * 0.1 + 0.5, type: "spring" }}
-                        whileHover={{
-                          scale: 1.1,
-                          rotateZ: 360,
-                          boxShadow: "0 0 25px hsl(var(--primary) / 0.5)",
-                          transition: { duration: 0.4 }
-                        }}
-                      >
-                        Social Impact Ambassador
-                      </motion.div>
                     </div>
                   </CardHeader>
 
@@ -330,6 +314,64 @@ const SocialImpactSection = () => {
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
               />
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: Static Grid - No Animation */}
+        <div className="md:hidden max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-6">
+            {ambassadors.slice(0, 3).map((ambassador, index) => (
+              <motion.div
+                key={ambassador.id}
+                className="group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full overflow-hidden bg-card/90 backdrop-blur-sm border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-xl">
+                  <CardHeader className="p-0 relative">
+                    <div className="relative overflow-hidden h-64">
+                      <img
+                        src={ambassador.image}
+                        alt={ambassador.name}
+                        className="w-full h-full object-cover"
+                        style={{
+                          objectPosition: 'center center',
+                          objectFit: 'cover'
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    </div>
+                  </CardHeader>
+
+                  <CardContent className="p-4 space-y-3">
+                    <CardTitle className="text-lg mb-2 text-foreground font-bold">
+                      {ambassador.name}
+                    </CardTitle>
+
+                    <div className="flex items-center space-x-2 mb-3 text-muted-foreground">
+                      <GraduationCap size={16} className="text-primary flex-shrink-0" />
+                      <CardDescription className="text-sm font-medium">
+                        {ambassador.college}
+                      </CardDescription>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                      {ambassador.description}
+                    </p>
+
+                    <div className="pt-3 border-t border-border/50">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/30">
+                          Impact Leader
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
