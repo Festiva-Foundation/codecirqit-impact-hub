@@ -17,6 +17,8 @@ import act_1_pic_2 from '@/assets/act_1_pic_2.jpeg';
 import act_1_pic_3 from '@/assets/act_1_pic_3.jpeg';
 import act_1_pic_4 from '@/assets/act_1_pic_4.jpeg';
 import act_1_pic_5 from '@/assets/act_1_pic_5.jpeg';
+import bit_1 from "@/assets/bti_1.jpeg";
+
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -107,6 +109,13 @@ const Gallery = () => {
       src: act_1_pic_4,
       title: 'Waste Segregation Awareness Program',
       category: 'SayNotoPlastic ',
+      description: 'Educating communities on Waste Segregation'
+    },
+    {
+      id: 13,
+      src: bit_1,
+      title: 'Waste Segregation Awareness Program',
+      category: 'SayNotoPlastic',
       description: 'Educating communities on Waste Segregation'
     }
   ];

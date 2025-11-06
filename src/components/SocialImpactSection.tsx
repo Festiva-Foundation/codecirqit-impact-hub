@@ -11,7 +11,7 @@ import asha from '@/assets/asha.jpeg';
 import sdgLogo from "@/assets/SDG Wheel_Transparent_WEB.png";
 import harsha from "@/assets/Harsha.jpeg";
 import rohitspoc from "@/assets/rohit_spoc.jpeg";
-
+import prajwal from "@/assets/prajwal.jpeg";
 
 const SocialImpactSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,7 +45,7 @@ const SocialImpactSection = () => {
       name: "Asha Sai T K",
       college: "Bangalore Technological Institute",
       image: asha,
-      description: "Hi, I’m Asha Sai T K  a 4th-year B.E. CSE student passionate about coding, problem-solving, and technology. Beyond academics, I support peers in gaining AICTE activity certificates, organize awareness programs, and actively engage in social causes. Currently serving as a Social Intern with Festiva Foundation, I aspire to use technology not just to build systems, but to build communities."
+      description: "I’m Asha Sai T K  a 4th-year B.E. CSE student passionate about coding, problem-solving, and technology. Beyond academics, I support peers in gaining AICTE activity certificates, organize awareness programs, and actively engage in social causes. Currently serving as a Social Intern with Festiva Foundation, I aspire to use technology not just to build systems, but to build communities."
     },
     {
       id: 5,
@@ -59,7 +59,14 @@ const SocialImpactSection = () => {
       name: "Rohit D",
       college: "Bangalore Technological Institute",
       image: rohitspoc,
-      description: "Hi, I’m Rohit D, a final-year B.E. student in Electronics and Communication Engineering with a strong passion for coding, technology, and creative problem-solving. Alongside my studies, I assist fellow students in completing AICTE activities, lead awareness initiatives, and take part in various social impact programs. As a Social Intern at Festiva Foundation, my goal is to harness technology not only to create innovative solutions but also to strengthen and uplift communities."
+      description: "I’m Rohit D, a final-year B.E. student in Electronics and Communication Engineering with a strong passion for coding, technology, and creative problem-solving. Alongside my studies, I assist fellow students in completing AICTE activities, lead awareness initiatives, and take part in various social impact programs. As a Social Intern at Festiva Foundation, my goal is to harness technology not only to create innovative solutions but also to strengthen and uplift communities."
+    },
+    {
+      id: 7,
+      name: "Prajwal Hoysal Kumar P K",
+      college: "Bangalore Technological Institute",
+      image: prajwal,
+      description: "I’m Prajwal Hoysal Kumar P K, currently pursuing my Bachelor’s degree in Engineering and presently in my final year. I’m a passionate learner with a strong interest in technology and software development. Over the course of my studies, I’ve developed a solid foundation in programming, problem-solving, and system design. My goal is to become a Software Development Engineer (SDE) in the near future, where I can apply my skills to build impactful and innovative solutions. I believe in continuous learning, teamwork, and using technology to bring positive change to society, which aligns perfectly with the values and mission of this NGO."
     }
 
   ];
