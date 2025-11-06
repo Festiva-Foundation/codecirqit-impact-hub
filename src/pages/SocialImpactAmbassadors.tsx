@@ -10,7 +10,7 @@ import kavya from '@/assets/Kavya.jpeg';
 import tejaswini from '@/assets/tejaswini.jpeg';
 import shravanthi from '@/assets/shravanthi.jpeg';
 import asha from '@/assets/asha.jpeg';
-import harsha from '@/assets/harsha.jpeg';
+import harsha from '@/assets/Harsha.jpeg';
 import rohitspoc from "@/assets/rohit_spoc.jpeg";
 //harsha image issue fix
 

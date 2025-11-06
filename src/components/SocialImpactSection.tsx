@@ -9,7 +9,7 @@ import tejaswini from '@/assets/tejaswini.jpeg';
 import shravanthi from '@/assets/shravanthi.jpeg';
 import asha from '@/assets/asha.jpeg';
 import sdgLogo from "@/assets/SDG Wheel_Transparent_WEB.png";
-import harsha from "@/assets/harsha.jpeg";
+import harsha from "@/assets/Harsha.jpeg";
 import rohitspoc from "@/assets/rohit_spoc.jpeg";
 
 
