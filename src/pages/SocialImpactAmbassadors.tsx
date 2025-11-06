@@ -12,6 +12,7 @@ import shravanthi from '@/assets/shravanthi.jpeg';
 import asha from '@/assets/asha.jpeg';
 import harsha from '@/assets/harsha.jpeg';
 import rohitspoc from "@/assets/rohit_spoc.jpeg";
+//harsha image issue fix
 
 const SocialImpactAmbassadors = () => {
   const ambassadors = [
