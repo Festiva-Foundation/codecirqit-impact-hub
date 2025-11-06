@@ -51,18 +51,18 @@ const FoundersSection = () => {
   };
 
   const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }),
-    center: {
-      x: 0,
-      opacity: 1
+    enter: {
+      opacity: 0,
+      scale: 0.8
     },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+    center: {
+      opacity: 1,
+      scale: 1
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8
+    }
   };
 
   return (
@@ -112,21 +112,21 @@ const FoundersSection = () => {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 }
+                  duration: 0.5,
+                  ease: "easeInOut"
                 }}
                 className="ngo-card"
               >
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
                   {/* Founder Image */}
                   <div className="text-center md:text-left order-1 md:order-1">
-                    <div className="relative inline-block w-full">
+                    <div className="relative inline-block w-full max-w-[320px] mx-auto md:max-w-none">
                       <img
                         src={founders[currentIndex].image}
                         alt={founders[currentIndex].name}
-                        className="w-full max-w-[280px] md:max-w-none h-[320px] md:h-[400px] rounded-xl mx-auto object-cover border-4 border-primary/20"
+                        className="w-full h-[280px] sm:h-[320px] md:h-[400px] rounded-xl object-cover border-4 border-primary/20 shadow-xl"
                       />
-                      <Quote className="text-primary/30 absolute -top-2 -right-2 md:-top-4 md:-right-4" size={40} />
+                      <Quote className="text-primary/30 absolute -top-2 -right-2 md:-top-4 md:-right-4" size={32} />
                     </div>
                   </div>
                   

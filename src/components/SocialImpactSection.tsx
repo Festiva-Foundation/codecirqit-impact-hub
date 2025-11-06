@@ -318,21 +318,21 @@ const SocialImpactSection = () => {
           </div>
         </div>
 
-        {/* Mobile: Static Grid - No Animation */}
+        {/* Mobile: Show All Ambassadors in Simple Grid */}
         <div className="md:hidden max-w-7xl mx-auto">
           <div className="grid grid-cols-1 gap-6">
-            {ambassadors.slice(0, 3).map((ambassador, index) => (
+            {ambassadors.map((ambassador, index) => (
               <motion.div
                 key={ambassador.id}
                 className="group"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                viewport={{ once: true, margin: "-50px" }}
               >
-                <Card className="h-full overflow-hidden bg-card/90 backdrop-blur-sm border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-xl">
+                <Card className="overflow-hidden bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
                   <CardHeader className="p-0 relative">
-                    <div className="relative overflow-hidden h-64">
+                    <div className="relative overflow-hidden h-56">
                       <img
                         src={ambassador.image}
                         alt={ambassador.name}
@@ -342,38 +342,49 @@ const SocialImpactSection = () => {
                           objectFit: 'cover'
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     </div>
                   </CardHeader>
 
-                  <CardContent className="p-4 space-y-3">
-                    <CardTitle className="text-lg mb-2 text-foreground font-bold">
+                  <CardContent className="p-4 space-y-2">
+                    <CardTitle className="text-base mb-1 text-foreground font-bold">
                       {ambassador.name}
                     </CardTitle>
 
-                    <div className="flex items-center space-x-2 mb-3 text-muted-foreground">
-                      <GraduationCap size={16} className="text-primary flex-shrink-0" />
-                      <CardDescription className="text-sm font-medium">
+                    <div className="flex items-center space-x-2 mb-2 text-muted-foreground">
+                      <GraduationCap size={14} className="text-primary flex-shrink-0" />
+                      <CardDescription className="text-xs font-medium line-clamp-1">
                         {ambassador.college}
                       </CardDescription>
                     </div>
 
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                       {ambassador.description}
                     </p>
-
-                    <div className="pt-3 border-t border-border/50">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/30">
-                          Impact Leader
-                        </span>
-                      </div>
-                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
           </div>
+          
+          {/* Mobile View All Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mt-8"
+          >
+            <Link to="/social-impact-ambassadors">
+              <Button
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                View All Details
+                <ArrowRight size={18} className="ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Enhanced CTA Section */}
