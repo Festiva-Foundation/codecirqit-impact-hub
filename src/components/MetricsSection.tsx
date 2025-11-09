@@ -57,7 +57,7 @@ const MetricsSection = () => {
   const metrics = [
     {
       icon: Activity,
-      number: 120,
+      number: 180,
       suffix: "+",
       label: "CSR Activities Conducted",
       color: "text-orange-500"
@@ -71,9 +71,9 @@ const MetricsSection = () => {
     },
     {
       icon: MapPin,
-      number: 35,
+      number: 130,
       suffix: "+",
-      label: "Events Across Karnataka",
+      label: "Education Kits Distributed",
       color: "text-green-500"
     },
     {
@@ -82,7 +82,15 @@ const MetricsSection = () => {
       suffix: "+",
       label: "Meals Distributed",
       color: "text-red-500"
-    }
+    },
+    /* {
+      icon: Heart,
+      number: 150,
+      suffix: "+",
+      label: "Meals Distributed",
+      color: "text-red-500"
+    } */
+
   ];
 
   return (
@@ -95,6 +103,7 @@ const MetricsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
             Our <span className="text-gradient">Impact</span> in Numbers
           </h2>
@@ -103,6 +112,7 @@ const MetricsSection = () => {
           </p>
         </motion.div>
 
+        {/* Column value can be changed to 5 by varying cols to 5*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {metrics.map((metric, index) => (
             <motion.div
